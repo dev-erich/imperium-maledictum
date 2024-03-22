@@ -3,41 +3,62 @@ import List, { ListProps } from '@mui/material/List'
 import ListItemText, { ListItemTextProps } from '@mui/material/ListItemText'
 import { ListItem, ListItemIcon, styled } from '@mui/material'
 
-interface BulletListProps extends ListProps {
+interface BulletListProps extends CustomListProps {
 	bulletPoints: ListItemTextProps[]
-	showBullet?: boolean
+	bullets?: boolean
 }
 
-const StyledList = styled(List)(() => ({
-	paddingLeft: '8px',
+interface CustomListProps extends ListProps {
+	indented?: number
+}
+
+const StyledList = styled(List)<CustomListProps>(({ indented }) => ({
+	paddingTop: 0,
+	paddingBottom: 0,
+	paddingLeft: '12px',
 	paddingRight: '8px',
+	...(indented && {
+		marginLeft: `${(indented + 1) * 12 - indented * 6}px`,
+	}),
 }))
 
 const StyledListItem = styled(ListItem)(() => ({
-	paddingLeft: '8px',
-	paddingRight: '8px',
+	paddingLeft: 0,
+	paddingRight: 0,
 	paddingTop: 0,
 	paddingBottom: 0,
+	alignItems: 'flex-start',
 }))
 
-const StyledListItemIcon = styled(ListItemIcon)(() => ({
-	minWidth: '40px',
+const StyledListItemIcon = styled(ListItemIcon)(({ theme }) => ({
+	minWidth: '30px',
+	minHeight: '30px',
+	paddingTop: '10px',
+	[theme.breakpoints.down('md')]: {
+		paddingTop: '8px',
+		minWidth: '15px',
+		minHeight: '15px',
+		height: '100%',
+	},
 }))
 
 const StyledListItemText = styled(ListItemText)(() => ({
 	marginTop: 0,
 	marginBottom: 0,
+	'& .MuiListItemText-secondary': {
+		fontStyle: 'italic',
+	},
 }))
 
 export default function BulletList(props: BulletListProps) {
-	const { showBullet, bulletPoints, ...listProps } = props
+	const { bullets, bulletPoints, ...otherProps } = props
 
 	return (
-		<StyledList {...listProps}>
+		<StyledList {...otherProps}>
 			{bulletPoints.map((bulletPoint, index) => {
 				return (
 					<StyledListItem key={index}>
-						{showBullet && (
+						{bullets && (
 							<StyledListItemIcon>
 								<SkullIcon />
 							</StyledListItemIcon>

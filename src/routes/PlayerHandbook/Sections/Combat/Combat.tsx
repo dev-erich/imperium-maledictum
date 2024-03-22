@@ -1,5 +1,5 @@
-import { ListItemTextProps } from '@mui/material'
 import { BulletList, Typography, Span, ContentDivider } from '@components'
+import { coverBulletPoints, surpriseBulletPoints } from './data'
 
 export default function Combat() {
 	return (
@@ -15,7 +15,7 @@ export default function Combat() {
 				<br />
 				When you have surprise, you gain the following benefits:
 			</Typography>
-			<BulletList bulletPoints={surpriseBulletPoints} showBullet />
+			<BulletList bulletPoints={surpriseBulletPoints} bullets />
 
 			<ContentDivider />
 
@@ -58,62 +58,7 @@ export default function Combat() {
 				There are three types of cover: Light Cover, Medium Cover and Heavy
 				Cover. A target can only benefit from one type of cover at a time.
 			</Typography>
-			<BulletList bulletPoints={coverBulletPoints} showBullet />
+			<BulletList bulletPoints={coverBulletPoints} bullets />
 		</>
 	)
 }
-
-const surpriseBulletPoints: ListItemTextProps[] = [
-	{
-		primary: (
-			<Typography variant="body1">
-				You can use your Move and take an Action
-			</Typography>
-		),
-	},
-	{
-		primary: (
-			<Typography variant="body1">
-				You have Advantage on Melee Tests, and the target can’t oppose your
-				attack.
-			</Typography>
-		),
-	},
-	{
-		primary: (
-			<Typography variant="body1">
-				When the surprise round ends, the party gains{' '}
-				<Span fontStyle="italic">+1 Superiority</Span>.
-			</Typography>
-		),
-	},
-]
-
-const coverBulletPoints: ListItemTextProps[] = [
-	{
-		primary: (
-			<Typography variant="body1">
-				Light Cover is usually about chest-high, and is large enough for a
-				character to crouch behind to cover most of their body. Light Cover
-				grants +2 Armour to <Span fontStyle="italic">all Hit Locations</Span>{' '}
-				for ranged attacks.
-			</Typography>
-		),
-	},
-	{
-		primary: (
-			<Typography variant="body1">
-				You have Advantage on Melee Tests, and the target can’t oppose your
-				attack.
-			</Typography>
-		),
-	},
-	{
-		primary: (
-			<Typography variant="body1">
-				When the surprise round ends, the party gains
-				<Span fontStyle="italic">+1 Superiority</Span>.
-			</Typography>
-		),
-	},
-]
