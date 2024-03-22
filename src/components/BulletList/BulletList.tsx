@@ -11,7 +11,6 @@ interface BulletListProps extends ListProps {
 const StyledList = styled(List)(() => ({
 	paddingLeft: '8px',
 	paddingRight: '8px',
-	paddingBottom: '0',
 }))
 
 const StyledListItem = styled(ListItem)(() => ({
