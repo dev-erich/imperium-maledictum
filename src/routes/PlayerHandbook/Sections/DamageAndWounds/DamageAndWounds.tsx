@@ -198,6 +198,10 @@ export default function DamageAndWounds() {
 				<Span fontStyle="italic">Blinded</Span>.
 			</Typography>
 
+			{/* 
+			// TODO - Continue working here... Doing HAND next 
+			*/}
+
 			<ContentDivider />
 
 			<Typography variant="h3">Dying</Typography>
