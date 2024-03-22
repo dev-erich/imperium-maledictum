@@ -4,6 +4,14 @@ const baseTheme = createTheme({
 	typography: {
 		fontFamily: ['Tomorrow', 'sans-serif'].join(','),
 	},
+	palette: {
+		primary: {
+			main: 'rgba(0, 0, 0, 0.87)',
+		},
+		secondary: {
+			main: '#3796df',
+		},
+	},
 	components: {
 		MuiPaper: {
 			styleOverrides: {
@@ -13,40 +21,6 @@ const baseTheme = createTheme({
 					backgroundRepeat: 'repeat',
 					backgroundAttachment: 'fixed',
 					backgroundPosition: '0 0',
-				},
-			},
-		},
-		MuiList: {
-			styleOverrides: {
-				root: {
-					paddingLeft: '8px',
-					paddingRight: '8px',
-					paddingBottom: '0',
-				},
-			},
-		},
-		MuiListItem: {
-			styleOverrides: {
-				root: {
-					paddingLeft: '8px',
-					paddingRight: '8px',
-					paddingTop: 0,
-					paddingBottom: 0,
-				},
-			},
-		},
-		MuiListItemText: {
-			styleOverrides: {
-				root: {
-					marginTop: 0,
-					marginBottom: 0,
-				},
-			},
-		},
-		MuiListItemIcon: {
-			styleOverrides: {
-				root: {
-					minWidth: '40px',
 				},
 			},
 		},

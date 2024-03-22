@@ -1,5 +1,5 @@
 import { Modal, Paper, SxProps, Theme } from '@mui/material'
-import { Combat } from '.'
+import { Combat, DamageAndWounds } from '.'
 
 const style: SxProps<Theme> = {
 	position: 'absolute',
@@ -20,14 +20,16 @@ interface SectionsProps {
 	selection: SectionSelection
 }
 
-export type SectionSelection = undefined | 'Combat'
+export type SectionSelection = undefined | 'Combat' | 'DamageAndWounds'
 
 export default function Sections(props: SectionsProps) {
 	const { handleClose, open, selection } = props
 
 	return (
 		<Modal open={open} onClose={handleClose}>
-			<Paper sx={style} elevation={5}>{getSection(selection)}</Paper>
+			<Paper sx={style} elevation={5}>
+				{getSection(selection)}
+			</Paper>
 		</Modal>
 	)
 }
@@ -36,5 +38,7 @@ function getSection(sectionSelection: SectionSelection) {
 	switch (sectionSelection) {
 		case 'Combat':
 			return <Combat />
+		case 'DamageAndWounds':
+			return <DamageAndWounds />
 	}
 }

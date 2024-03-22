@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useNavbar } from '@layout/Navbar'
-import { PageWrapper } from '@components'
+import { PageWrapper, Typography } from '@components'
 import { SectionSelection, Sections } from './Sections'
-import { Button } from '@mui/material'
+import { Button, Grid } from '@mui/material'
 
 export default function PlayerHandbook() {
 	const { setNavbarTitle } = useNavbar()
@@ -20,9 +20,21 @@ export default function PlayerHandbook() {
 
 	return (
 		<PageWrapper>
-			<Button onClick={() => handleOpen('Combat')} variant="contained">
-				Combat
-			</Button>
+			<Typography variant="h2" sx={{ marginBottom: '10px' }}>
+				Rules
+			</Typography>
+			<Grid container spacing={2}>
+				<Grid item xs={4}>
+					<Button onClick={() => handleOpen('Combat')} variant="contained">
+						Combat
+					</Button>
+				</Grid>
+				<Grid item xs={4}>
+					<Button onClick={() => handleOpen('DamageAndWounds')} variant="contained">
+						Wounds
+					</Button>
+				</Grid>
+			</Grid>
 			<Sections handleClose={handleClose} open={open} selection={section} />
 		</PageWrapper>
 	)

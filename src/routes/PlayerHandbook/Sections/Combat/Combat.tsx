@@ -1,12 +1,5 @@
-import {
-	Divider,
-	List,
-	ListItem,
-	ListItemIcon,
-	ListItemText,
-	Typography,
-} from '@mui/material'
-import { SkullIcon } from 'src/assets/Icons'
+import { ListItemTextProps } from '@mui/material'
+import { BulletList, Typography, Span, ContentDivider } from '@components'
 
 export default function Combat() {
 	return (
@@ -22,123 +15,32 @@ export default function Combat() {
 				<br />
 				When you have surprise, you gain the following benefits:
 			</Typography>
-			<List>
-				<ListItem>
-					<ListItemIcon>
-						<SkullIcon />
-					</ListItemIcon>
-					<ListItemText
-						primary={
-							<Typography variant="body1">
-								You can use your Move and take an Action
-							</Typography>
-						}
-					/>
-				</ListItem>
-				<ListItem>
-					<ListItemIcon>
-						<SkullIcon />
-					</ListItemIcon>
-					<ListItemText
-						primary={
-							<Typography variant="body1">
-								You have Advantage on Melee Tests, and the target can’t oppose
-								your attack.
-							</Typography>
-						}
-					/>
-				</ListItem>
-				<ListItem>
-					<ListItemIcon>
-						<SkullIcon />
-					</ListItemIcon>
-					<ListItemText
-						primary={
-							<Typography variant="body1">
-								When the surprise round ends, the party gains
-								<Typography
-									component="span"
-									fontStyle="italic"
-									sx={{ color: '#3796df' }}
-								>
-									+1 Superiority
-								</Typography>
-								.
-							</Typography>
-						}
-					/>
-				</ListItem>
-			</List>
+			<BulletList bulletPoints={surpriseBulletPoints} showBullet />
 
-			<Divider
-				sx={{
-					padding: '5px',
-					margin: '10px',
-				}}
-			/>
+			<ContentDivider />
 
 			<Typography variant="h3">Actions</Typography>
 			<Typography variant="body1">
 				This section provides a number of Actions you can take in combat. You
-				may also gain new Actions from
-				<Typography
-					component="span"
-					fontStyle="italic"
-					sx={{ color: '#3796df' }}
-				>
-					Talents
-				</Typography>
-				,
-				<Typography
-					component="span"
-					fontStyle="italic"
-					sx={{ color: '#3796df' }}
-				>
-					gear
-				</Typography>
-				, or
-				<Typography
-					component="span"
-					fontStyle="italic"
-					sx={{ color: '#3796df' }}
-				>
-					Psychic Powers
-				</Typography>
-				.
+				may also gain new Actions from <Span fontStyle="italic">Talents</Span>,{' '}
+				<Span fontStyle="italic">gear</Span>, or{' '}
+				<Span fontStyle="italic">Psychic Powers</Span>.
 			</Typography>
 
-			<Divider
-				sx={{
-					padding: '5px',
-					margin: '10px',
-				}}
-			/>
+			<ContentDivider />
 
 			<Typography variant="h3">Reactions</Typography>
 			<Typography variant="body1">
 				A Reaction is something you do on someone else's turn. The most common
-				form of Reaction is attempting to
-				<Typography component="span" sx={{ color: '#3796df' }}>
-					dodge a ranged attack
-				</Typography>
-				, but Psykers may also use their Reaction to
-				<Typography
-					component="span"
-					fontStyle="italic"
-					sx={{ color: '#3796df' }}
-				>
-					Deny the Witch
-				</Typography>
-				. Unless a rule such as a Talent or item of gear specifies otherwise,
-				you may only take one Reaction until the beginning of your next turn.
+				form of Reaction is attempting to{' '}
+				<Span fontStyle="italic">dodge a ranged attack</Span>, but Psykers may
+				also use their Reaction to{' '}
+				<Span fontStyle="italic">Deny the Witch</Span>. Unless a rule such as a
+				Talent or item of gear specifies otherwise, you may only take one
+				Reaction until the beginning of your next turn.
 			</Typography>
 
-			<Divider
-				sx={{
-					padding: '5px',
-					margin: '10px',
-				}}
-			/>
+			<ContentDivider />
 
 			<Typography variant="h3">Free Actions</Typography>
 			<Typography variant="body1">
@@ -149,85 +51,69 @@ export default function Combat() {
 				a Test, it is an Action.
 			</Typography>
 
-			<Divider
-				sx={{
-					padding: '5px',
-					margin: '10px',
-				}}
-			/>
+			<ContentDivider />
 
 			<Typography variant="h3">Cover</Typography>
 			<Typography variant="body1">
 				There are three types of cover: Light Cover, Medium Cover and Heavy
 				Cover. A target can only benefit from one type of cover at a time.
 			</Typography>
-			<List>
-				<ListItem>
-					<ListItemIcon>
-						<SkullIcon />
-					</ListItemIcon>
-					<ListItemText
-						primary={
-							<Typography variant="body1">
-								Light Cover is usually about chest-high, and is large enough for
-								a character to crouch behind to cover most of their body. Light
-								Cover grants +2 Armour to
-								<Typography
-									component="span"
-									fontStyle="italic"
-									sx={{ color: '#3796df' }}
-								>
-									all Hit Locations
-								</Typography>
-								for ranged attacks.
-							</Typography>
-						}
-					/>
-				</ListItem>
-				<ListItem>
-					<ListItemIcon>
-						<SkullIcon />
-					</ListItemIcon>
-					<ListItemText
-						primary={
-							<Typography variant="body1">
-								Medium Cover can protect most of a character's body, but still
-								leaves some areas exposed. Medium Cover grants +4 Armour to
-								<Typography
-									component="span"
-									fontStyle="italic"
-									sx={{ color: '#3796df' }}
-								>
-									all Hit Locations
-								</Typography>
-								for ranged attacks.
-							</Typography>
-						}
-					/>
-				</ListItem>
-				<ListItem>
-					<ListItemIcon>
-						<SkullIcon />
-					</ListItemIcon>
-					<ListItemText
-						primary={
-							<Typography variant="body1">
-								Heavy Cover can protect a character’s entire body, and is large
-								enough to comfortably stand behind. Heavy Cover grants +6 Armour
-								to
-								<Typography
-									component="span"
-									fontStyle="italic"
-									sx={{ color: '#3796df' }}
-								>
-									all Hit Locations
-								</Typography>
-								for ranged attacks.
-							</Typography>
-						}
-					/>
-				</ListItem>
-			</List>
+			<BulletList bulletPoints={coverBulletPoints} showBullet />
 		</>
 	)
 }
+
+const surpriseBulletPoints: ListItemTextProps[] = [
+	{
+		primary: (
+			<Typography variant="body1">
+				You can use your Move and take an Action
+			</Typography>
+		),
+	},
+	{
+		primary: (
+			<Typography variant="body1">
+				You have Advantage on Melee Tests, and the target can’t oppose your
+				attack.
+			</Typography>
+		),
+	},
+	{
+		primary: (
+			<Typography variant="body1">
+				When the surprise round ends, the party gains{' '}
+				<Span fontStyle="italic">+1 Superiority</Span>.
+			</Typography>
+		),
+	},
+]
+
+const coverBulletPoints: ListItemTextProps[] = [
+	{
+		primary: (
+			<Typography variant="body1">
+				Light Cover is usually about chest-high, and is large enough for a
+				character to crouch behind to cover most of their body. Light Cover
+				grants +2 Armour to <Span fontStyle="italic">all Hit Locations</Span>{' '}
+				for ranged attacks.
+			</Typography>
+		),
+	},
+	{
+		primary: (
+			<Typography variant="body1">
+				You have Advantage on Melee Tests, and the target can’t oppose your
+				attack.
+			</Typography>
+		),
+	},
+	{
+		primary: (
+			<Typography variant="body1">
+				When the surprise round ends, the party gains
+				<Span fontStyle="italic">+1 Superiority</Span>.
+			</Typography>
+		),
+	},
+]

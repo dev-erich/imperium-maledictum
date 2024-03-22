@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavbar } from '@layout/Navbar'
 import { PageWrapper } from '@components'
+import { Button, Grid } from '@mui/material'
 
 export default function Home() {
 	const { setNavbarTitle } = useNavbar()
@@ -12,8 +13,18 @@ export default function Home() {
 
 	return (
 		<PageWrapper>
-			<Link to={'/player-handbook'}>Player Handbook</Link>
-			<Link to={'/character-creation'}>Character Creation</Link>
+			<Grid container spacing={2}>
+				<Grid item xs={12}>
+					<Link to={'/player-handbook'}>
+						<Button variant="contained">Player Handbook</Button>
+					</Link>
+				</Grid>
+				<Grid item xs={12}>
+					<Link to={'/character-creation'}>
+						<Button variant="contained">Character Creation</Button>
+					</Link>
+				</Grid>
+			</Grid>
 		</PageWrapper>
 	)
 }
