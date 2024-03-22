@@ -1,1 +1,1 @@
-export { Warhammer } from './Icons'
+export { WarhammerIcon } from './Icons'

@@ -1,10 +1,16 @@
+import { useEffect } from 'react'
+import { useNavbar } from '@layout/Navbar'
 import { PageWrapper } from '@components'
-import { Typography } from '@mui/material'
 
 export default function CharacterCreation() {
+	const { setNavbarTitle } = useNavbar()
+
+	useEffect(() => {
+		setNavbarTitle('Character Creation')
+	}, [setNavbarTitle])
+
 	return (
 		<PageWrapper>
-			<Typography>Character Creation</Typography>
 		</PageWrapper>
 	)
 }
