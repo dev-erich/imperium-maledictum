@@ -24,7 +24,7 @@ export default function CharacterEditor() {
 	const [formData, setFormData] = useState<Character | null>(null)
 
 	useEffect(() => {
-		setNavbarTitle('Character Creation')
+		setNavbarTitle('Character Editor')
 	}, [setNavbarTitle])
 
 	useEffect(() => {
