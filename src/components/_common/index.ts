@@ -1,3 +1,4 @@
+export { Accordion } from './Accordion'
 export { Typography, Span } from './Typography'
 export { BulletList } from './BulletList'
 export { InputField, DropdownSelect } from './Inputs'

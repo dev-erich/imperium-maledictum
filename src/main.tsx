@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ThemeProvider } from '@mui/material'
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
-import { CharacterEditor, Home, PlayerHandbook, SessionTracker } from '@routes'
+import { CharacterEditor, Home, PlayerHandbook, MyCharacter } from '@routes'
 import { theme } from '@theme'
 import { CharacterProvider, Navbar } from '@hooks'
 
@@ -32,8 +32,8 @@ const router = createBrowserRouter([
 				element: <CharacterEditor />,
 			},
 			{
-				path: '/session-tracker',
-				element: <SessionTracker />,
+				path: '/my-character',
+				element: <MyCharacter />,
 			},
 		],
 	},

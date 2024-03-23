@@ -13,9 +13,11 @@ export default function PlayerHandbook() {
 
 	const [open, setOpen] = useState<boolean>(false)
 	const [section, setSelection] = useState<SectionSelection>()
-	const handleOpen = (selection: SectionSelection) => {
+	const [sectionTitle, setSectionTitle] = useState<string>()
+	const handleOpen = (selection: SectionSelection, title?: string) => {
 		setOpen(true)
 		setSelection(selection)
+		setSectionTitle(title ? title : selection)
 	}
 	const handleClose = () => setOpen(false)
 
@@ -32,14 +34,19 @@ export default function PlayerHandbook() {
 				</Grid>
 				<Grid item xs={4}>
 					<Button
-						onClick={() => handleOpen('DamageAndWounds')}
+						onClick={() => handleOpen('DamageAndWounds', 'Damage & Wounds')}
 						variant="contained"
 					>
 						Wounds
 					</Button>
 				</Grid>
 			</Grid>
-			<Sections handleClose={handleClose} open={open} selection={section} />
+			<Sections
+				handleClose={handleClose}
+				open={open}
+				selection={section}
+				title={sectionTitle}
+			/>
 		</PageWrapper>
 	)
 }

@@ -4,6 +4,7 @@ import { useNavbar } from '@hooks'
 import { Grid } from '@mui/material'
 import { PageWrapper } from '@layout'
 import { Button } from '@common'
+import EditIcon from '@mui/icons-material/Edit'
 
 export default function Home() {
 	const { setNavbarTitle } = useNavbar()
@@ -14,20 +15,26 @@ export default function Home() {
 
 	return (
 		<PageWrapper>
-			<Grid container spacing={2}>
+			<Grid container spacing={2} alignItems={'center'}>
+				<Grid item xs={8}>
+					<Link to={'/my-character'}>
+						<Button variant="contained">My Character</Button>
+					</Link>
+				</Grid>
+				<Grid item xs={4}>
+					<Link to={'/character-editor'}>
+						<Button
+							variant="contained"
+							color="success"
+							startIcon={<EditIcon />}
+						>
+							Edit
+						</Button>
+					</Link>
+				</Grid>
 				<Grid item xs={12}>
 					<Link to={'/player-handbook'}>
 						<Button variant="contained">Player Handbook</Button>
-					</Link>
-				</Grid>
-				<Grid item xs={12}>
-					<Link to={'/character-editor'}>
-						<Button variant="contained">Character Editor</Button>
-					</Link>
-				</Grid>
-				<Grid item xs={12}>
-					<Link to={'/session-tracker'}>
-						<Button variant="contained">Session Tracker</Button>
 					</Link>
 				</Grid>
 			</Grid>

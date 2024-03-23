@@ -1,7 +1,9 @@
-import { Modal, Paper, SxProps, Theme } from '@mui/material'
+import { IconButton, Modal, Paper, SxProps, Theme } from '@mui/material'
 import { Combat, DamageAndWounds } from '.'
+import CloseIcon from '@mui/icons-material/Close'
+import { Typography } from '@common'
 
-const style: SxProps<Theme> = {
+const paperStyles: SxProps<Theme> = {
 	position: 'absolute',
 	top: '85px',
 	left: '50%',
@@ -14,20 +16,33 @@ const style: SxProps<Theme> = {
 	overflow: 'auto',
 }
 
+const closeIconStyles: SxProps<Theme> = {
+	position: 'absolute',
+	top: '5px',
+	right: '5px',
+}
+
 interface SectionsProps {
 	handleClose: () => void
 	open: boolean
 	selection: SectionSelection
+	title?: string
 }
 
 export type SectionSelection = undefined | 'Combat' | 'DamageAndWounds'
 
 export default function Sections(props: SectionsProps) {
-	const { handleClose, open, selection } = props
+	const { handleClose, open, selection, title } = props
 
 	return (
 		<Modal open={open} onClose={handleClose}>
-			<Paper sx={style} elevation={5}>
+			<Paper sx={paperStyles} elevation={5}>
+				<Typography variant="h2" align="center" sx={{ marginBottom: '20px' }}>
+					{title ? title : 'Section'}
+				</Typography>
+				<IconButton sx={closeIconStyles} size="large" onClick={handleClose}>
+					<CloseIcon fontSize="inherit" />
+				</IconButton>
 				{getSection(selection)}
 			</Paper>
 		</Modal>
