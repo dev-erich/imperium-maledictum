@@ -1,6 +1,9 @@
 import { PageWrapper, Typography } from '@components'
 import { useNavbar } from '@layout/Navbar'
-import { useEffect, useState } from 'react'
+import {
+	useEffect,
+	// useState
+} from 'react'
 
 export interface SessionTracker {}
 
@@ -9,7 +12,7 @@ export default function SessionTracker() {
 	useEffect(() => {
 		setNavbarTitle('Session Tracker')
 	}, [setNavbarTitle])
-	const [sessionTracker, setSessionTracker] = useState<SessionTracker>({})
+	// const [sessionTracker, setSessionTracker] = useState<SessionTracker>({})
 
 	return (
 		<PageWrapper>
