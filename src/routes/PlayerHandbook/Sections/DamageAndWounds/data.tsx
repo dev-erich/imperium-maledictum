@@ -217,3 +217,35 @@ export const healingBrokenBonesBulletPoints: ListItemTextProps[] = [
 		),
 	},
 ]
+
+export const healingWoundsBulletPoints: ListItemTextProps[] = [
+	{
+		primary: (
+			<>
+				Once per day, after a good rest, you heal Wounds equal to your Toughness
+				Bonus.
+			</>
+		),
+	},
+	{
+		primary: (
+			<>
+				If you rest for an entire day and do not undertake any strenuous
+				activity, you heal Wounds equal to your Toughness Bonus × 2.
+			</>
+		),
+	},
+	{
+		primary: (
+			<>
+				An ally with at least 1 Advance in the Medicae Skill can make an{' '}
+				<b>Routine (+20) Medicae</b> Test to treat your Wounds. During combat,
+				this Test is <b>Challenging (+0)</b>. If successful, you heal Wounds
+				equal to the SL plus your ally's Intelligence Bonus. On a failure, you
+				heal no Wounds but suffer no ill effects. You can only heal Wounds in
+				this way once per day, and once again each time you suffer a Critical
+				Wound.
+			</>
+		),
+	},
+]

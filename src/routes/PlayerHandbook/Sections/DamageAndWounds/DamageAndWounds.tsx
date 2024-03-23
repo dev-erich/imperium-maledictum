@@ -3,6 +3,7 @@ import {
 	criticalWoundsBulletPoints,
 	dyingBulletPoints,
 	healingBrokenBonesBulletPoints,
+	healingWoundsBulletPoints,
 	introductionBulletPoints,
 	majorBrokenBonesBulletPoints,
 	minorBrokenBonesBulletPoints,
@@ -198,6 +199,83 @@ export default function DamageAndWounds() {
 				<Span fontStyle="italic">Blinded</Span>.
 			</Typography>
 
+			<Typography variant="h4">Hand</Typography>
+			<Typography variant="body1" indented={1}>
+				You have Disadvantage on all Tests that require the use of two hands,
+				and can’t wield weapons with the Two-handed Trait. You can still strap a
+				shield to the arm to gain the shield’s benefit. If the lost hand is your
+				dominant hand, you suffer Disadvantage on all Tests using your other
+				hand until you take the <Span fontStyle="italic">Ambidextrous</Span>{' '}
+				Talent.
+			</Typography>
+
+			<Typography variant="h4">Leg</Typography>
+			<Typography variant="body1" indented={1}>
+				Your Speed is reduced one step, to a minimum of Slow. Additionally, you
+				have Disadvantage on Tests that rely on mobility, such as Reflexes and
+				Athletics Tests, and the minimum Difficulty of such Tests is{' '}
+				<b>Hard (−20)</b>.
+			</Typography>
+
+			<Typography variant="h4">Nose</Typography>
+			<Typography variant="body1" indented={1}>
+				You have Disadvantage on Awareness (Smell) Tests
+			</Typography>
+
+			<Typography variant="h4">Teeth</Typography>
+			<Typography variant="body1" indented={1}>
+				For every two teeth lost, reduce your Rapport Skill by 1. If you lose
+				more than half your teeth (16), eating can take longer and you may not
+				be able to consume certain foods.
+			</Typography>
+
+			<Typography variant="h4">Toes</Typography>
+			<Typography variant="body1" indented={1}>
+				For each toe lost, suffer a permanent –1 to your Agility and Weapon
+				Skill Characteristics.
+			</Typography>
+
+			<Typography variant="h4">Tongue</Typography>
+			<Typography variant="body1" indented={1}>
+				You have Disadvantage on Rapport Tests, and can only succeed on Tests
+				that rely on speech by rolling 01–05.
+			</Typography>
+
+			<ContentDivider />
+
+			<Typography variant="h3">Medical Treatment</Typography>
+			<Typography variant="body1">
+				The following rules explain how to heal Wounds, Critical Wounds, and
+				Injuries.
+			</Typography>
+
+			<Typography variant="h4">Healing Wounds</Typography>
+			<Typography variant="body1" indented={1}>
+				You can heal Wounds in the following ways:
+			</Typography>
+			<BulletList
+				bulletPoints={healingWoundsBulletPoints}
+				bullets
+				indented={1}
+			/>
+
+			<Typography variant="h4">Healing Critical Wounds</Typography>
+			<Typography variant="body1" indented={1}>
+				Each Critical Wound on the Critical Wounds Table lists the treatment
+				required.
+				<br />
+				<br />
+				If you have a number of untreated Critical Wounds exceeding your
+				Toughness Bonus, you will <b>die</b>.
+			</Typography>
+
+			<Typography variant="h4">Healing Injuries</Typography>
+			<Typography variant="body1" indented={1}>
+				They can last long after the Critical Wound that caused them has healed.
+				Treatment and recovery time for injuries are listed in the relevant
+				entry <i>(see Injuries section above)</i>.
+			</Typography>
+
 			<ContentDivider />
 
 			<Typography variant="h3">Dying</Typography>
@@ -207,9 +285,4 @@ export default function DamageAndWounds() {
 			<BulletList bulletPoints={dyingBulletPoints} bullets />
 		</>
 	)
-}
-
-{
-	/* <Typography variant="h3"></Typography>
-<Typography variant="body1"></Typography> */
 }

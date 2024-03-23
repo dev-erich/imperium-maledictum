@@ -2,7 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ThemeProvider } from '@mui/material'
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
-import { CharacterCreation, Home, PlayerHandbook } from '@routes'
+import {
+	CharacterCreation,
+	Home,
+	PlayerHandbook,
+	SessionTracker,
+} from '@routes'
 import { Navbar } from '@layout'
 import { theme } from './theme'
 
@@ -30,6 +35,10 @@ const router = createBrowserRouter([
 			{
 				path: '/character-creation',
 				element: <CharacterCreation />,
+			},
+			{
+				path: '/session-tracker',
+				element: <SessionTracker />,
 			},
 		],
 	},
