@@ -1,4 +1,4 @@
-import { BulletList, ContentDivider, Span, Typography } from '@components'
+import { BulletList, ContentDivider, Span, Typography } from '@common'
 import {
 	criticalWoundsBulletPoints,
 	dyingBulletPoints,
@@ -12,10 +12,6 @@ import {
 export default function DamageAndWounds() {
 	return (
 		<>
-			<Typography variant="h2" align="center">
-				Wounds and Damage
-			</Typography>
-
 			<Typography variant="h3">Wounds</Typography>
 			<Typography variant="body1">
 				Each time you suffer a point of Damage, you gain 1 Wound. If your Wounds

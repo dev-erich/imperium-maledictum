@@ -1,13 +1,11 @@
-import { Container, styled } from '@mui/material'
+import { Container, ContainerProps, styled } from '@mui/material'
 
-interface PageWrapperProps {
-	className?: string
-	children?: React.ReactNode
-}
+interface PageWrapperProps extends ContainerProps {}
 
 const CustomContainer = styled(Container)(() => ({
 	paddingTop: '16px',
 	paddingBottom: '16px',
+	height: 'calc(100svh - var(--navbarHeight))',
 }))
 
 export default function PageWrapper(props: PageWrapperProps) {

@@ -6,10 +6,18 @@ const baseTheme = createTheme({
 	},
 	palette: {
 		primary: {
-			main: 'rgba(0, 0, 0, 0.87)',
+			main: '#2e2e2e',
 		},
 		secondary: {
+			light: '',
 			main: '#3796df',
+			dark: '',
+		},
+		success: {
+			main: '#38703a',
+		},
+		error: {
+			main: '#b93131',
 		},
 	},
 	components: {
@@ -34,11 +42,25 @@ const baseTheme = createTheme({
 				},
 			},
 		},
+		MuiInputBase: {
+			styleOverrides: {
+				root: {
+					marginLeft: 0,
+					marginRight: 0,
+				},
+			},
+		},
+		MuiFormLabel: {
+			styleOverrides: {
+				root: {
+					marginLeft: 0,
+				},
+			},
+		},
 	},
 })
 
 const responsiveFontSizes = (theme: Theme): Theme => {
-	console.log('🚀 \n theme:', theme)
 	return {
 		...theme,
 		typography: {
@@ -72,6 +94,7 @@ const responsiveFontSizes = (theme: Theme): Theme => {
 				[theme.breakpoints.down('md')]: {
 					fontSize: '1.3rem',
 					lineHeight: '2rem',
+					marginBottom: '3px',
 				},
 			},
 			h4: {
