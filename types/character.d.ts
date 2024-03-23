@@ -10,6 +10,14 @@ export interface Character {
 		malignancies?: string
 		total?: number
 	}
+	wounds?: {
+		current?: number
+		total?: number
+	}
+	criticalWounds?: {
+		location?: string
+		effect?: string
+	}
 	characteristics?: Characteristic[]
 }
 
@@ -24,6 +32,10 @@ export type Role =
 export type Characteristic = {
 	name: string
 	shortName: string
+}
+
+export type BodyLocation = {
+	
 }
 
 export const CharacteristicsObj: Characteristic[] = [

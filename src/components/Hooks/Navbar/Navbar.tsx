@@ -36,9 +36,10 @@ export default function NavbarProvider({ children }: NavbarProviderProps) {
 				sx={{
 					background:
 						"url('https://www.toptal.com/designers/subtlepatterns/uploads/carbon_fibre.png') repeat fixed 0 0",
-					height: '73px',
+					height: 'var(--navbarHeight)',
 					position: 'fixed',
-					boxShadow: 2,
+					boxShadow: 3,
+					zIndex: 100,
 				}}
 			>
 				<Grid container alignItems="center" sx={{ padding: '8px 0' }}>

@@ -34,6 +34,21 @@ const baseTheme = createTheme({
 				},
 			},
 		},
+		MuiInputBase: {
+			styleOverrides: {
+				root: {
+					marginLeft: 0,
+					marginRight: 0,
+				},
+			},
+		},
+		MuiFormLabel: {
+			styleOverrides: {
+				root: {
+					marginLeft: 0,
+				},
+			},
+		},
 	},
 })
 

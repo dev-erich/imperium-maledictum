@@ -1,15 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useCharacter, useNavbar } from '@hooks'
 import { PageWrapper } from '@layout'
-import { InputField, Select } from '@common'
-import {
-	Box,
-	Button,
-	FormControl,
-	Grid,
-	InputLabel,
-	SelectChangeEvent,
-} from '@mui/material'
+import { InputField, DropdownSelect, Button } from '@common'
+import { Box, Grid, SelectChangeEvent } from '@mui/material'
 import { Character, Role } from 'types/character'
 import _ from 'lodash'
 
@@ -68,15 +61,14 @@ export default function CharacterCreation() {
 		<PageWrapper>
 			<Box
 				component="form"
-				// noValidate
 				autoComplete="off"
 				onSubmit={handleSubmit}
+				sx={{ height: '100%', position: 'relative' }}
 			>
-				<Grid container>
+				<Grid container spacing={2}>
 					<Grid item xs={7}>
 						<InputField
 							required
-							variant="standard"
 							id="name"
 							label="Name"
 							value={formData?.name || ''}
@@ -84,33 +76,26 @@ export default function CharacterCreation() {
 						/>
 					</Grid>
 					<Grid item xs={5}>
-						<FormControl fullWidth>
-							<InputLabel id="role-label">Role</InputLabel>
-							<Select
-								required
-								variant="standard"
-								labelId="role-label"
-								id="role"
-								name="role"
-								value={formData?.role || ''}
-								label="Role"
-								onChange={handleSelectChange}
-								menuItems={RolesObj}
-							/>
-						</FormControl>
+						<DropdownSelect
+							required
+							labelId="role-label"
+							id="role"
+							name="role"
+							value={formData?.role || ''}
+							label="Role"
+							onChange={handleSelectChange}
+							menuItems={RolesObj}
+						/>
 					</Grid>
 					<Grid item xs={12}>
 						<InputField
 							required
-							variant="standard"
 							id="corruption.mutations"
 							label="Mutations"
 							value={formData?.corruption?.mutations || ''}
 							onChange={handleInputChange}
 						/>
 					</Grid>
-				</Grid>
-				<Grid container spacing={1}>
 					<Grid item xs={6}>
 						<Button type="submit" variant="contained" color="primary">
 							Submit
