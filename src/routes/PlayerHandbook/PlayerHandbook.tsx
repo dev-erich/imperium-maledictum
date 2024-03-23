@@ -18,7 +18,6 @@ export default function PlayerHandbook() {
 	}
 	const handleClose = () => setOpen(false)
 
-
 	return (
 		<PageWrapper>
 			<Typography variant="h2" sx={{ marginBottom: '10px' }}>
@@ -31,7 +30,10 @@ export default function PlayerHandbook() {
 					</Button>
 				</Grid>
 				<Grid item xs={4}>
-					<Button onClick={() => handleOpen('DamageAndWounds')} variant="contained">
+					<Button
+						onClick={() => handleOpen('DamageAndWounds')}
+						variant="contained"
+					>
 						Wounds
 					</Button>
 				</Grid>
