@@ -9,7 +9,7 @@ import {
 	SessionTracker,
 } from '@routes'
 import { Navbar } from '@layout'
-import { theme } from './theme'
+import { theme } from '@theme'
 
 import './index.scss'
 

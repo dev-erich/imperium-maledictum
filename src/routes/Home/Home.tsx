@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavbar } from '@layout/Navbar'
-import { PageWrapper, Typography } from '@components'
 import { Button, Grid, Modal, Paper, SxProps } from '@mui/material'
 import { Theme } from '@emotion/react'
+import { PageWrapper } from '@layout'
+import { Typography } from '@common'
 
 const style: SxProps<Theme> = {
 	position: 'absolute',

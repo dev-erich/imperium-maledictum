@@ -25,12 +25,16 @@
 		"paths": {
 			"@routes": ["src/routes"],
 			"@routes/*": ["src/routes/*"],
-			"@components": ["src/components"],
-			"@components/*": ["src/components/*"],
-			"@layout": ["src/layout"],
-			"@layout/*": ["src/layout/*"],
-			"@icons": ["src/assets/Icons"],
-			"@icons/*": ["src/assets/Icons/*"]
+			"@common": ["src/components/_common"],
+			"@common/*": ["src/components/_common/*"],
+			"@layout": ["src/components/Layout"],
+			"@layout/*": ["src/components/Layout/*"],
+			"@icons": ["src/components/_common/Icons"],
+			"@icons/*": ["src/components/_common/Icons/*"],
+			"@hooks": ["src/components/Hooks"],
+			"@hooks/*": ["src/components/Hooks/*"],
+			"@theme": ["src/components/Theme"],
+			"@theme/*": ["src/components/Theme/*"]
 		}
 	},
 	"include": ["src/**/*"],

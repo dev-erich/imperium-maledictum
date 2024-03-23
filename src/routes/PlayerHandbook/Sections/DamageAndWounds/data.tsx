@@ -1,4 +1,4 @@
-import { Span } from '@components'
+import { Span } from '@common'
 import { ListItemTextProps } from '@mui/material'
 
 export const introductionBulletPoints: ListItemTextProps[] = [

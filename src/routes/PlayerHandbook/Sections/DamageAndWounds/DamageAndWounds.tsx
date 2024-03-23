@@ -1,4 +1,4 @@
-import { BulletList, ContentDivider, Span, Typography } from '@components'
+import { BulletList, ContentDivider, Span, Typography } from '@common'
 import {
 	criticalWoundsBulletPoints,
 	dyingBulletPoints,

@@ -1,4 +1,4 @@
-import { BulletList, Typography, Span, ContentDivider } from '@components'
+import { BulletList, Typography, Span, ContentDivider } from '@common'
 import { coverBulletPoints, surpriseBulletPoints } from './data'
 
 export default function Combat() {

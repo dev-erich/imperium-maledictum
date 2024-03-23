@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useNavbar } from '@layout/Navbar'
-import { PageWrapper, Typography } from '@components'
+import { PageWrapper } from '@layout'
+import { Typography } from '@common'
 
 export default function CharacterCreation() {
 	const { setNavbarTitle } = useNavbar()

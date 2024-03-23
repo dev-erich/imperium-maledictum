@@ -1,7 +1,7 @@
+import { WarhammerIcon } from '@icons'
 import { Box, Container, Grid, Typography } from '@mui/material'
 import { createContext, useCallback, useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { WarhammerIcon } from 'src/assets'
 
 interface NavbarContextState {
 	navbarTitle: string

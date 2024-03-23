@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavbar } from '@layout/Navbar'
-import { PageWrapper, Typography } from '@components'
+import { PageWrapper } from '@layout'
+import { Typography } from '@common'
 import { SectionSelection, Sections } from './Sections'
 import { Button, Grid } from '@mui/material'
 

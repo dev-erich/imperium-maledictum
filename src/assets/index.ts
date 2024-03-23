@@ -1,1 +1,0 @@
-export { WarhammerIcon } from './Icons'
