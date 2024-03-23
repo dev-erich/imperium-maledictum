@@ -8,8 +8,8 @@ import {
 	PlayerHandbook,
 	SessionTracker,
 } from '@routes'
-import { Navbar } from '@layout'
 import { theme } from '@theme'
+import { CharacterProvider, Navbar } from '@hooks'
 
 import './index.scss'
 
@@ -17,11 +17,11 @@ const router = createBrowserRouter([
 	{
 		path: '/',
 		element: (
-			<>
+			<CharacterProvider>
 				<Navbar>
 					<Outlet />
 				</Navbar>
-			</>
+			</CharacterProvider>
 		),
 		children: [
 			{

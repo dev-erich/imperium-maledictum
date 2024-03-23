@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useNavbar } from '@layout/Navbar'
+import { useNavbar } from '@hooks'
 import { Button, Grid, Modal, Paper, SxProps } from '@mui/material'
 import { Theme } from '@emotion/react'
 import { PageWrapper } from '@layout'

@@ -37,6 +37,6 @@
 			"@theme/*": ["src/components/Theme/*"]
 		}
 	},
-	"include": ["src/**/*"],
+	"include": ["src/**/*", "types/**/*"],
 	"references": [{ "path": "./tsconfig.node.json" }]
 }

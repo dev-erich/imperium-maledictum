@@ -1,4 +1,6 @@
-import { PageWrapper, useNavbar } from '@layout'
+import { Typography } from '@common'
+import { useCharacter, useNavbar } from '@hooks'
+import { PageWrapper } from '@layout'
 import {
 	useEffect,
 	// useState
@@ -8,15 +10,22 @@ export interface SessionTracker {}
 
 export default function SessionTracker() {
 	const { setNavbarTitle } = useNavbar()
+	const { character } = useCharacter()
+
 	useEffect(() => {
 		setNavbarTitle('Session Tracker')
 	}, [setNavbarTitle])
 
-	// const [sessionTracker, setSessionTracker] = useState<SessionTracker>({})
-
-	return (
-		<PageWrapper>
-			<></>
-		</PageWrapper>
-	)
+	if (character)
+		return (
+			<PageWrapper>
+				<Typography>{character.name}</Typography>
+			</PageWrapper>
+		)
+	else
+		return (
+			<PageWrapper>
+				<Typography>Oops! Missig character details!</Typography>
+			</PageWrapper>
+		)
 }

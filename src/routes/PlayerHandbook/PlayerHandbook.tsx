@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useNavbar } from '@layout/Navbar'
+import { useNavbar } from '@hooks'
 import { PageWrapper } from '@layout'
 import { Typography } from '@common'
 import { SectionSelection, Sections } from './Sections'

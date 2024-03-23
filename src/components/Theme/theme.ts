@@ -38,7 +38,6 @@ const baseTheme = createTheme({
 })
 
 const responsiveFontSizes = (theme: Theme): Theme => {
-	console.log('🚀 \n theme:', theme)
 	return {
 		...theme,
 		typography: {

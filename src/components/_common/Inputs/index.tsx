@@ -1,1 +1,2 @@
-export { default as FieldInput } from './FieldInput'
+export { default as InputField } from './InputField'
+export { default as Select } from './Select'
