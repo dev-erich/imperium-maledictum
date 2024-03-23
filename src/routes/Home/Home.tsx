@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavbar } from '@hooks'
-import { Button, Grid } from '@mui/material'
+import { Grid } from '@mui/material'
 import { PageWrapper } from '@layout'
+import { Button } from '@common'
 
 export default function Home() {
 	const { setNavbarTitle } = useNavbar()
@@ -20,8 +21,8 @@ export default function Home() {
 					</Link>
 				</Grid>
 				<Grid item xs={12}>
-					<Link to={'/character-creation'}>
-						<Button variant="contained">Character Creation</Button>
+					<Link to={'/character-editor'}>
+						<Button variant="contained">Character Editor</Button>
 					</Link>
 				</Grid>
 				<Grid item xs={12}>

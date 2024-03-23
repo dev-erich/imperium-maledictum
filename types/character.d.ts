@@ -1,24 +1,24 @@
 export interface Character {
 	name?: string
 	role?: Role
-	fate?: {
-		current?: number
-		total?: number
-	}
+	initiative?: number
+	fate?: CurrentTotal
+	wounds?: CurrentTotal
+	warp?: CurrentTotal
 	corruption?: {
 		mutations?: string
 		malignancies?: string
-		total?: number
 	}
-	wounds?: {
-		current?: number
-		total?: number
-	}
-	criticalWounds?: {
-		location?: string
-		effect?: string
-	}
+	criticalWounds?: CriticalWound[]
 	characteristics?: Characteristic[]
+	armour?: {
+		head?: CurrentTotal
+		leftArm?: CurrentTotal
+		rightArm?: CurrentTotal
+		leftLeg?: CurrentTotal
+		rightLeg?: CurrentTotal
+		body?: CurrentTotal
+	}
 }
 
 export type Role =
@@ -34,8 +34,14 @@ export type Characteristic = {
 	shortName: string
 }
 
-export type BodyLocation = {
-	
+export type CriticalWound = {
+	location?: string
+	effect?: string
+}
+
+export type CurrentTotal = {
+	current?: string
+	total?: string
 }
 
 export const CharacteristicsObj: Characteristic[] = [

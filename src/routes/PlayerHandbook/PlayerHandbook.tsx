@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useNavbar } from '@hooks'
 import { PageWrapper } from '@layout'
-import { Typography } from '@common'
+import { Typography, Button } from '@common'
 import { SectionSelection, Sections } from './Sections'
-import { Button, Grid } from '@mui/material'
+import { Grid } from '@mui/material'
 
 export default function PlayerHandbook() {
 	const { setNavbarTitle } = useNavbar()
