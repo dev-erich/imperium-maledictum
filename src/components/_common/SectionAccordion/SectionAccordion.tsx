@@ -7,12 +7,10 @@ import {
 } from '@mui/material'
 import MUIAccordion from '@mui/material/Accordion'
 import { Typography } from '@common'
+import { SectionDescription } from 'types/sections'
 
 interface AccordianProps {
-	data: {
-		summary: string
-		details: string | React.ReactNode
-	}[]
+	sectionDescription: SectionDescription[]
 }
 
 const CustomAccordian = styled(MUIAccordion)(() => ({
@@ -21,8 +19,8 @@ const CustomAccordian = styled(MUIAccordion)(() => ({
 const CustomAccordionSummary = styled(MUIAccordionSummary)(() => ({}))
 const CustomAccordionDetails = styled(MUIAccordionDetails)(() => ({}))
 
-export default function Accordion(props: AccordianProps) {
-	const { data } = props
+export default function SectionAccordion(props: AccordianProps) {
+	const { sectionDescription } = props
 
 	const [expanded, setExpanded] = useState<string | false>('panel-0')
 
@@ -33,7 +31,7 @@ export default function Accordion(props: AccordianProps) {
 
 	return (
 		<div>
-			{data.map((item, index) => (
+			{sectionDescription.map((item, index) => (
 				<CustomAccordian
 					expanded={expanded === `panel-${index}`}
 					onChange={handleChange(`panel-${index}`)}

@@ -1,4 +1,4 @@
-export { Accordion } from './Accordion'
+export { SectionAccordion } from './SectionAccordion'
 export { Typography, Span } from './Typography'
 export { BulletList } from './BulletList'
 export { InputField, DropdownSelect } from './Inputs'
