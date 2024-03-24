@@ -57,7 +57,7 @@ export default function PlayerHandbookProvider({
 		<PlayerHandbookContext.Provider value={{ openSection }}>
 			<Drawer open={open} onClose={closeDrawer}>
 				<Box sx={{ width: '100vw' }} role="sections">
-					<Box sx={drawerStyles}>
+					<Box sx={headerStyles}>
 						<Typography variant="h2" align="center" sx={{ color: '#d4d4d4' }}>
 							{section ? section.title : 'Section'}
 						</Typography>
@@ -96,16 +96,17 @@ function getSection(searchParam: string): Section | undefined {
 const paperStyles: SxProps<Theme> = {
 	padding: 1,
 	overflow: 'auto',
-	maxHeight: 'calc(100vh - var(--navbarHeight))',
+	maxHeight: 'calc(100svh - var(--navbarHeight))',
 }
 
 const closeIconStyles: SxProps<Theme> = {
 	position: 'absolute',
 	top: '15px',
 	right: '5px',
+	zIndex: 11
 }
 
-const drawerStyles: SxProps<Theme> = {
+const headerStyles: SxProps<Theme> = {
 	display: 'flex',
 	alignItems: 'center',
 	justifyContent: 'center',
@@ -118,4 +119,5 @@ const drawerStyles: SxProps<Theme> = {
 	left: 0,
 	right: 0,
 	boxShadow: 3,
+	zIndex: 10
 }
