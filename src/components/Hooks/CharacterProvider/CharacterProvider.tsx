@@ -17,7 +17,6 @@ export default function CharacterProvider({
 	children,
 }: CharacterProviderProps) {
 	const [character, setCharacter] = useState<Character | null>(null)
-	console.log('🚀 \n character:', character)
 
 	const saveToLocalStorage = (characterData: Character | null) => {
 		if (characterData) {

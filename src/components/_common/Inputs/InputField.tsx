@@ -16,7 +16,7 @@ const CustomTextField = styled(MUITextField, {
 					fontSize: '14px',
 					textAlign: 'center',
 				},
-		}
+		  }
 		: {}),
 }))
 

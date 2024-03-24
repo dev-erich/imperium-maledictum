@@ -1,25 +1,18 @@
-import { useEffect, useState } from 'react'
-import { useNavbar } from '@hooks'
+import { useEffect } from 'react'
+import { useNavbar, usePlayerHandbook } from '@hooks'
 import { PageWrapper } from '@layout'
 import { Typography, Button } from '@common'
-import { SectionSelection, Sections } from './Sections'
+// import { Sections } from './Sections'
 import { Grid } from '@mui/material'
+// import { useSearchParams } from 'react-router-dom'
 
 export default function PlayerHandbook() {
 	const { setNavbarTitle } = useNavbar()
+	const { openSection } = usePlayerHandbook()
+
 	useEffect(() => {
 		setNavbarTitle('Player Handbook')
 	}, [setNavbarTitle])
-
-	const [open, setOpen] = useState<boolean>(false)
-	const [section, setSelection] = useState<SectionSelection>()
-	const [sectionTitle, setSectionTitle] = useState<string>()
-	const handleOpen = (selection: SectionSelection, title?: string) => {
-		setOpen(true)
-		setSelection(selection)
-		setSectionTitle(title ? title : selection)
-	}
-	const handleClose = () => setOpen(false)
 
 	return (
 		<PageWrapper>
@@ -28,25 +21,19 @@ export default function PlayerHandbook() {
 			</Typography>
 			<Grid container spacing={2}>
 				<Grid item xs={4}>
-					<Button onClick={() => handleOpen('Combat')} variant="contained">
+					<Button onClick={() => openSection('combat')} variant="contained">
 						Combat
 					</Button>
 				</Grid>
 				<Grid item xs={4}>
 					<Button
-						onClick={() => handleOpen('DamageAndWounds', 'Damage & Wounds')}
+						onClick={() => openSection('damage-and-wounds')}
 						variant="contained"
 					>
 						Wounds
 					</Button>
 				</Grid>
 			</Grid>
-			<Sections
-				handleClose={handleClose}
-				open={open}
-				selection={section}
-				title={sectionTitle}
-			/>
 		</PageWrapper>
 	)
 }

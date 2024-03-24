@@ -1,1 +1,1 @@
-export { default as DamageAndWounds } from './DamageAndWounds'
+export { damageAndWoundsSection } from './DamageAndWounds'

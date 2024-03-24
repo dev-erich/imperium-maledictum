@@ -1,7 +1,9 @@
 import { IconButton, Modal, Paper, SxProps, Theme } from '@mui/material'
-import { Combat, DamageAndWounds } from '.'
 import CloseIcon from '@mui/icons-material/Close'
-import { Typography } from '@common'
+import { SectionAccordion, Typography } from '@common'
+import { useEffect, useState } from 'react'
+import { Section } from 'types/sections'
+import { combatSection, damageAndWoundsSection } from './'
 
 const paperStyles: SxProps<Theme> = {
 	position: 'absolute',
@@ -24,36 +26,57 @@ const closeIconStyles: SxProps<Theme> = {
 
 interface SectionsProps {
 	handleClose: () => void
+	setOpen: (open: boolean) => void
 	open: boolean
-	selection: SectionSelection
-	title?: string
+	searchParams: URLSearchParams
+	// selection: SectionSelection
+	// title?: string
 }
 
-export type SectionSelection = undefined | 'Combat' | 'DamageAndWounds'
-
 export default function Sections(props: SectionsProps) {
-	const { handleClose, open, selection, title } = props
+	const { handleClose, setOpen, open, searchParams } = props
+	// const [searchParams] = useSearchParams()
+	const [section, setSection] = useState<Section | undefined>(undefined)
+
+	useEffect(() => {
+		const query = searchParams.get('section') || undefined
+		if (query) setOpen(true)
+		if (!query) setOpen(false)
+	}, [searchParams, setOpen])
+
+	useEffect(() => {
+		const query = searchParams.get('section') || undefined
+		if (query) setSection(getSection(query))
+	}, [searchParams])
 
 	return (
 		<Modal open={open} onClose={handleClose}>
 			<Paper sx={paperStyles} elevation={5}>
 				<Typography variant="h2" align="center" sx={{ marginBottom: '20px' }}>
-					{title ? title : 'Section'}
+					{section ? section.title : 'Section'}
 				</Typography>
 				<IconButton sx={closeIconStyles} size="large" onClick={handleClose}>
 					<CloseIcon fontSize="inherit" />
 				</IconButton>
-				{getSection(selection)}
+				{section && (
+					<SectionAccordion sectionDescription={section.description} />
+				)}
 			</Paper>
 		</Modal>
 	)
 }
 
-function getSection(sectionSelection: SectionSelection) {
-	switch (sectionSelection) {
-		case 'Combat':
-			return <Combat />
-		case 'DamageAndWounds':
-			return <DamageAndWounds />
+export type SectionSelection = undefined | 'combat' | 'damage-and-wounds'
+
+function getSection(searchParam: string): Section | undefined {
+	switch (searchParam) {
+		case 'combat':
+			return combatSection
+
+		case 'damage-and-wounds':
+			return damageAndWoundsSection
+
+		default:
+			return undefined
 	}
 }

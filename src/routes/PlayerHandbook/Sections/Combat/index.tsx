@@ -1,1 +1,1 @@
-export { default as Combat } from './Combat'
+export { combatSection } from './Combat'
