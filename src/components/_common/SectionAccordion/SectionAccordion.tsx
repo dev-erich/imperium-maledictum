@@ -23,7 +23,7 @@ export default function SectionAccordion(props: AccordianProps) {
 	const { sectionDescription } = props
 
 	// TODO - open base on params
-	const [expanded, setExpanded] = useState<string | false>('panel-5')
+	const [expanded, setExpanded] = useState<string | false>(false)
 
 	const handleChange =
 		(panel: string) => (_event: React.SyntheticEvent, newExpanded: boolean) => {
