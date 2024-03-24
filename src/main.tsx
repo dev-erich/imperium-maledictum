@@ -4,7 +4,7 @@ import { ThemeProvider } from '@mui/material'
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 import { CharacterEditor, Home, PlayerHandbook, MyCharacter } from '@routes'
 import { theme } from '@theme'
-import { CharacterProvider, Navbar } from '@hooks'
+import { CharacterProvider, Navbar, PlayerHandbookProvider } from '@hooks'
 
 import './index.scss'
 
@@ -14,7 +14,9 @@ const router = createBrowserRouter([
 		element: (
 			<CharacterProvider>
 				<Navbar>
-					<Outlet />
+					<PlayerHandbookProvider>
+						<Outlet />
+					</PlayerHandbookProvider>
 				</Navbar>
 			</CharacterProvider>
 		),

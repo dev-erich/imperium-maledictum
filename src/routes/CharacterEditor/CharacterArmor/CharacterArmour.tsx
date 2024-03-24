@@ -42,7 +42,6 @@ export default function CharacterArmour(props: CharacterArmour) {
 				condensed
 				inputProps={{ maxLength: 2 }}
 				sx={{ width: '30px' }}
-				required
 				type="number"
 				id="armour.head.total"
 				value={formData?.armour?.head?.total || ''}
@@ -56,7 +55,6 @@ export default function CharacterArmour(props: CharacterArmour) {
 				condensed
 				inputProps={{ maxLength: 2 }}
 				sx={{ width: '30px' }}
-				required
 				type="number"
 				id="armour.leftArm.total"
 				value={formData?.armour?.leftArm?.total || ''}
@@ -70,7 +68,6 @@ export default function CharacterArmour(props: CharacterArmour) {
 				condensed
 				inputProps={{ maxLength: 2 }}
 				sx={{ width: '30px' }}
-				required
 				type="number"
 				id="armour.rightArm.total"
 				value={formData?.armour?.rightArm?.total || ''}
@@ -84,7 +81,6 @@ export default function CharacterArmour(props: CharacterArmour) {
 				condensed
 				inputProps={{ maxLength: 2 }}
 				sx={{ width: '30px' }}
-				required
 				type="number"
 				id="armour.leftLeg.total"
 				value={formData?.armour?.leftLeg?.total || ''}
@@ -98,7 +94,6 @@ export default function CharacterArmour(props: CharacterArmour) {
 				condensed
 				inputProps={{ maxLength: 2 }}
 				sx={{ width: '30px' }}
-				required
 				type="number"
 				id="armour.rightLeg.total"
 				value={formData?.armour?.rightLeg?.total || ''}
@@ -112,7 +107,6 @@ export default function CharacterArmour(props: CharacterArmour) {
 				condensed
 				inputProps={{ maxLength: 2 }}
 				sx={{ width: '30px' }}
-				required
 				type="number"
 				id="armour.body.total"
 				value={formData?.armour?.body?.total || ''}

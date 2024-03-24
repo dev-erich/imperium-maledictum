@@ -11,7 +11,7 @@ import {
 import { Section } from 'types/sections'
 
 export const damageAndWoundsSection: Section = {
-	title: 'Combat',
+	title: 'Damage & Wounds',
 	description: [
 		{
 			summary: 'Wounds',

@@ -22,7 +22,8 @@ const CustomAccordionDetails = styled(MUIAccordionDetails)(() => ({}))
 export default function SectionAccordion(props: AccordianProps) {
 	const { sectionDescription } = props
 
-	const [expanded, setExpanded] = useState<string | false>('panel-0')
+	// TODO - open base on params
+	const [expanded, setExpanded] = useState<string | false>(false)
 
 	const handleChange =
 		(panel: string) => (_event: React.SyntheticEvent, newExpanded: boolean) => {
@@ -33,6 +34,7 @@ export default function SectionAccordion(props: AccordianProps) {
 		<div>
 			{sectionDescription.map((item, index) => (
 				<CustomAccordian
+					slotProps={{ transition: { unmountOnExit: true } }}
 					expanded={expanded === `panel-${index}`}
 					onChange={handleChange(`panel-${index}`)}
 					key={index}
