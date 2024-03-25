@@ -16,7 +16,7 @@ export default function MyCharacter() {
 		else setNavbarTitle('Character')
 	}, [setNavbarTitle, character])
 
-	if (character) return <PageWrapper></PageWrapper>
+	if (character.name && character.role) return <PageWrapper></PageWrapper>
 	else
 		return (
 			<PageWrapper>
