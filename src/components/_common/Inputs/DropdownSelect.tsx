@@ -22,7 +22,7 @@ export default function DropdownSelect(props: SelectProps) {
 	return (
 		<FormControl fullWidth>
 			<InputLabel id={props.labelId} sx={{ marginLeft: 0 }}>
-				Role
+				{props.label}
 			</InputLabel>
 			<CustomSelect {...selectProps}>
 				{menuItems.map((menuItem, index) => (

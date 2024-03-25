@@ -103,7 +103,7 @@ const closeIconStyles: SxProps<Theme> = {
 	position: 'absolute',
 	top: '15px',
 	right: '5px',
-	zIndex: 11
+	zIndex: 11,
 }
 
 const headerStyles: SxProps<Theme> = {
@@ -111,13 +111,12 @@ const headerStyles: SxProps<Theme> = {
 	alignItems: 'center',
 	justifyContent: 'center',
 	width: '100vw',
-	background:
-		"url('https://www.toptal.com/designers/subtlepatterns/uploads/tactile_noise.png') repeat fixed 0 0",
+	background: '#393939',
 	height: 'var(--navbarHeight)',
 	position: 'fixed',
 	top: 0,
 	left: 0,
 	right: 0,
 	boxShadow: 3,
-	zIndex: 10
+	zIndex: 10,
 }

@@ -25,6 +25,42 @@ export type Characteristic = {
 	values: StartingAdvances
 }
 
+export type SkillKey =
+	| 'athletics'
+	| 'awareness'
+	| 'dexterity'
+	| 'discipline'
+	| 'fortitude'
+	| 'intuition'
+	| 'linguistics'
+	| 'logic'
+	| 'lore'
+	| 'medicae'
+	| 'melee'
+	| 'navigation'
+	| 'presence'
+	| 'piloting'
+	| 'psychicMastery'
+	| 'ranged'
+	| 'rapport'
+	| 'reflexes'
+	| 'stealth'
+	| 'tech'
+
+export type CharacterSkill = {
+	_key: SkillKey
+	name: string
+	characteristicKey: CharacteristicKey
+	advances: number
+}
+
+export type CharacterSpecialisation = {
+	_key: string
+	name: string
+	skillkey: SkillKey
+	advances: number
+}
+
 export type CharacterDetails = {
 	origin: string
 	faction: string

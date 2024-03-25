@@ -34,7 +34,8 @@ export default function CharacterProvider({
 	useEffect(() => {
 		const storedCharacterData = localStorage.getItem('character')
 		if (storedCharacterData) {
-			setCharacter(JSON.parse(storedCharacterData))
+			const character: Character = JSON.parse(storedCharacterData)
+			if (character.name) setCharacter(character)
 		} else {
 			console.log('Error getting character...')
 		}

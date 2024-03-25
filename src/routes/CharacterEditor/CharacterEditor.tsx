@@ -71,10 +71,12 @@ export default function CharacterEditor() {
 					sx={{ background: 'rgba(0,0,0,0.1)' }}
 					variant="scrollable"
 					scrollButtons="auto"
-					// allowScrollButtonsMobile
+					allowScrollButtonsMobile
 				>
 					<Tab label="Details" {...a11yProps(0)} />
 					<Tab label="Characteristics" {...a11yProps(1)} />
+					<Tab label="Skills" {...a11yProps(2)} />
+					<Tab label="Specialisations" {...a11yProps(3)} />
 				</Tabs>
 				<CharacterTabs
 					value={tab}

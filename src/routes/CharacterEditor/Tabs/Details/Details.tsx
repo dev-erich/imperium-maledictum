@@ -19,6 +19,7 @@ export default function Details(props: CharacterTabProps) {
 		<Grid container spacing={1}>
 			<Grid item xs={7}>
 				<InputField
+					required
 					id="name"
 					label="Name"
 					value={formData?.name || ''}

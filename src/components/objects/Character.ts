@@ -1,5 +1,6 @@
 import {
 	initCharacterArmour,
+	initCharacterSkills,
 	initCharacterisitics,
 	initCurrentTotal,
 	initDetails,
@@ -13,6 +14,8 @@ import {
 	CharacterRole,
 	Characteristic,
 	CharacterArmour,
+	CharacterSkill,
+	CharacterSpecialisation,
 } from 'types/character'
 
 export default class Character {
@@ -20,6 +23,8 @@ export default class Character {
 	role: CharacterRole
 	details: CharacterDetails
 	characteristics: Characteristic[]
+	skills: CharacterSkill[]
+	specialisations: CharacterSpecialisation[]
 	initiative: number
 	fate: CurrentTotal
 	wounds: CurrentTotal
@@ -33,6 +38,8 @@ export default class Character {
 		this.role = undefined
 		this.details = initDetails()
 		this.characteristics = initCharacterisitics()
+		this.skills = initCharacterSkills()
+		this.specialisations = []
 		this.initiative = 0
 		this.fate = initCurrentTotal()
 		this.wounds = initCurrentTotal()
@@ -47,5 +54,4 @@ export default class Character {
 			(characteristic) => characteristic._key === _key
 		)
 	}
-
 }
