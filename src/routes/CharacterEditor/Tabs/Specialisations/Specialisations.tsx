@@ -77,7 +77,6 @@ export default function Specialisations(props: SpecialisationsTabProps) {
 			value as string
 		)
 
-		console.log('🚀 \n updatedSpecs:', updatedSpecs)
 		setFormData({
 			...formData,
 			specialisations: updatedSpecs,

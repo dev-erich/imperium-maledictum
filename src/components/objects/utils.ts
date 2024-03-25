@@ -392,6 +392,5 @@ export const updateSpecialisationReqSkill = (
 		}
 		return spec
 	})
-	console.log('🚀 \n newSpecialisation:', newSpecialisation)
 	return newSpecialisation
 }
