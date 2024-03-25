@@ -9,7 +9,7 @@ import { CharacterTabs } from './Tabs'
 
 export default function CharacterEditor() {
 	const { setNavbarTitle } = useNavbar()
-	const { character, setCharacter, resetCharacter } = useCharacter()
+	const { character, setCharacter } = useCharacter()
 	const [formData, setFormData] = useState<Character>(character)
 	const [tab, setTab] = useState(0)
 
@@ -50,10 +50,6 @@ export default function CharacterEditor() {
 		setCharacter(formData)
 	}
 
-	const handleReset = useCallback(() => {
-		resetCharacter()
-	}, [resetCharacter])
-
 	const a11yProps = useCallback((index: number) => {
 		return {
 			id: `character-tab-${index}`,
@@ -88,7 +84,7 @@ export default function CharacterEditor() {
 					handleSelectChange={handleSelectChange}
 				/>
 			</PageWrapper>
-			<CharacterControls handleReset={handleReset} />
+			<CharacterControls />
 		</Box>
 	)
 }
