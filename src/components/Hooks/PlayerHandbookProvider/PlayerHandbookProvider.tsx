@@ -13,7 +13,8 @@ import { Section } from 'types/sections'
 import {
 	combatSection,
 	damageAndWoundsSection,
-} from '@routes/PlayerHandbook/Sections'
+	talentsSection,
+} from '@common/Handbook/Sections'
 
 const PlayerHandbookContext = createContext<{
 	openSection: (val: string) => void
@@ -87,6 +88,9 @@ function getSection(searchParam: string): Section | undefined {
 
 		case 'damage-and-wounds':
 			return damageAndWoundsSection
+
+		case 'talents':
+			return talentsSection
 
 		default:
 			return undefined

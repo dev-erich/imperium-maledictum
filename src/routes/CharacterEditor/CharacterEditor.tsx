@@ -77,6 +77,7 @@ export default function CharacterEditor() {
 					<Tab label="Characteristics" {...a11yProps(1)} />
 					<Tab label="Skills" {...a11yProps(2)} />
 					<Tab label="Specialisations" {...a11yProps(3)} />
+					<Tab label="Talents" {...a11yProps(4)} />
 				</Tabs>
 				<CharacterTabs
 					value={tab}

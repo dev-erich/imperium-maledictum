@@ -59,43 +59,6 @@ export const combatSection: Section = {
 					<BulletList
 						bulletPoints={[
 							{
-								primary: <>You can use your Move and take an Action</>,
-							},
-							{
-								primary: (
-									<>
-										You have Advantage on Melee Tests, and the target can’t
-										oppose your attack.
-									</>
-								),
-							},
-							{
-								primary: (
-									<>
-										When the surprise round ends, the party gains{' '}
-										<Span fontStyle="italic">+1 Superiority</Span>.
-									</>
-								),
-							},
-						]}
-						bullets
-					/>
-				</>
-			),
-		},
-		{
-			summary: 'Surprise',
-			details: (
-				<>
-					<Typography>
-						If you have the element of surprise, you get a special surprise
-						round where only you can act.
-						<br />
-						When you have surprise, you gain the following benefits:
-					</Typography>
-					<BulletList
-						bulletPoints={[
-							{
 								primary: (
 									<>
 										Light Cover grants +2 Armour to{' '}
@@ -119,6 +82,43 @@ export const combatSection: Section = {
 										Heavy Cover grants +6 Armour to{' '}
 										<Span fontStyle="italic">all Hit Locations</Span> for ranged
 										attacks.
+									</>
+								),
+							},
+						]}
+						bullets
+					/>
+				</>
+			),
+		},
+		{
+			summary: 'Surprise',
+			details: (
+				<>
+					<Typography>
+						If you have the element of surprise, you get a special surprise
+						round where only you can act.
+						<br />
+						When you have surprise, you gain the following benefits:
+					</Typography>
+					<BulletList
+						bulletPoints={[
+							{
+								primary: <>You can use your Move and take an Action</>,
+							},
+							{
+								primary: (
+									<>
+										You have Advantage on Melee Tests, and the target can’t
+										oppose your attack.
+									</>
+								),
+							},
+							{
+								primary: (
+									<>
+										When the surprise round ends, the party gains{' '}
+										<Span fontStyle="italic">+1 Superiority</Span>.
 									</>
 								),
 							},

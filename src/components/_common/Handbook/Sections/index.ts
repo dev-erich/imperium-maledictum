@@ -3,3 +3,4 @@ export { default as Sections } from './Sections'
 
 export { combatSection } from './Combat'
 export { damageAndWoundsSection } from './DamageAndWounds'
+export { talentsSection } from './Talents'

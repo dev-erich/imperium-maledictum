@@ -54,6 +54,14 @@ export default function Details(props: CharacterTabProps) {
 				/>
 			</Grid>
 			<Grid item xs={12}>
+				<InputField
+					id="details.faction"
+					label="Faction"
+					value={formData?.details?.faction || ''}
+					onChange={handleInputChange}
+				/>
+			</Grid>
+			<Grid item xs={12}>
 				<Typography variant="h4">Character Appearance</Typography>
 			</Grid>
 			<Grid item xs={2}>
@@ -113,7 +121,15 @@ export default function Details(props: CharacterTabProps) {
 					onChange={handleInputChange}
 				/>
 			</Grid>
-			<Grid item xs={0}></Grid>
+			<Grid item xs={12}>
+				<Typography variant="h4">Other</Typography>
+			</Grid>
+			<Grid item xs={0}>
+				
+			</Grid>
+			<Grid item xs={0}>
+				
+			</Grid>
 		</Grid>
 		// {/* <Grid container spacing={1}>
 		// 	<Grid item container direction="column" xs={3}>

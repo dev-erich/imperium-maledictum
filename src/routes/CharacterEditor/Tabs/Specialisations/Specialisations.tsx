@@ -70,8 +70,6 @@ export default function Specialisations(props: SpecialisationsTabProps) {
 
 	const handleSkillChange = (event: SelectChangeEvent<unknown>) => {
 		const { name, value } = event.target
-		console.log('🚀 \n value:', value)
-		console.log('🚀 \n name:', name)
 
 		const updatedSpecs = updateSpecialisationReqSkill(
 			formData,
