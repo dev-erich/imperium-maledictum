@@ -1,27 +1,21 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useCharacter, useNavbar } from '@hooks'
 import { PageWrapper } from '@layout'
-import { InputField, DropdownSelect, Button, Typography } from '@common'
-import { Box, Grid, SelectChangeEvent, SxProps } from '@mui/material'
-import { Character, Role } from 'types/character'
+import { Box, SelectChangeEvent, Tab, Tabs } from '@mui/material'
 import _ from 'lodash'
-import { Theme } from '@emotion/react'
-import { CharacterArmour } from './CharacterArmor'
-import { DeleteForever } from '@mui/icons-material'
-
-export const RolesObj: Role[] = [
-	'Interlocutor',
-	'Mystic',
-	'Penumbra',
-	'Savant',
-	'Warrior',
-	'Zealot',
-] as const
+import { CharacterControls } from '.'
+import { Character } from 'src/components/objects'
+import { CharacterTabs } from './Tabs'
 
 export default function CharacterEditor() {
 	const { setNavbarTitle } = useNavbar()
-	const { character, setCharacter } = useCharacter()
-	const [formData, setFormData] = useState<Character | null>(null)
+	const { character, setCharacter, resetCharacter } = useCharacter()
+	const [formData, setFormData] = useState<Character>(character)
+	const [tab, setTab] = useState(0)
+
+	const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
+		setTab(newValue)
+	}
 
 	useEffect(() => {
 		setNavbarTitle('Character Editor')
@@ -56,10 +50,16 @@ export default function CharacterEditor() {
 		setCharacter(formData)
 	}
 
-	const handleReset = () => {
-		setCharacter(null)
-		setFormData(null)
-	}
+	const handleReset = useCallback(() => {
+		resetCharacter()
+	}, [resetCharacter])
+
+	const a11yProps = useCallback((index: number) => {
+		return {
+			id: `character-tab-${index}`,
+			'aria-controls': `character-tabpanel-${index}`,
+		}
+	}, [])
 
 	return (
 		<Box
@@ -68,129 +68,27 @@ export default function CharacterEditor() {
 			onSubmit={handleSubmit}
 			sx={{ height: '100%', position: 'relative' }}
 		>
-			<PageWrapper>
-				<div style={{ overflowY: 'auto' }}>
-					<Typography variant="h3">Details:</Typography>
-					<Grid container spacing={1}>
-						<Grid item xs={7}>
-							<InputField
-								required
-								id="name"
-								label="Name"
-								value={formData?.name || ''}
-								onChange={handleInputChange}
-							/>
-						</Grid>
-						<Grid item xs={5}>
-							<DropdownSelect
-								required
-								labelId="role-label"
-								id="role"
-								name="role"
-								value={formData?.role || ''}
-								label="Role"
-								onChange={handleSelectChange}
-								menuItems={RolesObj}
-							/>
-						</Grid>
-					</Grid>
-					<Grid container spacing={1}>
-						<Grid item container direction="column" xs={3}>
-							<Grid item>
-								<Typography variant="h3">Totals:</Typography>
-							</Grid>
-							<Grid item>
-								<InputField
-									required
-									type="number"
-									id="fate.total"
-									label="Fate"
-									value={formData?.fate?.total || ''}
-									onChange={handleInputChange}
-								/>
-							</Grid>
-							<Grid item>
-								<InputField
-									required
-									type="number"
-									id="initiative"
-									label="Initiative"
-									value={formData?.initiative || ''}
-									onChange={handleInputChange}
-								/>
-							</Grid>
-							<Grid item>
-								<InputField
-									required
-									type="number"
-									id="wounds.total"
-									label="Wounds"
-									value={formData?.wounds?.total || ''}
-									onChange={handleInputChange}
-								/>
-							</Grid>
-							<Grid item>
-								<InputField
-									required
-									type="number"
-									id="warp.total"
-									label="Warp"
-									value={formData?.warp?.total || ''}
-									onChange={handleInputChange}
-								/>
-							</Grid>
-						</Grid>
-						<Grid item xs={9}>
-							<CharacterArmour formData={formData} setFormData={setFormData} />
-						</Grid>
-					</Grid>
-				</div>
+			<PageWrapper sx={{ padding: 0 }}>
+				<Tabs
+					value={tab}
+					onChange={handleTabChange}
+					sx={{ background: 'rgba(0,0,0,0.1)' }}
+					variant="scrollable"
+					scrollButtons="auto"
+					// allowScrollButtonsMobile
+				>
+					<Tab label="Details" {...a11yProps(0)} />
+					<Tab label="Characteristics" {...a11yProps(1)} />
+				</Tabs>
+				<CharacterTabs
+					value={tab}
+					formData={formData}
+					setFormData={setFormData}
+					handleInputChange={handleInputChange}
+					handleSelectChange={handleSelectChange}
+				/>
 			</PageWrapper>
-			<Grid container spacing={1} sx={submissionControlStyles}>
-				<Grid item xs={9}>
-					<Button
-						type="submit"
-						variant="contained"
-						color="success"
-						sx={{
-							height: '100%',
-							fontSize: '20px',
-							lineHeight: '16px',
-							letterSpacing: '2px',
-						}}
-					>
-						Save
-					</Button>
-				</Grid>
-				<Grid item xs={3}>
-					<Button
-						onClick={handleReset}
-						variant="contained"
-						color="error"
-						sx={{ height: '100%' }}
-					>
-						<DeleteForever fontSize="large" />
-					</Button>
-				</Grid>
-			</Grid>
+			<CharacterControls handleReset={handleReset} />
 		</Box>
 	)
-}
-
-const submissionControlStyles: SxProps<Theme> = {
-	position: 'fixed',
-	bottom: 0,
-	left: 0,
-	right: 0,
-	height: '54px',
-	paddingLeft: '8px',
-	paddingRight: '8px',
-	paddingBottom: '8px',
-	background: '#FFF',
-	zIndex: 10,
-	backgroundImage:
-		"url('https://www.toptal.com/designers/subtlepatterns/uploads/carbon_fibre.png')",
-	backgroundRepeat: 'repeat',
-	backgroundAttachment: 'fixed',
-	backgroundPosition: '0 0',
 }

@@ -160,7 +160,6 @@ export const damageAndWoundsSection: Section = {
 			summary: 'Amputation',
 			details: (
 				<>
-					<Typography variant="h3">Amputation</Typography>
 					<Typography variant="body1">
 						These injuries will heal with time and care, but they cause a
 						permanent impediment.{' '}
