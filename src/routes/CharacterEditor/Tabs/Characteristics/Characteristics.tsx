@@ -2,13 +2,12 @@ import {
 	Paper,
 	Table,
 	TableBody,
-	TableCell,
 	TableContainer,
 	TableHead,
 	TableRow,
 } from '@mui/material'
 import { CharacterTabProps } from '..'
-import { InputField } from '@common'
+import { InputField, TableCell } from '@common'
 import { Character, updateCharacteristic } from 'src/components/objects'
 
 interface CharacteristicsTabProps extends CharacterTabProps {
@@ -68,13 +67,21 @@ export default function Characteristics(props: CharacteristicsTabProps) {
 
 	return (
 		<TableContainer variant="outlined" component={Paper}>
-			<Table>
+			<Table size='small'>
 				<TableHead>
 					<TableRow>
-						<TableCell align="center">Stat</TableCell>
-						<TableCell align="center">Starting</TableCell>
-						<TableCell align="center">Advances</TableCell>
-						<TableCell align="center">Current</TableCell>
+						<TableCell align="center" variant="head">
+							Char.
+						</TableCell>
+						<TableCell align="center" variant="head">
+							Starting
+						</TableCell>
+						<TableCell align="center" variant="head">
+							Adv.
+						</TableCell>
+						<TableCell align="center" variant="head">
+							Current
+						</TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>

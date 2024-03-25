@@ -34,7 +34,8 @@
 			"@hooks": ["src/components/Hooks"],
 			"@hooks/*": ["src/components/Hooks/*"],
 			"@theme": ["src/components/Theme"],
-			"@theme/*": ["src/components/Theme/*"]
+			"@theme/*": ["src/components/Theme/*"],
+			"@utils": ["src/components/utils"],
 		}
 	},
 	"include": ["src/**/*", "types/**/*"],

@@ -1,5 +1,5 @@
 import { TabPanel } from '@common/TabPanel'
-import { Characteristics, Details } from '.'
+import { Characteristics, Details, Skills, Specialisations, Talents } from '.'
 import { SelectChangeEvent } from '@mui/material'
 import { Character } from 'src/components/objects'
 
@@ -37,6 +37,32 @@ export default function CharacterTabs(props: CharacterTabsProps) {
 				<Characteristics
 					formData={formData}
 					setFormData={setFormData}
+					handleInputChange={handleInputChange}
+					handleSelectChange={handleSelectChange}
+				/>
+				<div style={{ height: '52px' }} />
+			</TabPanel>
+			<TabPanel value={value} index={2} type="Character">
+				<Skills
+					formData={formData}
+					setFormData={setFormData}
+					handleInputChange={handleInputChange}
+					handleSelectChange={handleSelectChange}
+				/>
+				<div style={{ height: '52px' }} />
+			</TabPanel>
+			<TabPanel value={value} index={3} type="Character">
+				<Specialisations
+					formData={formData}
+					setFormData={setFormData}
+					handleInputChange={handleInputChange}
+					handleSelectChange={handleSelectChange}
+				/>
+				<div style={{ height: '52px' }} />
+			</TabPanel>
+			<TabPanel value={value} index={4} type="Character">
+				<Talents
+					formData={formData}
 					handleInputChange={handleInputChange}
 					handleSelectChange={handleSelectChange}
 				/>

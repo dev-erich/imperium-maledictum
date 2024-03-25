@@ -14,13 +14,8 @@ const submissionControlStyles: SxProps<Theme> = {
 	paddingLeft: '8px',
 	paddingRight: '8px',
 	paddingBottom: '8px',
-	background: '#FFF',
+	background: '#393939',
 	zIndex: 10,
-	backgroundImage:
-		"url('https://www.toptal.com/designers/subtlepatterns/uploads/carbon_fibre.png')",
-	backgroundRepeat: 'repeat',
-	backgroundAttachment: 'fixed',
-	backgroundPosition: '0 0',
 }
 
 export default function CharacterControls() {
