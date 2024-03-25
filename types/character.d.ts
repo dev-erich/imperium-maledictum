@@ -1,27 +1,5 @@
-export interface Character {
-	name?: string
-	role?: Role
-	initiative?: number
-	fate?: CurrentTotal
-	wounds?: CurrentTotal
-	warp?: CurrentTotal
-	corruption?: {
-		mutations?: string
-		malignancies?: string
-	}
-	criticalWounds?: CriticalWound[]
-	characteristics?: Characteristic[]
-	armour?: {
-		head?: CurrentTotal
-		leftArm?: CurrentTotal
-		rightArm?: CurrentTotal
-		leftLeg?: CurrentTotal
-		rightLeg?: CurrentTotal
-		body?: CurrentTotal
-	}
-}
-
-export type Role =
+export type CharacterRole =
+	| undefined
 	| 'Interlocutor'
 	| 'Mystic'
 	| 'Penumbra'
@@ -29,57 +7,71 @@ export type Role =
 	| 'Warrior'
 	| 'Zealot'
 
+export type CharacteristicKey =
+	| 'weaponSkill'
+	| 'ballisticSkill'
+	| 'strength'
+	| 'toughness'
+	| 'agility'
+	| 'intelligence'
+	| 'perception'
+	| 'willpower'
+	| 'fellowship'
+
 export type Characteristic = {
+	_key: CharacteristicKey
 	name: string
-	shortName: string
+	code: string
+	values: StartingAdvances
+}
+
+export type CharacterDetails = {
+	origin: string
+	faction: string
+	patron: string
+	age: number
+	eyes: string
+	hair: string
+	height: string
+	weight: string
+	handedness: string
+	distinguishingFeatures: string
+}
+
+export type ArmourKey =
+	| 'head'
+	| 'leftArm'
+	| 'rightArm'
+	| 'leftLeg'
+	| 'rightLeg'
+	| 'body'
+
+export type CharacterArmour = {
+	_key: ArmourKey
+	name: string
+	hitDie: number[]
+	value: number
+}
+
+export type CorruptionKey = 'mutation' | 'malignance'
+
+export type Corruption = {
+	_type: CorruptionKey
+	name: string
+	description: string
+}
+
+export type StartingAdvances = {
+	starting: number
+	advances: number
 }
 
 export type CriticalWound = {
-	location?: string
-	effect?: string
+	location: string
+	effect: string
 }
 
 export type CurrentTotal = {
-	current?: string
-	total?: string
+	current: number
+	total: number
 }
-
-export const CharacteristicsObj: Characteristic[] = [
-	{
-		name: 'Weapon Skill',
-		shortName: 'WS',
-	},
-	{
-		name: 'Ballistic Skill',
-		shortName: 'BS',
-	},
-	{
-		name: 'Strength',
-		shortName: 'STR',
-	},
-	{
-		name: 'Toughness',
-		shortName: 'TGH',
-	},
-	{
-		name: 'Agility',
-		shortName: 'AG',
-	},
-	{
-		name: 'Intelligence',
-		shortName: 'INT',
-	},
-	{
-		name: 'Perception',
-		shortName: 'PER',
-		count: 0,
-	},
-	{
-		name: 'Willpower',
-		shortName: 'WIL',
-	},
-	{
-		name: 'Fellowship',
-		shortName: 'FEL',
-	},
-] as const
