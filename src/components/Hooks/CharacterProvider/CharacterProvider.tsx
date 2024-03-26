@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, useEffect } from 'react'
+import React, {
+	createContext,
+	useContext,
+	useState,
+	useEffect,
+	useCallback,
+} from 'react'
 import { Character } from 'src/components/objects'
 
 const CharacterContext = createContext<{
@@ -21,15 +27,15 @@ export default function CharacterProvider({
 	const [character, setCharacter] = useState<Character>(new Character())
 	console.log('🚀 \n character:', character)
 
-	const saveToLocalStorage = (characterData: Character) => {
+	const saveToLocalStorage = useCallback((characterData: Character) => {
 		localStorage.setItem('character', JSON.stringify(characterData))
-	}
+	}, [])
 
-	const resetCharacter = () => {
+	const resetCharacter = useCallback(() => {
 		setCharacter(new Character())
 		localStorage.removeItem('character')
 		console.log('Reset Character...')
-	}
+	}, [])
 
 	useEffect(() => {
 		const storedCharacterData = localStorage.getItem('character')
@@ -37,14 +43,14 @@ export default function CharacterProvider({
 			const character: Character = JSON.parse(storedCharacterData)
 			if (character.name) setCharacter(character)
 		} else {
-			console.log('Error getting character...')
+			console.error('Error getting character...')
 		}
 	}, [])
 
 	useEffect(() => {
 		saveToLocalStorage(character)
 		console.log('Saved Character...')
-	}, [character])
+	}, [character, saveToLocalStorage])
 
 	return (
 		<CharacterContext.Provider

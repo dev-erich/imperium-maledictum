@@ -1,7 +1,8 @@
 import { DropdownSelect, InputField, Typography } from '@common'
-import { Grid } from '@mui/material'
+import { Checkbox, FormControlLabel, FormGroup, Grid } from '@mui/material'
 import { CharacterTabProps } from '..'
 import { CharacterRole } from 'types/character'
+import { Character } from 'src/components/objects'
 
 export const RolesObj: CharacterRole[] = [
 	'Interlocutor',
@@ -12,8 +13,36 @@ export const RolesObj: CharacterRole[] = [
 	'Zealot',
 ] as const
 
-export default function Details(props: CharacterTabProps) {
-	const { handleInputChange, handleSelectChange, formData } = props
+interface DetailsTabProps extends CharacterTabProps {
+	setFormData: (character: Character) => void
+}
+
+export default function Details(props: DetailsTabProps) {
+	const { handleInputChange, handleSelectChange, formData, setFormData } = props
+
+	const handleFatedChange = (
+		_event: React.SyntheticEvent<Element, Event>,
+		checked: boolean
+	) => {
+		if (checked)
+			setFormData({
+				...formData,
+				fate: {
+					current: formData.fate.current,
+					total: 4,
+				},
+				isFated: true,
+			})
+		else
+			setFormData({
+				...formData,
+				fate: {
+					current: formData.fate.current,
+					total: 3,
+				},
+				isFated: false,
+			})
+	}
 
 	return (
 		<Grid container spacing={1}>
@@ -22,7 +51,7 @@ export default function Details(props: CharacterTabProps) {
 					required
 					id="name"
 					label="Name"
-					value={formData?.name || ''}
+					value={formData.name || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -31,7 +60,7 @@ export default function Details(props: CharacterTabProps) {
 					labelId="role-label"
 					id="role"
 					name="role"
-					value={formData?.role || ''}
+					value={formData.role || ''}
 					label="Role"
 					onChange={handleSelectChange}
 					menuItems={RolesObj as string[]}
@@ -41,7 +70,7 @@ export default function Details(props: CharacterTabProps) {
 				<InputField
 					id="details.origin"
 					label="Origin"
-					value={formData?.details?.origin || ''}
+					value={formData.details.origin || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -49,17 +78,31 @@ export default function Details(props: CharacterTabProps) {
 				<InputField
 					id="details.patron"
 					label="Patron"
-					value={formData?.details?.patron || ''}
+					value={formData.details.patron || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
-			<Grid item xs={12}>
+			<Grid item xs={7}>
 				<InputField
 					id="details.faction"
 					label="Faction"
-					value={formData?.details?.faction || ''}
+					value={formData.details.faction || ''}
 					onChange={handleInputChange}
 				/>
+			</Grid>
+			<Grid item xs={5} sx={{ display: 'flex', alignItems: 'center' }}>
+				<FormGroup>
+					<FormControlLabel
+						control={
+							<Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 40 } }} />
+						}
+						sx={{ margin: 0 }}
+						checked={formData.isFated}
+						value={formData.isFated}
+						label="Fated Talent"
+						onChange={handleFatedChange}
+					/>
+				</FormGroup>
 			</Grid>
 			<Grid item xs={12}>
 				<Typography variant="h4">Character Appearance</Typography>
@@ -69,7 +112,7 @@ export default function Details(props: CharacterTabProps) {
 					type="number"
 					id="details.age"
 					label="Age"
-					value={formData?.details?.age || ''}
+					value={formData.details.age || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -77,7 +120,7 @@ export default function Details(props: CharacterTabProps) {
 				<InputField
 					id="details.eyes"
 					label="Eyes"
-					value={formData?.details?.eyes || ''}
+					value={formData.details.eyes || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -85,7 +128,7 @@ export default function Details(props: CharacterTabProps) {
 				<InputField
 					id="details.hair"
 					label="Hair"
-					value={formData?.details?.hair || ''}
+					value={formData.details.hair || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -93,7 +136,7 @@ export default function Details(props: CharacterTabProps) {
 				<InputField
 					id="details.height"
 					label="Height"
-					value={formData?.details?.height || ''}
+					value={formData.details.height || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -101,7 +144,7 @@ export default function Details(props: CharacterTabProps) {
 				<InputField
 					id="details.weight"
 					label="Weight"
-					value={formData?.details?.weight || ''}
+					value={formData.details.weight || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -109,7 +152,7 @@ export default function Details(props: CharacterTabProps) {
 				<InputField
 					id="details.handedness"
 					label="Handedness"
-					value={formData?.details?.handedness || ''}
+					value={formData.details.handedness || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -117,62 +160,15 @@ export default function Details(props: CharacterTabProps) {
 				<InputField
 					id="details.distinguishingFeatures"
 					label="Distinguishing Features"
-					value={formData?.details?.distinguishingFeatures || ''}
+					value={formData.details.distinguishingFeatures || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
 			<Grid item xs={12}>
 				<Typography variant="h4">Other</Typography>
 			</Grid>
-			<Grid item xs={0}>
-				
-			</Grid>
-			<Grid item xs={0}>
-				
-			</Grid>
+			<Grid item xs={0}></Grid>
+			<Grid item xs={0}></Grid>
 		</Grid>
-		// {/* <Grid container spacing={1}>
-		// 	<Grid item container direction="column" xs={3}>
-		// 		<Grid item>
-		// 			<Typography variant="h3">Totals:</Typography>
-		// 		</Grid>
-		// 		<Grid item>
-		// 			<InputField
-		// 				type="number"
-		// 				id="fate.total"
-		// 				label="Fate"
-		// 				value={formData?.fate?.total || ''}
-		// 				onChange={handleInputChange}
-		// 			/>
-		// 		</Grid>
-		// 		<Grid item>
-		// 			<InputField
-		// 				type="number"
-		// 				id="initiative"
-		// 				label="Initiative"
-		// 				value={formData?.initiative || ''}
-		// 				onChange={handleInputChange}
-		// 			/>
-		// 		</Grid>
-		// 		<Grid item>
-		// 			<InputField
-		// 				type="number"
-		// 				id="wounds.total"
-		// 				label="Wounds"
-		// 				value={formData?.wounds?.total || ''}
-		// 				onChange={handleInputChange}
-		// 			/>
-		// 		</Grid>
-		// 		<Grid item>
-		// 			<InputField
-		// 				type="number"
-		// 				id="warp.total"
-		// 				label="Warp"
-		// 				value={formData?.warp?.total || ''}
-		// 				onChange={handleInputChange}
-		// 			/>
-		// 		</Grid>
-		// 	</Grid> */}
-		// {/* </Grid> */}
 	)
 }

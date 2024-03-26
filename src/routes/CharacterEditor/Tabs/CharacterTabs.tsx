@@ -28,6 +28,7 @@ export default function CharacterTabs(props: CharacterTabsProps) {
 			<TabPanel value={value} index={0} type="Character">
 				<Details
 					formData={formData}
+					setFormData={setFormData}
 					handleInputChange={handleInputChange}
 					handleSelectChange={handleSelectChange}
 				/>

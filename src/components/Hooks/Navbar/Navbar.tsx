@@ -4,12 +4,12 @@ import { createContext, useCallback, useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 interface NavbarContextState {
-	navbarTitle: string
-	setNavbarTitle: (title: string) => void
+	navbarContent: { title: string; subtitle: string | undefined }
+	setNavbarTitle: (title: string, subtitle: string | undefined) => void
 }
 
 const initialState: NavbarContextState = {
-	navbarTitle: '',
+	navbarContent: { title: '', subtitle: '' },
 	setNavbarTitle: () => {},
 }
 
@@ -20,17 +20,21 @@ interface NavbarProviderProps {
 }
 
 export default function NavbarProvider({ children }: NavbarProviderProps) {
-	const [navbarTitle, setNavbarTitle] = useState<string>(
-		initialState.navbarTitle
-	)
+	const [navbarContent, setNavbarContent] = useState<{
+		title: string
+		subtitle: string | undefined
+	}>(initialState.navbarContent)
 
-	const handleSetNavbarTitle = useCallback((title: string) => {
-		setNavbarTitle(title)
-	}, [])
+	const handleSetNavbarTitle = useCallback(
+		(title: string, subtitle?: string) => {
+			setNavbarContent({ title: title, subtitle: subtitle })
+		},
+		[]
+	)
 
 	return (
 		<NavbarContext.Provider
-			value={{ navbarTitle, setNavbarTitle: handleSetNavbarTitle }}
+			value={{ navbarContent, setNavbarTitle: handleSetNavbarTitle }}
 		>
 			<Container
 				sx={{
@@ -44,7 +48,15 @@ export default function NavbarProvider({ children }: NavbarProviderProps) {
 			>
 				<Grid container alignItems="center" sx={{ padding: '8px 0' }}>
 					<Grid item xs={10}>
-						<Typography variant="h1">{navbarTitle}</Typography>
+						<Typography variant="h1">{navbarContent.title}</Typography>
+						{navbarContent.subtitle && (
+							<Typography
+								variant="body1"
+								sx={{ marginLeft: 0, color: 'white' }}
+							>
+								the {navbarContent.subtitle}
+							</Typography>
+						)}
 					</Grid>
 					<Grid item xs={2}>
 						<Link to="/">
