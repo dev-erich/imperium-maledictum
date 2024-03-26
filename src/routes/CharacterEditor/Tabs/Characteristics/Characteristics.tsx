@@ -7,7 +7,7 @@ import {
 	TableRow,
 } from '@mui/material'
 import { InputField, TableCell } from '@common'
-import { updateCharacteristic } from 'src/components/objects'
+import { setCharacteristic } from 'src/components/objects'
 import { useCharacter } from '@hooks'
 
 export default function Characteristics() {
@@ -20,17 +20,14 @@ export default function Characteristics() {
 		const cleanValue = value.replace(/\D/g, '').replace(/^0+/, '') || '0'
 		const newValue = parseInt(cleanValue, 10)
 
-		const updatedCharacteristics = updateCharacteristic(
+		const updatedCharacter = setCharacteristic(
 			character,
 			key,
 			type as 'starting' | 'advances',
 			newValue
 		)
 
-		setCharacter({
-			...character,
-			characteristics: updatedCharacteristics,
-		})
+		setCharacter(updatedCharacter)
 	}
 
 	const createInputField = (

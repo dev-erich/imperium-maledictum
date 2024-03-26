@@ -104,7 +104,8 @@ export type StartingAdvances = {
 
 export type CriticalWound = {
 	location: string
-	effect: string
+	description: string
+	_key: string
 }
 
 export type CurrentTotal = {

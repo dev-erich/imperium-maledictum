@@ -15,9 +15,9 @@ import { DropdownSelect, InputField, TableCell } from '@common'
 import {
 	getCharacteristic,
 	getSkill,
-	updateSpecialisationAdvances,
-	updateSpecialisationName,
-	updateSpecialisationReqSkill,
+	setSpecialisationAdvances,
+	setSpecialisationName,
+	setSpecialisationReqSkill,
 } from 'src/components/objects'
 import { CharacterSpecialisation } from 'types/character'
 import { uid } from '@utils'
@@ -55,7 +55,7 @@ export default function Specialisations() {
 	const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const { id, value } = event.target
 
-		const updatedSpecs = updateSpecialisationName(character, id, value)
+		const updatedSpecs = setSpecialisationName(character, id, value)
 
 		setCharacter({
 			...character,
@@ -66,7 +66,7 @@ export default function Specialisations() {
 	const handleSkillChange = (event: SelectChangeEvent<unknown>) => {
 		const { name, value } = event.target
 
-		const updatedSpecs = updateSpecialisationReqSkill(
+		const updatedSpecs = setSpecialisationReqSkill(
 			character,
 			name,
 			value as string
@@ -84,7 +84,7 @@ export default function Specialisations() {
 		const cleanValue = value.replace(/\D/g, '').replace(/^0+/, '') || '0'
 		let newValue = parseInt(cleanValue, 10)
 		newValue = Math.max(0, Math.min(newValue, 4))
-		const updatedSpecs = updateSpecialisationAdvances(character, id, newValue)
+		const updatedSpecs = setSpecialisationAdvances(character, id, newValue)
 
 		setCharacter({
 			...character,

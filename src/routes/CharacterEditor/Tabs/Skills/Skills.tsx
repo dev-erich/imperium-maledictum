@@ -7,7 +7,7 @@ import {
 	TableRow,
 } from '@mui/material'
 import { InputField, TableCell } from '@common'
-import { getCharacteristic, updateSkill } from 'src/components/objects'
+import { getCharacteristic, setSkill } from 'src/components/objects'
 import { useCharacter } from '@hooks'
 
 export default function Skills() {
@@ -19,7 +19,7 @@ export default function Skills() {
 		const cleanValue = value.replace(/\D/g, '').replace(/^0+/, '') || '0'
 		let newValue = parseInt(cleanValue, 10)
 		newValue = Math.max(0, Math.min(newValue, 4))
-		const updatedSkills = updateSkill(character, id, newValue)
+		const updatedSkills = setSkill(character, id, newValue)
 
 		setCharacter({
 			...character,
