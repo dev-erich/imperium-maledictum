@@ -250,10 +250,14 @@ export const initCharacterArmour = (): CharacterArmour[] => {
 	]
 }
 
-export const initCurrentTotal = (): CurrentTotal => {
+export const initCurrentTotal = (args?: {
+	current?: number
+	total?: number
+}): CurrentTotal => {
+	const { current, total } = args ?? {}
 	return {
-		current: 0,
-		total: 0,
+		current: current ? current : 0,
+		total: total ? total : 0,
 	}
 }
 

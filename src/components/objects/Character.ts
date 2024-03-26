@@ -41,7 +41,7 @@ export default class Character {
 		this.skills = initCharacterSkills()
 		this.specialisations = []
 		this.initiative = 0
-		this.fate = initCurrentTotal()
+		this.fate = initCurrentTotal({ total: 3 })
 		this.wounds = initCurrentTotal()
 		this.warpCharges = initCurrentTotal()
 		this.corruptions = []

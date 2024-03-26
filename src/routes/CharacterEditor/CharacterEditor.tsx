@@ -18,7 +18,7 @@ export default function CharacterEditor() {
 	}
 
 	useEffect(() => {
-		setNavbarTitle('Character Editor')
+		setNavbarTitle('Character Editor', undefined)
 	}, [setNavbarTitle])
 
 	useEffect(() => {
@@ -68,7 +68,7 @@ export default function CharacterEditor() {
 				<Tabs
 					value={tab}
 					onChange={handleTabChange}
-					sx={{ background: 'rgba(0,0,0,0.1)' }}
+					sx={{ background: 'rgba(0, 0, 0, 0.1)' }}
 					variant="scrollable"
 					scrollButtons="auto"
 					allowScrollButtonsMobile

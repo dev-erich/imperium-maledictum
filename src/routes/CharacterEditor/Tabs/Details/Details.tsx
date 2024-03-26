@@ -1,7 +1,8 @@
 import { DropdownSelect, InputField, Typography } from '@common'
-import { Grid } from '@mui/material'
+import { Checkbox, FormControlLabel, FormGroup, Grid } from '@mui/material'
 import { CharacterTabProps } from '..'
 import { CharacterRole } from 'types/character'
+import { Character } from 'src/components/objects'
 
 export const RolesObj: CharacterRole[] = [
 	'Interlocutor',
@@ -12,8 +13,34 @@ export const RolesObj: CharacterRole[] = [
 	'Zealot',
 ] as const
 
-export default function Details(props: CharacterTabProps) {
-	const { handleInputChange, handleSelectChange, formData } = props
+interface DetailsTabProps extends CharacterTabProps {
+	setFormData: (character: Character) => void
+}
+
+export default function Details(props: DetailsTabProps) {
+	const { handleInputChange, handleSelectChange, formData, setFormData } = props
+
+	const handleFatedChange = (
+		_event: React.SyntheticEvent<Element, Event>,
+		checked: boolean
+	) => {
+		if (checked)
+			setFormData({
+				...formData,
+				fate: {
+					current: 0,
+					total: 4,
+				},
+			})
+		else
+			setFormData({
+				...formData,
+				fate: {
+					current: 0,
+					total: 3,
+				},
+			})
+	}
 
 	return (
 		<Grid container spacing={1}>
@@ -53,13 +80,25 @@ export default function Details(props: CharacterTabProps) {
 					onChange={handleInputChange}
 				/>
 			</Grid>
-			<Grid item xs={12}>
+			<Grid item xs={7}>
 				<InputField
 					id="details.faction"
 					label="Faction"
 					value={formData?.details?.faction || ''}
 					onChange={handleInputChange}
 				/>
+			</Grid>
+			<Grid item xs={5} sx={{ display: 'flex', alignItems: 'center' }}>
+				<FormGroup>
+					<FormControlLabel
+						control={
+							<Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 40 } }} />
+						}
+						sx={{ margin: 0 }}
+						label="Fated Talent"
+						onChange={handleFatedChange}
+					/>
+				</FormGroup>
 			</Grid>
 			<Grid item xs={12}>
 				<Typography variant="h4">Character Appearance</Typography>
@@ -124,55 +163,8 @@ export default function Details(props: CharacterTabProps) {
 			<Grid item xs={12}>
 				<Typography variant="h4">Other</Typography>
 			</Grid>
-			<Grid item xs={0}>
-				
-			</Grid>
-			<Grid item xs={0}>
-				
-			</Grid>
+			<Grid item xs={0}></Grid>
+			<Grid item xs={0}></Grid>
 		</Grid>
-		// {/* <Grid container spacing={1}>
-		// 	<Grid item container direction="column" xs={3}>
-		// 		<Grid item>
-		// 			<Typography variant="h3">Totals:</Typography>
-		// 		</Grid>
-		// 		<Grid item>
-		// 			<InputField
-		// 				type="number"
-		// 				id="fate.total"
-		// 				label="Fate"
-		// 				value={formData?.fate?.total || ''}
-		// 				onChange={handleInputChange}
-		// 			/>
-		// 		</Grid>
-		// 		<Grid item>
-		// 			<InputField
-		// 				type="number"
-		// 				id="initiative"
-		// 				label="Initiative"
-		// 				value={formData?.initiative || ''}
-		// 				onChange={handleInputChange}
-		// 			/>
-		// 		</Grid>
-		// 		<Grid item>
-		// 			<InputField
-		// 				type="number"
-		// 				id="wounds.total"
-		// 				label="Wounds"
-		// 				value={formData?.wounds?.total || ''}
-		// 				onChange={handleInputChange}
-		// 			/>
-		// 		</Grid>
-		// 		<Grid item>
-		// 			<InputField
-		// 				type="number"
-		// 				id="warp.total"
-		// 				label="Warp"
-		// 				value={formData?.warp?.total || ''}
-		// 				onChange={handleInputChange}
-		// 			/>
-		// 		</Grid>
-		// 	</Grid> */}
-		// {/* </Grid> */}
 	)
 }

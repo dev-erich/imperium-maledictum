@@ -9,7 +9,7 @@ export default function PlayerHandbook() {
 	const { openSection } = usePlayerHandbook()
 
 	useEffect(() => {
-		setNavbarTitle('Player Handbook')
+		setNavbarTitle('Player Handbook', undefined)
 	}, [setNavbarTitle])
 
 	return (
