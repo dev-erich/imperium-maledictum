@@ -25,7 +25,6 @@ export default function CharacterProvider({
 	children,
 }: CharacterProviderProps) {
 	const [character, setCharacter] = useState<Character>(new Character())
-	console.log('🚀 \n character:', character)
 
 	const saveToLocalStorage = useCallback((characterData: Character) => {
 		localStorage.setItem('character', JSON.stringify(characterData))
@@ -48,8 +47,15 @@ export default function CharacterProvider({
 	}, [])
 
 	useEffect(() => {
-		saveToLocalStorage(character)
-		console.log('Saved Character...')
+		console.log('Saving Character...')
+
+		const timer = setTimeout(() => {
+			console.log(character)
+			saveToLocalStorage(character)
+			console.log('Saved Character!')
+		}, 500)
+
+		return () => clearTimeout(timer)
 	}, [character, saveToLocalStorage])
 
 	return (

@@ -11,32 +11,27 @@ import {
 } from '@mui/material'
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
-import { CharacterTabProps } from '..'
 import { DropdownSelect, InputField, TableCell } from '@common'
 import {
-	Character,
 	getCharacteristic,
 	getSkill,
-	updateSpecialisationAdvances,
-	updateSpecialisationName,
-	updateSpecialisationReqSkill,
+	setSpecialisationAdvances,
+	setSpecialisationName,
+	setSpecialisationReqSkill,
 } from 'src/components/objects'
 import { CharacterSpecialisation } from 'types/character'
 import { uid } from '@utils'
+import { useCharacter } from '@hooks'
 
-interface SpecialisationsTabProps extends CharacterTabProps {
-	setFormData: (character: Character) => void
-}
-
-export default function Specialisations(props: SpecialisationsTabProps) {
-	const { formData, setFormData } = props
+export default function Specialisations() {
+	const { character, setCharacter } = useCharacter()
 
 	const handleDelete = (key: string) => {
-		const removedSpec = formData.specialisations.filter(
+		const removedSpec = character.specialisations.filter(
 			(spec) => spec._key !== key
 		)
-		setFormData({
-			...formData,
+		setCharacter({
+			...character,
 			specialisations: removedSpec,
 		})
 	}
@@ -48,11 +43,11 @@ export default function Specialisations(props: SpecialisationsTabProps) {
 			name: 'Name',
 			skillkey: 'athletics',
 		}
-		const addedSpec = formData.specialisations
+		const addedSpec = character.specialisations
 		addedSpec.push(newSpec)
 
-		setFormData({
-			...formData,
+		setCharacter({
+			...character,
 			specialisations: addedSpec,
 		})
 	}
@@ -60,10 +55,10 @@ export default function Specialisations(props: SpecialisationsTabProps) {
 	const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const { id, value } = event.target
 
-		const updatedSpecs = updateSpecialisationName(formData, id, value)
+		const updatedSpecs = setSpecialisationName(character, id, value)
 
-		setFormData({
-			...formData,
+		setCharacter({
+			...character,
 			specialisations: updatedSpecs,
 		})
 	}
@@ -71,14 +66,14 @@ export default function Specialisations(props: SpecialisationsTabProps) {
 	const handleSkillChange = (event: SelectChangeEvent<unknown>) => {
 		const { name, value } = event.target
 
-		const updatedSpecs = updateSpecialisationReqSkill(
-			formData,
+		const updatedSpecs = setSpecialisationReqSkill(
+			character,
 			name,
 			value as string
 		)
 
-		setFormData({
-			...formData,
+		setCharacter({
+			...character,
 			specialisations: updatedSpecs,
 		})
 	}
@@ -89,10 +84,10 @@ export default function Specialisations(props: SpecialisationsTabProps) {
 		const cleanValue = value.replace(/\D/g, '').replace(/^0+/, '') || '0'
 		let newValue = parseInt(cleanValue, 10)
 		newValue = Math.max(0, Math.min(newValue, 4))
-		const updatedSpecs = updateSpecialisationAdvances(formData, id, newValue)
+		const updatedSpecs = setSpecialisationAdvances(character, id, newValue)
 
-		setFormData({
-			...formData,
+		setCharacter({
+			...character,
 			specialisations: updatedSpecs,
 		})
 	}
@@ -118,7 +113,7 @@ export default function Specialisations(props: SpecialisationsTabProps) {
 				name={_key}
 				value={value}
 				onChange={handleSkillChange}
-				menuItems={formData.skills.map((skill) => skill.name)}
+				menuItems={character.skills.map((skill) => skill.name)}
 			/>
 		)
 	}
@@ -137,11 +132,11 @@ export default function Specialisations(props: SpecialisationsTabProps) {
 		)
 	}
 
-	const rows = formData.specialisations.map(
+	const rows = character.specialisations.map(
 		({ _key, name, skillkey, advances }) => {
-			const refSkill = getSkill(formData, skillkey)
+			const refSkill = getSkill(character, skillkey)
 			const refCharacteristic = getCharacteristic(
-				formData,
+				character,
 				refSkill.characteristicKey
 			)
 
@@ -154,7 +149,6 @@ export default function Specialisations(props: SpecialisationsTabProps) {
 			return {
 				id: _key,
 				specialisation: createNameInputField(_key, name),
-				// skill: refSkill.name,
 				skill: createSkillDropdownSelect(_key, refSkill.name),
 				advances: createAdvanceInputField(_key, advances),
 				current: totalPoints,

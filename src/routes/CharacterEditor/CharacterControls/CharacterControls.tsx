@@ -33,7 +33,7 @@ export default function CharacterControls() {
 		<>
 			<Grid container spacing={1} sx={submissionControlStyles}>
 				<Grid item xs={9}>
-					<Button
+					{/* <Button
 						type="submit"
 						variant="contained"
 						color="success"
@@ -45,7 +45,7 @@ export default function CharacterControls() {
 						}}
 					>
 						Save
-					</Button>
+					</Button> */}
 				</Grid>
 				<Grid item xs={3}>
 					<Button

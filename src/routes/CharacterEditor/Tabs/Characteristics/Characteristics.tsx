@@ -6,16 +6,12 @@ import {
 	TableHead,
 	TableRow,
 } from '@mui/material'
-import { CharacterTabProps } from '..'
 import { InputField, TableCell } from '@common'
-import { Character, updateCharacteristic } from 'src/components/objects'
+import { setCharacteristic } from 'src/components/objects'
+import { useCharacter } from '@hooks'
 
-interface CharacteristicsTabProps extends CharacterTabProps {
-	setFormData: (character: Character) => void
-}
-
-export default function Characteristics(props: CharacteristicsTabProps) {
-	const { formData, setFormData } = props
+export default function Characteristics() {
+	const { character, setCharacter } = useCharacter()
 
 	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const { id, value } = event.target
@@ -24,17 +20,14 @@ export default function Characteristics(props: CharacteristicsTabProps) {
 		const cleanValue = value.replace(/\D/g, '').replace(/^0+/, '') || '0'
 		const newValue = parseInt(cleanValue, 10)
 
-		const updatedCharacteristics = updateCharacteristic(
-			formData,
+		const updatedCharacter = setCharacteristic(
+			character,
 			key,
 			type as 'starting' | 'advances',
 			newValue
 		)
 
-		setFormData({
-			...formData,
-			characteristics: updatedCharacteristics,
-		})
+		setCharacter(updatedCharacter)
 	}
 
 	const createInputField = (
@@ -55,19 +48,19 @@ export default function Characteristics(props: CharacteristicsTabProps) {
 		)
 	}
 
-	const rows = formData.characteristics.map(({ _key, code, values }) => {
+	const rows = character.characteristics.map(({ _key, code, values }) => {
 		const { starting, advances } = values
 		return {
 			characteristic: code,
 			starting: createInputField(_key, starting, 'starting'),
 			advances: createInputField(_key, advances, 'advances'),
-			current: starting + advances, // Assuming starting and advances are numbers
+			current: starting + advances,
 		}
 	})
 
 	return (
 		<TableContainer variant="outlined" component={Paper}>
-			<Table size='small'>
+			<Table size="small">
 				<TableHead>
 					<TableRow>
 						<TableCell align="center" variant="head">

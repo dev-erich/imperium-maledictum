@@ -1,14 +1,16 @@
+import { Character } from '.'
+import { getStatBonus } from '../utils/stats'
 import {
 	CharacterArmour,
 	CharacterDetails,
 	CharacterSkill,
 	CharacterSpecialisation,
 	Characteristic,
+	CharacteristicKey,
 	CurrentTotal,
 	SkillKey,
 	StartingAdvances,
 } from 'types/character'
-import { Character } from '.'
 
 export const initDetails = (): CharacterDetails => {
 	return {
@@ -250,10 +252,6 @@ export const initCharacterArmour = (): CharacterArmour[] => {
 	]
 }
 
-
-
-
-
 export const initCurrentTotal = (args?: {
 	current?: number
 	total?: number
@@ -276,13 +274,9 @@ export const initStartingAdvances = (args?: {
 	}
 }
 
-
-
-
-
 export const getCharacteristic = (
 	character: Character,
-	key: string
+	key: CharacteristicKey
 ): Characteristic => {
 	const characteristic = character.characteristics.find(
 		(char) => char._key === key
@@ -299,12 +293,12 @@ export const getCharacteristic = (
 	}
 }
 
-export const updateCharacteristic = (
+export const setCharacteristic = (
 	character: Character,
 	key: string,
 	type: 'starting' | 'advances',
 	value: number
-): Characteristic[] => {
+): Character => {
 	const newCharacteristics = character.characteristics.map((char) => {
 		if (char._key === key) {
 			return {
@@ -317,14 +311,23 @@ export const updateCharacteristic = (
 		}
 		return char
 	})
-	return newCharacteristics
+
+	const totalWounds = setCharacterWounds({
+		...character,
+		characteristics: newCharacteristics,
+	})
+
+	return {
+		...character,
+		wounds: { ...character.wounds, total: totalWounds },
+		characteristics: newCharacteristics,
+	}
 }
 
-
-
-
-
-export const getSkill = (character: Character, key: string): CharacterSkill => {
+export const getSkill = (
+	character: Character,
+	key: SkillKey
+): CharacterSkill => {
 	const skill = character.skills.find((char) => char._key === key)
 	if (skill) return skill
 	return {
@@ -335,7 +338,7 @@ export const getSkill = (character: Character, key: string): CharacterSkill => {
 	}
 }
 
-export const updateSkill = (
+export const setSkill = (
 	character: Character,
 	key: string,
 	value: number
@@ -352,10 +355,6 @@ export const updateSkill = (
 	return newCharacteristics
 }
 
-
-
-
-
 export const getSpecialisation = (
 	character: Character,
 	key: string
@@ -367,7 +366,7 @@ export const getSpecialisation = (
 	return undefined
 }
 
-export const updateSpecialisationAdvances = (
+export const setSpecialisationAdvances = (
 	character: Character,
 	key: string,
 	value: number
@@ -384,7 +383,7 @@ export const updateSpecialisationAdvances = (
 	return newSpecialisation
 }
 
-export const updateSpecialisationName = (
+export const setSpecialisationName = (
 	character: Character,
 	key: string,
 	value: string
@@ -401,7 +400,7 @@ export const updateSpecialisationName = (
 	return newSpecialisation
 }
 
-export const updateSpecialisationReqSkill = (
+export const setSpecialisationReqSkill = (
 	character: Character,
 	key: string,
 	value: string
@@ -419,10 +418,6 @@ export const updateSpecialisationReqSkill = (
 	return newSpecialisation
 }
 
-
-
-
-
 export const setFate = (
 	character: Character,
 	current?: number,
@@ -434,4 +429,24 @@ export const setFate = (
 		total: total ? total : fate.total,
 	}
 	return newFate
+}
+
+export const setCharacterWounds = (character: Character): number => {
+	const strCharacteristic = getCharacteristic(character, 'strength')
+	const tghCharacteristic = getCharacteristic(character, 'toughness')
+	const wilCharacteristic = getCharacteristic(character, 'willpower')
+	const strBonus = getStatBonus(
+		strCharacteristic.values.advances,
+		strCharacteristic.values.starting
+	)
+	const tghBonus = getStatBonus(
+		tghCharacteristic.values.advances,
+		tghCharacteristic.values.starting
+	)
+	const wilBonus = getStatBonus(
+		wilCharacteristic.values.advances,
+		wilCharacteristic.values.starting
+	)
+
+	return strBonus + 2 * tghBonus + wilBonus
 }
