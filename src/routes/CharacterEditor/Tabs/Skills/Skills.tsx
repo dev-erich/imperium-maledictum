@@ -6,20 +6,12 @@ import {
 	TableHead,
 	TableRow,
 } from '@mui/material'
-import { CharacterTabProps } from '..'
 import { InputField, TableCell } from '@common'
-import {
-	Character,
-	getCharacteristic,
-	updateSkill,
-} from 'src/components/objects'
+import { getCharacteristic, updateSkill } from 'src/components/objects'
+import { useCharacter } from '@hooks'
 
-interface SkillsTabProps extends CharacterTabProps {
-	setFormData: (character: Character) => void
-}
-
-export default function Skills(props: SkillsTabProps) {
-	const { formData, setFormData } = props
+export default function Skills() {
+	const { character, setCharacter } = useCharacter()
 
 	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const { id, value } = event.target
@@ -27,10 +19,10 @@ export default function Skills(props: SkillsTabProps) {
 		const cleanValue = value.replace(/\D/g, '').replace(/^0+/, '') || '0'
 		let newValue = parseInt(cleanValue, 10)
 		newValue = Math.max(0, Math.min(newValue, 4))
-		const updatedSkills = updateSkill(formData, id, newValue)
+		const updatedSkills = updateSkill(character, id, newValue)
 
-		setFormData({
-			...formData,
+		setCharacter({
+			...character,
 			skills: updatedSkills,
 		})
 	}
@@ -49,9 +41,9 @@ export default function Skills(props: SkillsTabProps) {
 		)
 	}
 
-	const rows = formData.skills.map(
+	const rows = character.skills.map(
 		({ _key, name, characteristicKey, advances }) => {
-			const refCharacteristic = getCharacteristic(formData, characteristicKey)
+			const refCharacteristic = getCharacteristic(character, characteristicKey)
 
 			const totalPoints =
 				refCharacteristic.values.advances +

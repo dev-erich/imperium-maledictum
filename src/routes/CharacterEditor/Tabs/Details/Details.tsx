@@ -1,8 +1,15 @@
 import { DropdownSelect, InputField, Typography } from '@common'
-import { Checkbox, FormControlLabel, FormGroup, Grid } from '@mui/material'
-import { CharacterTabProps } from '..'
+import {
+	Checkbox,
+	FormControlLabel,
+	FormGroup,
+	Grid,
+	SelectChangeEvent,
+} from '@mui/material'
 import { CharacterRole } from 'types/character'
-import { Character } from 'src/components/objects'
+import { useCharacter } from '@hooks'
+import { useCallback } from 'react'
+import _ from 'lodash'
 
 export const RolesObj: CharacterRole[] = [
 	'Interlocutor',
@@ -13,31 +20,50 @@ export const RolesObj: CharacterRole[] = [
 	'Zealot',
 ] as const
 
-interface DetailsTabProps extends CharacterTabProps {
-	setFormData: (character: Character) => void
-}
+export default function Details() {
+	const { character, setCharacter } = useCharacter()
 
-export default function Details(props: DetailsTabProps) {
-	const { handleInputChange, handleSelectChange, formData, setFormData } = props
+	const handleInputChange = useCallback(
+		(event: React.ChangeEvent<HTMLInputElement>) => {
+			const { id, value } = event.target
+
+			setCharacter((prev) => {
+				const updatedCharacter = _.cloneDeep(prev) || {}
+				_.set(updatedCharacter, id, value)
+				return updatedCharacter
+			})
+		},
+		[setCharacter]
+	)
+
+	const handleSelectChange = (event: SelectChangeEvent<unknown>) => {
+		const { name, value } = event.target
+
+		setCharacter((prev) => {
+			const updatedFormData = _.cloneDeep(prev) || {}
+			_.set(updatedFormData, name, value)
+			return updatedFormData
+		})
+	}
 
 	const handleFatedChange = (
 		_event: React.SyntheticEvent<Element, Event>,
 		checked: boolean
 	) => {
 		if (checked)
-			setFormData({
-				...formData,
+			setCharacter({
+				...character,
 				fate: {
-					current: formData.fate.current,
+					current: character.fate.current,
 					total: 4,
 				},
 				isFated: true,
 			})
 		else
-			setFormData({
-				...formData,
+			setCharacter({
+				...character,
 				fate: {
-					current: formData.fate.current,
+					current: character.fate.current,
 					total: 3,
 				},
 				isFated: false,
@@ -51,7 +77,7 @@ export default function Details(props: DetailsTabProps) {
 					required
 					id="name"
 					label="Name"
-					value={formData.name || ''}
+					value={character.name || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -60,7 +86,7 @@ export default function Details(props: DetailsTabProps) {
 					labelId="role-label"
 					id="role"
 					name="role"
-					value={formData.role || ''}
+					value={character.role || ''}
 					label="Role"
 					onChange={handleSelectChange}
 					menuItems={RolesObj as string[]}
@@ -70,7 +96,7 @@ export default function Details(props: DetailsTabProps) {
 				<InputField
 					id="details.origin"
 					label="Origin"
-					value={formData.details.origin || ''}
+					value={character.details.origin || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -78,7 +104,7 @@ export default function Details(props: DetailsTabProps) {
 				<InputField
 					id="details.patron"
 					label="Patron"
-					value={formData.details.patron || ''}
+					value={character.details.patron || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -86,7 +112,7 @@ export default function Details(props: DetailsTabProps) {
 				<InputField
 					id="details.faction"
 					label="Faction"
-					value={formData.details.faction || ''}
+					value={character.details.faction || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -97,8 +123,8 @@ export default function Details(props: DetailsTabProps) {
 							<Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 40 } }} />
 						}
 						sx={{ margin: 0 }}
-						checked={formData.isFated}
-						value={formData.isFated}
+						checked={character.isFated}
+						value={character.isFated}
 						label="Fated Talent"
 						onChange={handleFatedChange}
 					/>
@@ -112,7 +138,7 @@ export default function Details(props: DetailsTabProps) {
 					type="number"
 					id="details.age"
 					label="Age"
-					value={formData.details.age || ''}
+					value={character.details.age || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -120,7 +146,7 @@ export default function Details(props: DetailsTabProps) {
 				<InputField
 					id="details.eyes"
 					label="Eyes"
-					value={formData.details.eyes || ''}
+					value={character.details.eyes || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -128,7 +154,7 @@ export default function Details(props: DetailsTabProps) {
 				<InputField
 					id="details.hair"
 					label="Hair"
-					value={formData.details.hair || ''}
+					value={character.details.hair || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -136,7 +162,7 @@ export default function Details(props: DetailsTabProps) {
 				<InputField
 					id="details.height"
 					label="Height"
-					value={formData.details.height || ''}
+					value={character.details.height || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -144,7 +170,7 @@ export default function Details(props: DetailsTabProps) {
 				<InputField
 					id="details.weight"
 					label="Weight"
-					value={formData.details.weight || ''}
+					value={character.details.weight || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -152,7 +178,7 @@ export default function Details(props: DetailsTabProps) {
 				<InputField
 					id="details.handedness"
 					label="Handedness"
-					value={formData.details.handedness || ''}
+					value={character.details.handedness || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -160,7 +186,7 @@ export default function Details(props: DetailsTabProps) {
 				<InputField
 					id="details.distinguishingFeatures"
 					label="Distinguishing Features"
-					value={formData.details.distinguishingFeatures || ''}
+					value={character.details.distinguishingFeatures || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>

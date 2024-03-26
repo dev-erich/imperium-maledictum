@@ -48,8 +48,14 @@ export default function CharacterProvider({
 	}, [])
 
 	useEffect(() => {
-		saveToLocalStorage(character)
-		console.log('Saved Character...')
+		console.log("Saving Character...");
+		
+		const timer = setTimeout(() => {
+			saveToLocalStorage(character)
+			console.log('Saved Character!')
+		}, 500)
+
+		return () => clearTimeout(timer)
 	}, [character, saveToLocalStorage])
 
 	return (
