@@ -32,6 +32,7 @@ export default class Character {
 	corruptions: Corruption[]
 	criticalWounds: CriticalWound[]
 	armourSlots: CharacterArmour[]
+	isFated: boolean
 
 	constructor() {
 		this.name = ''
@@ -47,6 +48,7 @@ export default class Character {
 		this.corruptions = []
 		this.criticalWounds = []
 		this.armourSlots = initCharacterArmour()
+		this.isFated = false
 	}
 
 	getCharacteristic = (_key: string) => {

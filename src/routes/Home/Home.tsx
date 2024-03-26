@@ -10,7 +10,7 @@ export default function Home() {
 	const { setNavbarTitle } = useNavbar()
 
 	useEffect(() => {
-		setNavbarTitle('Imperium Maledictum')
+		setNavbarTitle('Imperium Maledictum', undefined)
 	}, [setNavbarTitle])
 
 	return (

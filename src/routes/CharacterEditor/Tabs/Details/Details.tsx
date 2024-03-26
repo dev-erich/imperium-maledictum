@@ -28,17 +28,19 @@ export default function Details(props: DetailsTabProps) {
 			setFormData({
 				...formData,
 				fate: {
-					current: 0,
+					current: formData.fate.current,
 					total: 4,
 				},
+				isFated: true,
 			})
 		else
 			setFormData({
 				...formData,
 				fate: {
-					current: 0,
+					current: formData.fate.current,
 					total: 3,
 				},
+				isFated: false,
 			})
 	}
 
@@ -49,7 +51,7 @@ export default function Details(props: DetailsTabProps) {
 					required
 					id="name"
 					label="Name"
-					value={formData?.name || ''}
+					value={formData.name || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -58,7 +60,7 @@ export default function Details(props: DetailsTabProps) {
 					labelId="role-label"
 					id="role"
 					name="role"
-					value={formData?.role || ''}
+					value={formData.role || ''}
 					label="Role"
 					onChange={handleSelectChange}
 					menuItems={RolesObj as string[]}
@@ -68,7 +70,7 @@ export default function Details(props: DetailsTabProps) {
 				<InputField
 					id="details.origin"
 					label="Origin"
-					value={formData?.details?.origin || ''}
+					value={formData.details.origin || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -76,7 +78,7 @@ export default function Details(props: DetailsTabProps) {
 				<InputField
 					id="details.patron"
 					label="Patron"
-					value={formData?.details?.patron || ''}
+					value={formData.details.patron || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -84,7 +86,7 @@ export default function Details(props: DetailsTabProps) {
 				<InputField
 					id="details.faction"
 					label="Faction"
-					value={formData?.details?.faction || ''}
+					value={formData.details.faction || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -95,6 +97,8 @@ export default function Details(props: DetailsTabProps) {
 							<Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 40 } }} />
 						}
 						sx={{ margin: 0 }}
+						checked={formData.isFated}
+						value={formData.isFated}
 						label="Fated Talent"
 						onChange={handleFatedChange}
 					/>
@@ -108,7 +112,7 @@ export default function Details(props: DetailsTabProps) {
 					type="number"
 					id="details.age"
 					label="Age"
-					value={formData?.details?.age || ''}
+					value={formData.details.age || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -116,7 +120,7 @@ export default function Details(props: DetailsTabProps) {
 				<InputField
 					id="details.eyes"
 					label="Eyes"
-					value={formData?.details?.eyes || ''}
+					value={formData.details.eyes || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -124,7 +128,7 @@ export default function Details(props: DetailsTabProps) {
 				<InputField
 					id="details.hair"
 					label="Hair"
-					value={formData?.details?.hair || ''}
+					value={formData.details.hair || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -132,7 +136,7 @@ export default function Details(props: DetailsTabProps) {
 				<InputField
 					id="details.height"
 					label="Height"
-					value={formData?.details?.height || ''}
+					value={formData.details.height || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -140,7 +144,7 @@ export default function Details(props: DetailsTabProps) {
 				<InputField
 					id="details.weight"
 					label="Weight"
-					value={formData?.details?.weight || ''}
+					value={formData.details.weight || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -148,7 +152,7 @@ export default function Details(props: DetailsTabProps) {
 				<InputField
 					id="details.handedness"
 					label="Handedness"
-					value={formData?.details?.handedness || ''}
+					value={formData.details.handedness || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>
@@ -156,7 +160,7 @@ export default function Details(props: DetailsTabProps) {
 				<InputField
 					id="details.distinguishingFeatures"
 					label="Distinguishing Features"
-					value={formData?.details?.distinguishingFeatures || ''}
+					value={formData.details.distinguishingFeatures || ''}
 					onChange={handleInputChange}
 				/>
 			</Grid>

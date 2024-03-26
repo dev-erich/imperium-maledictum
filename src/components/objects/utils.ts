@@ -250,6 +250,10 @@ export const initCharacterArmour = (): CharacterArmour[] => {
 	]
 }
 
+
+
+
+
 export const initCurrentTotal = (args?: {
 	current?: number
 	total?: number
@@ -261,12 +265,20 @@ export const initCurrentTotal = (args?: {
 	}
 }
 
-export const initStartingAdvances = (): StartingAdvances => {
+export const initStartingAdvances = (args?: {
+	advances?: number
+	starting?: number
+}): StartingAdvances => {
+	const { advances, starting } = args ?? {}
 	return {
-		advances: 0,
-		starting: 0,
+		advances: advances ? advances : 0,
+		starting: starting ? starting : 0,
 	}
 }
+
+
+
+
 
 export const getCharacteristic = (
 	character: Character,
@@ -308,6 +320,10 @@ export const updateCharacteristic = (
 	return newCharacteristics
 }
 
+
+
+
+
 export const getSkill = (character: Character, key: string): CharacterSkill => {
 	const skill = character.skills.find((char) => char._key === key)
 	if (skill) return skill
@@ -335,6 +351,10 @@ export const updateSkill = (
 	})
 	return newCharacteristics
 }
+
+
+
+
 
 export const getSpecialisation = (
 	character: Character,
@@ -397,4 +417,21 @@ export const updateSpecialisationReqSkill = (
 		return spec
 	})
 	return newSpecialisation
+}
+
+
+
+
+
+export const setFate = (
+	character: Character,
+	current?: number,
+	total?: number
+): CurrentTotal => {
+	const { fate } = character
+	const newFate: CurrentTotal = {
+		current: current ? current : fate.current,
+		total: total ? total : fate.total,
+	}
+	return newFate
 }
