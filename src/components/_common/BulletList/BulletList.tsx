@@ -33,7 +33,7 @@ const StyledListItem = styled(ListItem)(() => ({
 const StyledListItemIcon = styled(ListItemIcon)(({ theme }) => ({
 	minWidth: '30px',
 	minHeight: '30px',
-	paddingTop: '10px',
+	paddingTop: '4px',
 	[theme.breakpoints.down('md')]: {
 		paddingTop: '8px',
 		minWidth: '15px',

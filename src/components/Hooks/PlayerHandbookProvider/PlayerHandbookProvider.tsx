@@ -58,7 +58,7 @@ export default function PlayerHandbookProvider({
 	return (
 		<PlayerHandbookContext.Provider value={{ openSection }}>
 			<Drawer open={open} onClose={closeDrawer}>
-				<Box sx={{ width: '100vw' }} role="sections">
+				<Box sx={{ width: '100vw', maxWidth: '800px' }} role="sections">
 					<Box sx={headerStyles}>
 						<Typography variant="h2" align="center" sx={{ color: '#d4d4d4' }}>
 							{section ? section.title : 'Section'}
@@ -68,7 +68,13 @@ export default function PlayerHandbookProvider({
 						<CloseIcon fontSize="inherit" sx={{ color: '#d4d4d4' }} />
 					</IconButton>
 				</Box>
-				<div style={{ width: '100vw', height: 'var(--navbarHeight)' }} />
+				<div
+					style={{
+						width: '100vw',
+						maxWidth: '800px',
+						height: 'var(--navbarHeight)',
+					}}
+				/>
 				<Paper sx={paperStyles} elevation={0}>
 					{section && (
 						<SectionAccordion sectionDescription={section.description} />
@@ -105,6 +111,7 @@ const paperStyles: SxProps<Theme> = {
 	padding: 1,
 	overflow: 'auto',
 	maxHeight: 'calc(100svh - var(--navbarHeight))',
+	maxWidth: '800px',
 }
 
 const closeIconStyles: SxProps<Theme> = {
@@ -127,4 +134,5 @@ const headerStyles: SxProps<Theme> = {
 	right: 0,
 	boxShadow: 3,
 	zIndex: 10,
+	maxWidth: '800px',
 }
