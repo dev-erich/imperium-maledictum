@@ -1,6 +1,7 @@
 import { getStatBonus } from '@utils'
 import { Character } from '.'
 import {
+	BodyPart,
 	CharacterArmour,
 	CharacterDetails,
 	CharacterSkill,
@@ -216,37 +217,37 @@ export const initCharacterArmour = (): CharacterArmour[] => {
 		{
 			_key: 'head',
 			name: 'Head',
-			hitDie: [1],
+			hitDie: '1',
 			value: 0,
 		},
 		{
 			_key: 'leftArm',
 			name: 'Left Arm',
-			hitDie: [2],
+			hitDie: '2',
 			value: 0,
 		},
 		{
 			_key: 'rightArm',
 			name: 'Right Arm',
-			hitDie: [3],
+			hitDie: '3',
 			value: 0,
 		},
 		{
 			_key: 'leftLeg',
 			name: 'Left Leg',
-			hitDie: [4],
+			hitDie: '4',
 			value: 0,
 		},
 		{
 			_key: 'rightLeg',
 			name: 'Right Leg',
-			hitDie: [5],
+			hitDie: '5',
 			value: 0,
 		},
 		{
 			_key: 'body',
 			name: 'Body',
-			hitDie: [6, 7, 8, 9, 0],
+			hitDie: '6-0',
 			value: 0,
 		},
 	]
@@ -322,11 +323,17 @@ export const setCharacteristic = (
 		characteristics: newCharacteristics,
 	})
 
+	const totalInitiatve = setCharacterInitiative({
+		...character,
+		characteristics: newCharacteristics,
+	})
+
 	return {
 		...character,
 		wounds: { ...character.wounds, total: totalWounds },
 		corruption: { ...character.corruption, total: totalCorruption },
 		characteristics: newCharacteristics,
+		initiative: totalInitiatve,
 	}
 }
 
@@ -441,7 +448,7 @@ export const setCharacterWounds = (character: Character): number => {
 	const strCharacteristic = getCharacteristic(character, 'strength')
 	const tghCharacteristic = getCharacteristic(character, 'toughness')
 	const wilCharacteristic = getCharacteristic(character, 'willpower')
-	
+
 	const strBonus = getStatBonus(
 		strCharacteristic.values.advances,
 		strCharacteristic.values.starting
@@ -472,4 +479,80 @@ export const setCharacterCorruption = (character: Character): number => {
 	)
 
 	return tghBonus + wilBonus
+}
+
+export const setCharacterInitiative = (character: Character): number => {
+	const perCharacteristic = getCharacteristic(character, 'perception')
+	const agiCharacteristic = getCharacteristic(character, 'agility')
+
+	const perBonus = getStatBonus(
+		perCharacteristic.values.advances,
+		perCharacteristic.values.starting
+	)
+	const agiBonus = getStatBonus(
+		agiCharacteristic.values.advances,
+		agiCharacteristic.values.starting
+	)
+
+	return perBonus + agiBonus
+}
+
+export const getCharacterAvatar = (character: Character): string => {
+	const { role } = character
+
+	switch (role) {
+		case 'Interlocutor':
+			return '/interlocutor-avatar.png'
+
+		case 'Mystic':
+			return '/mystic-avatar.png'
+
+		case 'Penumbra':
+			return '/penumbra-avatar.png'
+
+		case 'Savant':
+			return '/savant-avatar.png'
+
+		case 'Warrior':
+			return '/warrior-avatar.png'
+
+		case 'Zealot':
+			return '/zealot-avatar.png'
+
+		default:
+			return '/broken-image.jpg'
+	}
+}
+
+export const getArmorSlot = (
+	character: Character,
+	key: BodyPart
+): CharacterArmour => {
+	const armorSlot = character.armourSlots.find((slot) => slot._key === key)
+	if (armorSlot) return armorSlot
+	else
+		return {
+			_key: 'body',
+			hitDie: '6-0',
+			name: 'Body',
+			value: 0,
+		}
+}
+
+export const setArmorSlots = (
+	character: Character,
+	value: number,
+	key: BodyPart
+): CharacterArmour[] => {
+	const newArmorSlots = character.armourSlots.map((slot) => {
+		if (slot._key === key) {
+			return {
+				...slot,
+				value: value,
+			}
+		}
+		return slot
+	})
+
+	return newArmorSlots
 }
