@@ -317,9 +317,15 @@ export const setCharacteristic = (
 		characteristics: newCharacteristics,
 	})
 
+	const totalCorruption = setCharacterCorruption({
+		...character,
+		characteristics: newCharacteristics,
+	})
+
 	return {
 		...character,
 		wounds: { ...character.wounds, total: totalWounds },
+		corruption: { ...character.corruption, total: totalCorruption },
 		characteristics: newCharacteristics,
 	}
 }
@@ -435,6 +441,7 @@ export const setCharacterWounds = (character: Character): number => {
 	const strCharacteristic = getCharacteristic(character, 'strength')
 	const tghCharacteristic = getCharacteristic(character, 'toughness')
 	const wilCharacteristic = getCharacteristic(character, 'willpower')
+	
 	const strBonus = getStatBonus(
 		strCharacteristic.values.advances,
 		strCharacteristic.values.starting
@@ -449,4 +456,20 @@ export const setCharacterWounds = (character: Character): number => {
 	)
 
 	return strBonus + 2 * tghBonus + wilBonus
+}
+
+export const setCharacterCorruption = (character: Character): number => {
+	const tghCharacteristic = getCharacteristic(character, 'toughness')
+	const wilCharacteristic = getCharacteristic(character, 'willpower')
+
+	const tghBonus = getStatBonus(
+		tghCharacteristic.values.advances,
+		tghCharacteristic.values.starting
+	)
+	const wilBonus = getStatBonus(
+		wilCharacteristic.values.advances,
+		wilCharacteristic.values.starting
+	)
+
+	return tghBonus + wilBonus
 }

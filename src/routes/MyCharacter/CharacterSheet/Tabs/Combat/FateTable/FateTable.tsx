@@ -5,7 +5,7 @@ import { useCallback } from 'react'
 export default function FateTable() {
 	const { character, setCharacter } = useCharacter()
 
-	const handleAddClick = useCallback(() => {
+	const handleAddFateClick = useCallback(() => {
 		if (character.fate.current < character.fate.total)
 			setCharacter((prev) => {
 				return {
@@ -18,7 +18,7 @@ export default function FateTable() {
 			})
 	}, [character, setCharacter])
 
-	const handleSubtractClick = useCallback(() => {
+	const handleSubtractFateClick = useCallback(() => {
 		if (character.fate.current > 0)
 			setCharacter((prev) => {
 				return {
@@ -36,8 +36,8 @@ export default function FateTable() {
 			title={'Fate'}
 			leftValue={character.fate.current}
 			rightValue={character.fate.total}
-			handleAddClick={handleAddClick}
-			handleSubtractClick={handleSubtractClick}
+			handleAddClick={handleAddFateClick}
+			handleSubtractClick={handleSubtractFateClick}
 		/>
 	)
 }

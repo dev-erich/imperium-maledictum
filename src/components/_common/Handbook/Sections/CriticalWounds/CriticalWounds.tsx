@@ -15,11 +15,11 @@ export const criticalWoundsSection: Section = {
 		},
 		{
 			summary: 'Leg',
-			details: <></>,
+			details: <>Under construction</>,
 		},
 		{
 			summary: 'Body',
-			details: <></>,
+			details: <>Under construction</>,
 		},
 	],
 }

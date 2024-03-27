@@ -1,6 +1,7 @@
 import { Grid } from '@mui/material'
 import { FateTable } from './FateTable'
 import { WoundsTable } from './WoundsTable'
+import { CorruptionTable } from './CorruptionTable'
 import { CriticalWoundsTable } from './CriticalWoundsTable'
 import { Button, ConfirmCancelModal, Typography } from '@common'
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment'
@@ -38,17 +39,21 @@ export default function Combat() {
 						sx={{ width: '100%' }}
 						onClick={() => setOpenFateModal(true)}
 						variant="contained"
+						color='error'
 						disabled={character.fate.total <= 0}
 					>
 						Fate
 					</Button>
 				</Grid>
-				<Grid item xs={6} />
+				<Grid item xs={6}></Grid>
 				<Grid item xs={6}>
 					<FateTable />
 				</Grid>
 				<Grid item xs={6}>
 					<WoundsTable />
+				</Grid>
+				<Grid item xs={12}>
+					<CorruptionTable />
 				</Grid>
 				<Grid item xs={12}>
 					<CriticalWoundsTable />
