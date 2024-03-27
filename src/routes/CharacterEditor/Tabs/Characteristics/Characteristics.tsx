@@ -7,7 +7,7 @@ import {
 	TableRow,
 } from '@mui/material'
 import { InputField, TableCell } from '@common'
-import { setCharacteristic } from 'src/components/objects'
+import { setCharacteristic } from '@data'
 import { useCharacter } from '@hooks'
 
 export default function Characteristics() {

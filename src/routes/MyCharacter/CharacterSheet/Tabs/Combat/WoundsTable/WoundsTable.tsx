@@ -7,23 +7,27 @@ export default function WoundsTable() {
 
 	const handleAddClick = useCallback(() => {
 		if (character.wounds.current < character.wounds.total)
-			setCharacter({
-				...character,
-				wounds: {
-					...character.wounds,
-					current: character.wounds.current + 1,
-				},
+			setCharacter((prev) => {
+				return {
+					...prev,
+					wounds: {
+						...prev.wounds,
+						current: prev.wounds.current + 1,
+					},
+				}
 			})
 	}, [character, setCharacter])
 
 	const handleSubtractClick = useCallback(() => {
 		if (character.wounds.current > 0)
-			setCharacter({
-				...character,
-				wounds: {
-					...character.wounds,
-					current: character.wounds.current - 1,
-				},
+			setCharacter((prev) => {
+				return {
+					...prev,
+					wounds: {
+						...prev.wounds,
+						current: prev.wounds.current - 1,
+					},
+				}
 			})
 	}, [character, setCharacter])
 

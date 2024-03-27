@@ -7,7 +7,7 @@ import {
 	TableRow,
 } from '@mui/material'
 import { InputField, TableCell } from '@common'
-import { getCharacteristic, setSkill } from 'src/components/objects'
+import { getCharacteristic, setSkill } from '@data'
 import { useCharacter } from '@hooks'
 
 export default function Skills() {
@@ -21,9 +21,11 @@ export default function Skills() {
 		newValue = Math.max(0, Math.min(newValue, 4))
 		const updatedSkills = setSkill(character, id, newValue)
 
-		setCharacter({
-			...character,
-			skills: updatedSkills,
+		setCharacter((prev) => {
+			return {
+				...prev,
+				skills: updatedSkills,
+			}
 		})
 	}
 

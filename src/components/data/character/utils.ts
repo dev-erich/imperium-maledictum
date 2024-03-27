@@ -1,5 +1,5 @@
+import { getStatBonus } from '@utils'
 import { Character } from '.'
-import { getStatBonus } from '../utils/stats'
 import {
 	CharacterArmour,
 	CharacterDetails,

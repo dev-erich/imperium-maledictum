@@ -74,16 +74,22 @@ export type CharacterDetails = {
 	distinguishingFeatures: string
 }
 
-export type ArmourKey =
+export type BodyPart =
 	| 'head'
-	| 'leftArm'
-	| 'rightArm'
 	| 'leftLeg'
 	| 'rightLeg'
+	| 'leftArm'
+	| 'rightArm'
 	| 'body'
 
+export type CharacterCriticalWound = {
+	_id: string
+	location: string
+	description: string
+}
+
 export type CharacterArmour = {
-	_key: ArmourKey
+	_key: BodyPart
 	name: string
 	hitDie: number[]
 	value: number
@@ -100,12 +106,6 @@ export type Corruption = {
 export type StartingAdvances = {
 	starting: number
 	advances: number
-}
-
-export type CriticalWound = {
-	location: string
-	description: string
-	_key: string
 }
 
 export type CurrentTotal = {
