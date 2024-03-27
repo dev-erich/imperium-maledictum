@@ -11,7 +11,7 @@ export default function MyCharacter() {
 
 	useEffect(() => {
 		if (character.name && character.role)
-			setNavbarTitle(character.name, character.role)
+			setNavbarTitle(character.name, undefined)
 		else setNavbarTitle('Character', undefined)
 	}, [setNavbarTitle, character])
 

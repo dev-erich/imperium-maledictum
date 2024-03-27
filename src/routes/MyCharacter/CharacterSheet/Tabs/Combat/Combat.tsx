@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material'
+import { Avatar, Grid } from '@mui/material'
 import { FateTable } from './FateTable'
 import { WoundsTable } from './WoundsTable'
 import { CorruptionTable } from './CorruptionTable'
@@ -7,6 +7,9 @@ import { Button, ConfirmCancelModal, Typography } from '@common'
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment'
 import { useCharacter } from '@hooks'
 import { useState } from 'react'
+import { Initiative } from './Initiative'
+import { ArmorTable } from './ArmorTable'
+import { getCharacterAvatar } from '@data'
 
 export default function Combat() {
 	const { character, setCharacter } = useCharacter()
@@ -31,26 +34,53 @@ export default function Combat() {
 	return (
 		<>
 			<Grid container spacing={2}>
-				<Grid item xs={6}>
-					<Button
-						startIcon={<LocalFireDepartmentIcon />}
-						aria-label="subtract"
-						size="large"
-						sx={{ width: '100%' }}
-						onClick={() => setOpenFateModal(true)}
-						variant="contained"
-						color='error'
-						disabled={character.fate.total <= 0}
-					>
-						Fate
-					</Button>
+				<Grid
+					item
+					xs={6}
+					display="flex"
+					alignItems="center"
+					justifyContent="center"
+				>
+					<Avatar
+						src={getCharacterAvatar(character)}
+						sx={{ width: '180px', height: '180px' }}
+					/>
 				</Grid>
-				<Grid item xs={6}></Grid>
-				<Grid item xs={6}>
-					<FateTable />
+				<Grid item container xs={6} direction="column" spacing={2}>
+					<Grid item>
+						<Typography variant="h3" sx={{ margin: 0, textAlign: 'center' }}>
+							Role
+						</Typography>
+						<Typography variant="h4" sx={{ margin: 0, textAlign: 'center' }}>
+							{character.role}
+						</Typography>
+					</Grid>
+					<Grid item>
+						<Initiative />
+					</Grid>
+					<Grid item>
+						<Button
+							startIcon={<LocalFireDepartmentIcon />}
+							aria-label="subtract"
+							size="large"
+							sx={{ width: '100%' }}
+							onClick={() => setOpenFateModal(true)}
+							variant="contained"
+							color="error"
+							disabled={character.fate.total <= 0}
+						>
+							Fate
+						</Button>
+					</Grid>
 				</Grid>
 				<Grid item xs={6}>
 					<WoundsTable />
+				</Grid>
+				<Grid item xs={6}>
+					<FateTable />
+				</Grid>
+				<Grid item xs={12}>
+					<ArmorTable />
 				</Grid>
 				<Grid item xs={12}>
 					<CorruptionTable />

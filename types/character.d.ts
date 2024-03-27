@@ -91,7 +91,7 @@ export type CharacterCriticalWound = {
 export type CharacterArmour = {
 	_key: BodyPart
 	name: string
-	hitDie: number[]
+	hitDie: string
 	value: number
 }
 
