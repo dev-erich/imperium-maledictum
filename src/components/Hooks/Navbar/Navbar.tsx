@@ -36,35 +36,43 @@ export default function NavbarProvider({ children }: NavbarProviderProps) {
 		<NavbarContext.Provider
 			value={{ navbarContent, setNavbarTitle: handleSetNavbarTitle }}
 		>
-			<Container
-				sx={{
-					background:
-						"url('https://www.toptal.com/designers/subtlepatterns/uploads/carbon_fibre.png') repeat fixed 0 0",
-					height: 'var(--navbarHeight)',
-					position: 'fixed',
-					boxShadow: 3,
-					zIndex: 100,
-				}}
-			>
-				<Grid container alignItems="center" sx={{ padding: '8px 0' }}>
-					<Grid item xs={10}>
-						<Typography variant="h1">{navbarContent.title}</Typography>
-						{navbarContent.subtitle && (
-							<Typography
-								variant="body1"
-								sx={{ marginLeft: 0, color: 'white' }}
+			<div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+				<Container
+					sx={{
+						background:
+							"url('https://www.toptal.com/designers/subtlepatterns/uploads/carbon_fibre.png') repeat fixed 0 0",
+						height: 'var(--navbarHeight)',
+						position: 'fixed',
+						boxShadow: 3,
+						zIndex: 100,
+					}}
+				>
+					<Grid container alignItems="center" sx={{ padding: '8px 0' }}>
+						<Grid item xs={10}>
+							<Typography variant="h1">{navbarContent.title}</Typography>
+							{navbarContent.subtitle && (
+								<Typography
+									variant="body1"
+									sx={{ marginLeft: 0, color: 'white' }}
+								>
+									the {navbarContent.subtitle}
+								</Typography>
+							)}
+						</Grid>
+						<Grid item xs={2}>
+							<Link
+								to="/"
+								style={{
+									display: 'flex',
+									justifyContent: 'flex-end',
+								}}
 							>
-								the {navbarContent.subtitle}
-							</Typography>
-						)}
+								<WarhammerIcon maxHeight="70px" />
+							</Link>
+						</Grid>
 					</Grid>
-					<Grid item xs={2}>
-						<Link to="/">
-							<WarhammerIcon />
-						</Link>
-					</Grid>
-				</Grid>
-			</Container>
+				</Container>
+			</div>
 			<Box sx={{ height: '73px' }} />
 			{children}
 		</NavbarContext.Provider>

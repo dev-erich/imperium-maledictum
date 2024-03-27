@@ -67,7 +67,8 @@ const responsiveFontSizes = (theme: Theme): Theme => {
 			...theme.typography,
 			h1: {
 				...theme.typography.h1,
-				// fontSize: '3.75rem',
+				lineHeight: '1.8rem',
+				fontSize: '2rem',
 				fontWeight: 500,
 				fontFamily: ['Black Ops One', 'sans-serif'].join(','),
 				color: '#efefef',
@@ -80,7 +81,7 @@ const responsiveFontSizes = (theme: Theme): Theme => {
 			},
 			h2: {
 				...theme.typography.h2,
-				// fontSize: '3.75rem',
+				fontSize: '1.5rem',
 				fontWeight: 700,
 				textShadow: '1.5px 1.5px #6a6a6a',
 				[theme.breakpoints.down('md')]: {

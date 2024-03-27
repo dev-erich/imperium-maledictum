@@ -1,4 +1,13 @@
-export default function Warhammer() {
+import { IconProps } from './IconProps'
+
+export default function Warhammer(props: IconProps) {
+	const { height, width, maxHeight, maxWidth } = props
+
+	const styles: React.CSSProperties = {
+		maxWidth: maxWidth ? maxWidth : 'none',
+		maxHeight: maxHeight ? maxHeight : 'none',
+	}
+
 	return (
 		<svg
 			version="1.1"
@@ -6,6 +15,9 @@ export default function Warhammer() {
 			x="0px"
 			y="0px"
 			viewBox="0 0 1000 1000"
+			height={height}
+			width={width}
+			style={styles}
 		>
 			<g>
 				<path

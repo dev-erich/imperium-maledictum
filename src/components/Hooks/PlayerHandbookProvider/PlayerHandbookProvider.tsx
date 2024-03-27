@@ -33,7 +33,6 @@ export default function PlayerHandbookProvider({
 	const [open, setOpen] = useState<boolean>(false)
 	const [searchParams, setSearchParams] = useSearchParams()
 	const [section, setSection] = useState<Section | undefined>(undefined)
-	console.log('🚀 \n section:', section)
 
 	const closeDrawer = () => {
 		setSearchParams({})
