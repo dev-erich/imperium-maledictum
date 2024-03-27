@@ -1,17 +1,25 @@
 import { Typography } from '@common'
 import { Theme } from '@emotion/react'
-import { Card, Divider, Grid, IconButton, SxProps } from '@mui/material'
+import {
+	Card,
+	CardProps,
+	Divider,
+	Grid,
+	IconButton,
+	SxProps,
+} from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
 
 interface CurrentTotalTable {
-	title: string
+	title?: string
 	leftHeader?: string
 	leftValue: number
 	rightHeader?: string
 	rightValue: number
 	handleSubtractClick: () => void
 	handleAddClick: () => void
+	cardProps?: CardProps
 }
 
 const style: SxProps<Theme> = {
@@ -27,10 +35,11 @@ export default function CurrentTotalTable(props: CurrentTotalTable) {
 		rightValue,
 		handleSubtractClick,
 		handleAddClick,
+		cardProps,
 	} = props
 
 	return (
-		<Card sx={style}>
+		<Card sx={style} {...cardProps}>
 			<Grid container alignItems="center">
 				<Grid item xs={4}>
 					<IconButton

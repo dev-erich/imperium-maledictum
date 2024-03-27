@@ -11,7 +11,7 @@ export type CriticalWound = {
 	treatment: React.ReactNode
 }
 
-export const criticalWounds: CriticalWound[] = [
+export const headCriticalWounds: CriticalWound[] = [
 	{
 		location: 'head',
 		locationName: 'Head',
@@ -296,6 +296,310 @@ export const criticalWounds: CriticalWound[] = [
 			<Typography variant="body1">
 				Your head is caved in or erupts in a shower of bone and gore. You are
 				dead.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				In the immutable shadow of the beyond, there is no return from death's
+				embrace.
+			</Typography>
+		),
+	},
+]
+
+export const armCriticalWounds: CriticalWound[] = [
+	{
+		location: 'arm',
+		locationName: 'Arm',
+		roll: '1',
+		description: 'Jolted Wrist',
+		effects: (
+			<Typography variant="body1">
+				You are struck in the wrist, jarring your hand. Drop any item held in
+				the hand
+			</Typography>
+		),
+		treatment: <Typography variant="body1">None Required</Typography>,
+	},
+	{
+		location: 'arm',
+		locationName: 'Arm',
+		roll: '2',
+		description: 'Dead Arm',
+		effects: (
+			<Typography variant="body1">
+				You are struck by a rattling blow in your arm, causing it to temporarily
+				go numb. You have Disadvantage on all Tests using the arm for 1 minute.
+			</Typography>
+		),
+		treatment: <Typography variant="body1">None Required</Typography>,
+	},
+	{
+		location: 'arm',
+		locationName: 'Arm',
+		roll: '3',
+		description: 'Laceration',
+		effects: (
+			<Typography variant="body1">
+				Your hand is sliced open, sending jolts of pain through your arm. You
+				are Bleeding and drop any item held in the hand.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Challenging (+0) Medicae</b> Test to stop the Bleeding; application
+				of bandages; or the laceration will close naturally after 1 hour
+			</Typography>
+		),
+	},
+	{
+		location: 'arm',
+		locationName: 'Arm',
+		roll: '4',
+		description: 'Sliced Hand',
+		effects: (
+			<Typography variant="body1">
+				Your hand is sliced open, sending jolts of pain through your arm. You
+				are Bleeding and drop any item held in the hand.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Challenging (+0) Medicae</b> Test to stop the Bleeding; application
+				of bandages; or the laceration will close naturally after 1 hour.
+			</Typography>
+		),
+	},
+	{
+		location: 'arm',
+		locationName: 'Arm',
+		roll: '5',
+		description: 'Dislocated Shoulder',
+		effects: (
+			<Typography variant="body1">
+				The strike dislocates your shoulder from the socket. The arm is useless
+				until popped back into place. At the start of each turn while you have a
+				dislocated shoulder you must make a{' '}
+				<b>Challenging (+0) Fortitude (Pain)</b>
+				Test. On a failure, you are Stunned until the start of your next turn.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Challenging (+0) Medicae</b> Test to pop the shoulder back into
+				place
+			</Typography>
+		),
+	},
+	{
+		location: 'arm',
+		locationName: 'Arm',
+		roll: '6',
+		description: 'Severed Finger',
+		effects: (
+			<Typography variant="body1">
+				The attack tears off one of your fingers. You are Bleeding (Major).
+				<br />
+				<b>Injury:</b> One of your fingers is torn off. You suffer the
+				Amputation (Finger) Injury
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Challenging (+0) Medicae</b> Test performed by someone with the
+				Chirurgeon Talent
+			</Typography>
+		),
+	},
+	{
+		location: 'arm',
+		locationName: 'Arm',
+		roll: '7',
+		description: 'Clean Break',
+		effects: (
+			<Typography variant="body1">
+				The attack fractures a bone in your arm. Your arm is completely useless,
+				and you drop any item held. You must make a{' '}
+				<b>Challenging (+0) Fortitude (Pain)</b> Test or be Stunned for one
+				minute.
+				<br />
+				<b>Injury:</b> Your arm is broken. You suffer the Broken Bone (Minor)
+				Injury to your arm.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				<b>A Difficult (−10) Medicae</b> Test to treat shock. This Test does not
+				treat the break.
+			</Typography>
+		),
+	},
+	{
+		location: 'arm',
+		locationName: 'Arm',
+		roll: '8',
+		description: 'Deep Cut',
+		effects: (
+			<Typography variant="body1">
+				You suffer a deep gash on your arm, reducing your effectiveness. You are
+				Bleeding (Major) and have Disadvantage on all Tests using the arm.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Difficult (−10) Medicae</b> Test using a chirurgeon’s kit to stop
+				the Bleeding.
+			</Typography>
+		),
+	},
+	{
+		location: 'arm',
+		locationName: 'Arm',
+		roll: '9',
+		description: 'Mangled Hand',
+		effects: (
+			<Typography variant="body1">
+				The blow devesates your hand, breaking bones and potentially severing
+				fingers. You are Bleeding (Major) and immediately drop any item held.
+				<br />
+				<b>Injury:</b> Your hand is crushed. You suffer the Broken Bone (Major)
+				Injury to your hand. Additionally, you lose 1d10 − 5 fingers. If your
+				result is 0, you manage to keep all of your digits. Otherwise, you
+				suffer the Amputation (Fingers) Injury.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Difficult (−10) Medicae</b> Test performed by someone with the
+				Chirurgeon Talent.
+			</Typography>
+		),
+	},
+	{
+		location: 'arm',
+		locationName: 'Arm',
+		roll: '10',
+		description: 'Shattered Elbow',
+		effects: (
+			<Typography variant="body1">
+				The attack shatters the bones in your elbow. Your arm is completely
+				useless, and you immediately drop any item held in the hand.
+				Additionally, you must make a <b>Difficult (−10) Fortitude (Pain)</b>{' '}
+				Test or be Stunned for one minute.
+				<br />
+				<b>Injury:</b> Your arm is broken. You suffer the Broken Bone (Major)
+				Injury to your arm.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Hard (−20) Medicae</b> Test to treat shock. This Test does not
+				count as treating the broken bone.
+			</Typography>
+		),
+	},
+	{
+		location: 'arm',
+		locationName: 'Arm',
+		roll: '11-12',
+		description: 'Cleft Hand',
+		effects: (
+			<Typography variant="body1">
+				Your hand is splayed apart, causing a major injury and severing fingers.
+				You are Bleeding (Major) and immediately drop any item held in the hand.
+				Additionally, you must make a<b>Difficult (−10) Fortitude (Pain)</b>{' '}
+				Test or be Stunned for one minute.
+				<br />
+				<b>Injury:</b> You lose a finger. You suffer the Amputation (Finger)
+				Injury. For each minute the Critical Wound is untreated, you lose an
+				additional finger. If you lose all fingers on the hand, you instead gain
+				the Amputation (Hand) Injury.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Hard (−20)</b> Medicae Test performed by someone with the
+				Chirurgeon Talent or similar expertise.
+			</Typography>
+		),
+	},
+	{
+		location: 'arm',
+		locationName: 'Arm',
+		roll: '13-14',
+		description: 'Sliced Artery',
+		effects: (
+			<Typography variant="body1">
+				You suffer a serious wound to a major artery. You are Bleeding (Major),
+				Fatigued from blood loss, your arm is completely useless, and you
+				immediately drop any item held in the hand.
+				<br />
+				<b>Injury:</b> Due to blood loss, you are Fatigued for 1d10 days
+				regardless of how much rest you take.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Hard (−20) Medicae</b> Test using a chirurgeon’s kit to stop the
+				Bleeding.
+			</Typography>
+		),
+	},
+	{
+		location: 'arm',
+		locationName: 'Arm',
+		roll: '15-16',
+		description: 'Severed Hand',
+		effects: (
+			<Typography variant="body1">
+				Your hand is taken clean off. You are Bleeding (Major) and Stunned for 1
+				hour.
+				<br />
+				<b>Injury:</b> You lose a hand. You suffer the Amputation (Hand) Injury.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Very Hard (−30) Medicae</b>
+				Test performed by someone with the Chirurgeon Talent or similar
+				expertise.
+			</Typography>
+		),
+	},
+	{
+		location: 'arm',
+		locationName: 'Arm',
+		roll: '17-19',
+		description: 'Ruined Arm',
+		effects: (
+			<Typography variant="body1">
+				Your arm is mangled and torn apart, with only the barest piece of flesh
+				attaching it to your body. Your arm is completely useless, and you
+				immediately drop any item held in the hand. You are Bleeding (Major) and
+				Stunned for 1 hour. If you suffer any further Damage to the arm, you
+				automatically suffer the Brutal Dismemberment Critical Wound and die.
+				<br />
+				<b>Injury:</b> Your arm is hanging on by a thread and must be amputated.
+				You suffer the Amputation (Arm) Injury.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Very Hard (−30) Medicae</b>
+				Test performed by someone with the Chirurgeon Talent or similar
+				expertise to fully remove the arm.
+			</Typography>
+		),
+	},
+	{
+		location: 'arm',
+		locationName: 'Arm',
+		roll: '20+',
+		description: 'Brutal Dismemberment',
+		effects: (
+			<Typography variant="body1">
+				Your arm is completely destroyed and torn from your body, causing shock
+				and catastrophic blood loss. You are dead.
 			</Typography>
 		),
 		treatment: (

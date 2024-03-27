@@ -30,6 +30,7 @@ export default class Character {
 	wounds: CurrentTotal
 	warpCharges: CurrentTotal
 	corruptions: Corruption[]
+	corruption: CurrentTotal
 	criticalWounds: CharacterCriticalWound[]
 	armourSlots: CharacterArmour[]
 	isFated: boolean
@@ -46,6 +47,7 @@ export default class Character {
 		this.wounds = initCurrentTotal()
 		this.warpCharges = initCurrentTotal()
 		this.corruptions = []
+		this.corruption = initCurrentTotal()
 		this.criticalWounds = []
 		this.armourSlots = initCharacterArmour()
 		this.isFated = false
