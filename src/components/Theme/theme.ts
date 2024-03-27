@@ -91,6 +91,8 @@ const responsiveFontSizes = (theme: Theme): Theme => {
 			h3: {
 				...theme.typography.h3,
 				// fontSize: '3.75rem',
+				fontSize: '1.3rem',
+				lineHeight: '2rem',
 				fontWeight: 600,
 				[theme.breakpoints.down('md')]: {
 					fontSize: '1.3rem',
@@ -101,6 +103,8 @@ const responsiveFontSizes = (theme: Theme): Theme => {
 			h4: {
 				...theme.typography.h4,
 				// fontSize: '3.75rem',
+				fontSize: '1.1rem',
+				lineHeight: '2rem',
 				fontWeight: 500,
 				marginLeft: '12px',
 				[theme.breakpoints.down('md')]: {
@@ -111,6 +115,8 @@ const responsiveFontSizes = (theme: Theme): Theme => {
 			h5: {
 				...theme.typography.h4,
 				// fontSize: '3.75rem',
+				fontSize: '1rem',
+				lineHeight: '2rem',
 				fontWeight: 500,
 				marginLeft: '24px',
 				[theme.breakpoints.down('md')]: {
@@ -120,6 +126,7 @@ const responsiveFontSizes = (theme: Theme): Theme => {
 			},
 			body1: {
 				...theme.typography.body1,
+				lineHeight: '1.1rem',
 				marginTop: '6px',
 				marginRight: '6px',
 				marginBottom: '6px',
@@ -131,6 +138,7 @@ const responsiveFontSizes = (theme: Theme): Theme => {
 			},
 			body2: {
 				...theme.typography.body2,
+				lineHeight: '1.1rem',
 				marginTop: '6px',
 				marginRight: '6px',
 				marginBottom: '6px',
