@@ -9,7 +9,7 @@ import {
 import {
 	CharacterDetails,
 	Corruption,
-	CriticalWound,
+	CharacterCriticalWound,
 	CurrentTotal,
 	CharacterRole,
 	Characteristic,
@@ -30,7 +30,7 @@ export default class Character {
 	wounds: CurrentTotal
 	warpCharges: CurrentTotal
 	corruptions: Corruption[]
-	criticalWounds: CriticalWound[]
+	criticalWounds: CharacterCriticalWound[]
 	armourSlots: CharacterArmour[]
 	isFated: boolean
 

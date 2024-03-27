@@ -1,3 +1,4 @@
+import { Character } from '@data'
 import React, {
 	createContext,
 	useContext,
@@ -5,7 +6,6 @@ import React, {
 	useEffect,
 	useCallback,
 } from 'react'
-import { Character } from 'src/components/objects'
 
 const CharacterContext = createContext<{
 	character: Character

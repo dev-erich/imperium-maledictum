@@ -36,6 +36,8 @@
 			"@theme": ["src/components/Theme"],
 			"@theme/*": ["src/components/Theme/*"],
 			"@utils": ["src/components/utils"],
+			"@data": ["src/components/data"],
+			"@data/*": ["src/components/data/*"]
 		}
 	},
 	"include": ["src/**/*", "types/**/*"],

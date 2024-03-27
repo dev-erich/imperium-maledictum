@@ -12,6 +12,7 @@ import { SectionAccordion, Typography } from '@common'
 import { Section } from 'types/sections'
 import {
 	combatSection,
+	criticalWoundsSection,
 	damageAndWoundsSection,
 	talentsSection,
 } from '@common/Handbook/Sections'
@@ -32,6 +33,7 @@ export default function PlayerHandbookProvider({
 	const [open, setOpen] = useState<boolean>(false)
 	const [searchParams, setSearchParams] = useSearchParams()
 	const [section, setSection] = useState<Section | undefined>(undefined)
+	console.log('🚀 \n section:', section)
 
 	const closeDrawer = () => {
 		setSearchParams({})
@@ -91,6 +93,9 @@ function getSection(searchParam: string): Section | undefined {
 
 		case 'talents':
 			return talentsSection
+
+		case 'critical-wounds':
+			return criticalWoundsSection
 
 		default:
 			return undefined

@@ -18,7 +18,7 @@ import {
 	setSpecialisationAdvances,
 	setSpecialisationName,
 	setSpecialisationReqSkill,
-} from 'src/components/objects'
+} from '@data'
 import { CharacterSpecialisation } from 'types/character'
 import { uid } from '@utils'
 import { useCharacter } from '@hooks'
@@ -30,9 +30,11 @@ export default function Specialisations() {
 		const removedSpec = character.specialisations.filter(
 			(spec) => spec._key !== key
 		)
-		setCharacter({
-			...character,
-			specialisations: removedSpec,
+		setCharacter((prev) => {
+			return {
+				...prev,
+				specialisations: removedSpec,
+			}
 		})
 	}
 
@@ -46,9 +48,11 @@ export default function Specialisations() {
 		const addedSpec = character.specialisations
 		addedSpec.push(newSpec)
 
-		setCharacter({
-			...character,
-			specialisations: addedSpec,
+		setCharacter((prev) => {
+			return {
+				...prev,
+				specialisations: addedSpec,
+			}
 		})
 	}
 
@@ -57,9 +61,11 @@ export default function Specialisations() {
 
 		const updatedSpecs = setSpecialisationName(character, id, value)
 
-		setCharacter({
-			...character,
-			specialisations: updatedSpecs,
+		setCharacter((prev) => {
+			return {
+				...prev,
+				specialisations: updatedSpecs,
+			}
 		})
 	}
 
@@ -72,9 +78,11 @@ export default function Specialisations() {
 			value as string
 		)
 
-		setCharacter({
-			...character,
-			specialisations: updatedSpecs,
+		setCharacter((prev) => {
+			return {
+				...prev,
+				specialisations: updatedSpecs,
+			}
 		})
 	}
 
@@ -86,13 +94,15 @@ export default function Specialisations() {
 		newValue = Math.max(0, Math.min(newValue, 4))
 		const updatedSpecs = setSpecialisationAdvances(character, id, newValue)
 
-		setCharacter({
-			...character,
-			specialisations: updatedSpecs,
+		setCharacter((prev) => {
+			return {
+				...prev,
+				specialisations: updatedSpecs,
+			}
 		})
 	}
 
-	const createNameInputField = (_key: string, value: unknown) => {
+	const createNameInput = (_key: string, value: unknown) => {
 		return (
 			<InputField
 				condensed
@@ -105,7 +115,7 @@ export default function Specialisations() {
 		)
 	}
 
-	const createSkillDropdownSelect = (_key: string, value: unknown) => {
+	const createSkillSelect = (_key: string, value: unknown) => {
 		return (
 			<DropdownSelect
 				size="small"
@@ -118,7 +128,7 @@ export default function Specialisations() {
 		)
 	}
 
-	const createAdvanceInputField = (_key: string, value: unknown) => {
+	const createAdvanceInput = (_key: string, value: unknown) => {
 		return (
 			<InputField
 				condensed
@@ -132,29 +142,28 @@ export default function Specialisations() {
 		)
 	}
 
-	const rows = character.specialisations.map(
-		({ _key, name, skillkey, advances }) => {
-			const refSkill = getSkill(character, skillkey)
-			const refCharacteristic = getCharacteristic(
-				character,
-				refSkill.characteristicKey
-			)
+	const rows = character.specialisations.map((spec) => {
+		const { _key, name, skillkey, advances } = spec
+		const refSkill = getSkill(character, skillkey)
+		const refCharacteristic = getCharacteristic(
+			character,
+			refSkill.characteristicKey
+		)
 
-			const totalPoints =
-				refSkill.advances * 5 +
-				advances * 5 +
-				refCharacteristic.values.advances +
-				refCharacteristic.values.starting
+		const totalPoints =
+			refSkill.advances * 5 +
+			advances * 5 +
+			refCharacteristic.values.advances +
+			refCharacteristic.values.starting
 
-			return {
-				id: _key,
-				specialisation: createNameInputField(_key, name),
-				skill: createSkillDropdownSelect(_key, refSkill.name),
-				advances: createAdvanceInputField(_key, advances),
-				current: totalPoints,
-			}
+		return {
+			id: _key,
+			specialisation: createNameInput(_key, name),
+			skill: createSkillSelect(_key, refSkill.name),
+			advances: createAdvanceInput(_key, advances),
+			current: totalPoints,
 		}
-	)
+	})
 
 	return (
 		<>
@@ -209,7 +218,7 @@ export default function Specialisations() {
 						))}
 					</TableBody>
 				</Table>
-			</TableContainer>{' '}
+			</TableContainer>
 			<Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
 				<IconButton aria-label="delete" onClick={handleAdd} size="large">
 					<AddCircleOutlineIcon fontSize="inherit" />

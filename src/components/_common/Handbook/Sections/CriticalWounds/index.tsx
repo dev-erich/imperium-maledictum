@@ -1,0 +1,1 @@
+export { criticalWoundsSection } from './CriticalWounds'

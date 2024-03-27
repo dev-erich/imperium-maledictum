@@ -3,7 +3,11 @@ import CloseIcon from '@mui/icons-material/Close'
 import { SectionAccordion, Typography } from '@common'
 import { useEffect, useState } from 'react'
 import { Section } from 'types/sections'
-import { combatSection, damageAndWoundsSection } from './'
+import {
+	combatSection,
+	criticalWoundsSection,
+	damageAndWoundsSection,
+} from './'
 
 const paperStyles: SxProps<Theme> = {
 	position: 'absolute',
@@ -35,7 +39,6 @@ interface SectionsProps {
 
 export default function Sections(props: SectionsProps) {
 	const { handleClose, setOpen, open, searchParams } = props
-	// const [searchParams] = useSearchParams()
 	const [section, setSection] = useState<Section | undefined>(undefined)
 
 	useEffect(() => {
@@ -66,7 +69,11 @@ export default function Sections(props: SectionsProps) {
 	)
 }
 
-export type SectionSelection = undefined | 'combat' | 'damage-and-wounds'
+export type SectionSelection =
+	| undefined
+	| 'combat'
+	| 'damage-and-wounds'
+	| 'critical-wounds'
 
 function getSection(searchParam: string): Section | undefined {
 	switch (searchParam) {
@@ -75,6 +82,9 @@ function getSection(searchParam: string): Section | undefined {
 
 		case 'damage-and-wounds':
 			return damageAndWoundsSection
+
+		case 'critical-wounds':
+			return criticalWoundsSection
 
 		default:
 			return undefined

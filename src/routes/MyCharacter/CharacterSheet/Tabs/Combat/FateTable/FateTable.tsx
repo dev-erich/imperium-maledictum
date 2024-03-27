@@ -7,33 +7,37 @@ export default function FateTable() {
 
 	const handleAddClick = useCallback(() => {
 		if (character.fate.current < character.fate.total)
-			setCharacter({
-				...character,
-				fate: {
-					...character.fate,
-					current: character.fate.current + 1,
-				},
+			setCharacter((prev) => {
+				return {
+					...prev,
+					fate: {
+						...prev.fate,
+						current: prev.fate.current + 1,
+					},
+				}
 			})
 	}, [character, setCharacter])
 
 	const handleSubtractClick = useCallback(() => {
 		if (character.fate.current > 0)
-			setCharacter({
-				...character,
-				fate: {
-					...character.fate,
-					current: character.fate.current - 1,
-				},
+			setCharacter((prev) => {
+				return {
+					...prev,
+					fate: {
+						...prev.fate,
+						current: prev.fate.current - 1,
+					},
+				}
 			})
 	}, [character, setCharacter])
 
 	return (
-			<CurrentTotalTable
-				title={'Fate'}
-				leftValue={character.fate.current}
-				rightValue={character.fate.total}
-				handleAddClick={handleAddClick}
-				handleSubtractClick={handleSubtractClick}
-			/>
+		<CurrentTotalTable
+			title={'Fate'}
+			leftValue={character.fate.current}
+			rightValue={character.fate.total}
+			handleAddClick={handleAddClick}
+			handleSubtractClick={handleSubtractClick}
+		/>
 	)
 }

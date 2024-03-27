@@ -9,6 +9,9 @@ const CustomAlert = styled(MUIAlert)(({ severity }) => ({
 	...(severity === 'info' && {
 		background: '#b8dfff',
 	}),
+	// ...(severity === 'success' && {
+	// 	background: '#fff',
+	// }),
 }))
 
 export default function Alert(props: AlertProps) {
