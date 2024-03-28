@@ -41,7 +41,7 @@ export default function CurrentTotalTable(props: CurrentTotalTable) {
 	return (
 		<Card sx={style} {...cardProps}>
 			<Grid container alignItems="center">
-				<Grid item xs={title ? 4 : 6}>
+				<Grid item xs={title ? 3 : 6}>
 					<IconButton
 						aria-label="subtract"
 						size="small"
@@ -52,7 +52,7 @@ export default function CurrentTotalTable(props: CurrentTotalTable) {
 					</IconButton>
 				</Grid>
 				{title && (
-					<Grid item xs={4}>
+					<Grid item xs={6}>
 						<Typography
 							sx={{ width: '100%', margin: '3px 0', textAlign: 'center' }}
 							variant="h4"
@@ -61,7 +61,7 @@ export default function CurrentTotalTable(props: CurrentTotalTable) {
 						</Typography>
 					</Grid>
 				)}
-				<Grid item xs={title ? 4 : 6}>
+				<Grid item xs={title ? 3 : 6}>
 					<IconButton
 						aria-label="add"
 						size="small"
