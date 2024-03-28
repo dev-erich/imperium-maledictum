@@ -22,7 +22,7 @@ const CustomAccordionDetails = styled(MUIAccordionDetails)(() => ({}))
 export default function SectionAccordion(props: AccordianProps) {
 	const { sectionDescription } = props
 
-	// TODO - open base on params
+	// TODO - open based on params
 	const [expanded, setExpanded] = useState<string | false>(false)
 
 	const handleChange =
