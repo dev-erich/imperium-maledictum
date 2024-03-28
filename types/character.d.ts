@@ -99,8 +99,12 @@ export type CorruptionKey = 'mutation' | 'malignance'
 
 export type Corruption = {
 	_type: CorruptionKey
+	roll: {
+		start: number
+		end: number
+	}
 	name: string
-	description: string
+	description: React.ReactNode
 }
 
 export type StartingAdvances = {

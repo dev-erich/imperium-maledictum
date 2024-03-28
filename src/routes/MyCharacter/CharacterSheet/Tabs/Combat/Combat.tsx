@@ -1,7 +1,7 @@
 import { Avatar, Grid } from '@mui/material'
 import { FateTable } from './FateTable'
 import { WoundsTable } from './WoundsTable'
-import { CorruptionTable } from './CorruptionTable'
+import { Corruption } from './Corruption'
 import { CriticalWoundsTable } from './CriticalWoundsTable'
 import { Button, ConfirmCancelModal, Typography } from '@common'
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment'
@@ -83,7 +83,7 @@ export default function Combat() {
 					<ArmorTable />
 				</Grid>
 				<Grid item xs={12}>
-					<CorruptionTable />
+					<Corruption />
 				</Grid>
 				<Grid item xs={12}>
 					<CriticalWoundsTable />

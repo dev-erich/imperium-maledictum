@@ -556,3 +556,4 @@ export const setArmorSlots = (
 
 	return newArmorSlots
 }
+
