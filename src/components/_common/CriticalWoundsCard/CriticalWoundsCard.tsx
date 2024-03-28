@@ -1,8 +1,8 @@
 import { Alert, Typography } from '@common'
 import { CriticalWound } from '@data'
 import { Grid, Paper, SxProps } from '@mui/material'
-import CasinoIcon from '@mui/icons-material/Casino'
 import { Theme } from '@emotion/react'
+import { SwordWound } from '@common/Icons'
 
 const centerItems: SxProps<Theme> = {
 	display: 'flex',
@@ -32,7 +32,9 @@ export default function CriticalWoundCards({
 					<Grid item xs={4} sx={centerItems}>
 						<Alert
 							severity="info"
-							icon={<CasinoIcon color="primary" fontSize="large" />}
+							icon={
+								<SwordWound width={'70px'} height={'70px'} fontSize="large" />
+							}
 						>
 							<Typography
 								variant="body1"

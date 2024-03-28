@@ -610,3 +610,596 @@ export const armCriticalWounds: CriticalWound[] = [
 		),
 	},
 ]
+
+export const legCriticalWounds: CriticalWound[] = [
+	{
+		location: 'leg',
+		locationName: 'Leg',
+		roll: '1',
+		description: 'Twisted Ankle',
+		effects: (
+			<Typography variant="body1">
+				You twist your ankle, causing you to stumble. You fall Prone.
+			</Typography>
+		),
+		treatment: <Typography variant="body1">None required.</Typography>,
+	},
+	{
+		location: 'leg',
+		locationName: 'Leg',
+		roll: '2',
+		description: 'Dead Leg',
+		effects: (
+			<Typography variant="body1">
+				You are struck by a rattling blow in your leg, causing it to temporarily
+				go numb. Your Speed is reduced one step for 1 minute.
+			</Typography>
+		),
+		treatment: <Typography variant="body1">None required.</Typography>,
+	},
+	{
+		location: 'leg',
+		locationName: 'Leg',
+		roll: '3',
+		description: 'Laceration',
+		effects: (
+			<Typography variant="body1">
+				You suffer a laceration to the leg. You are Bleeding.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Routine (+20) Medicae</b> Test to stop the Bleeding; application of
+				bandages; or the laceration will close naturally after 1 hour.
+			</Typography>
+		),
+	},
+	{
+		location: 'leg',
+		locationName: 'Leg',
+		roll: '4',
+		description: 'Sliced Calf',
+		effects: (
+			<Typography variant="body1">
+				Your calf is sliced open, sending jolts of pain through your leg. You
+				are Bleeding and fall Prone.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Challenging (+0) Medicae</b> Test to stop the Bleeding; apply
+				bandages; or wait 1 hour.
+			</Typography>
+		),
+	},
+	{
+		location: 'leg',
+		locationName: 'Leg',
+		roll: '5',
+		description: 'Dislocated Knee',
+		effects: (
+			<Typography variant="body1">
+				The strike dislocates your knee. You have Disadvantage on Tests that
+				rely on mobility, and your Move is reduced one step. At the start of
+				each turn while you have a dislocated knee you must make a{' '}
+				<b>Challenging (+0) Fortitude (Pain)</b> Test. On a failure, you are
+				Stunned until the start of your next turn.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Challenging (+0) Medicae</b> Test to pop the knee back into place.
+			</Typography>
+		),
+	},
+	{
+		location: 'leg',
+		locationName: 'Leg',
+		roll: '6',
+		description: 'Severed Toe',
+		effects: (
+			<Typography variant="body1">
+				The attack tears off one of your toes. You are Bleeding (Major).
+				<br />
+				<b>Injury:</b> One of your toes is torn off. You suffer the Amputation
+				(Toe) Injury.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Challenging (+0) Medicae</b> Test performed by someone with the
+				Chirurgeon Talent.
+			</Typography>
+		),
+	},
+	{
+		location: 'leg',
+		locationName: 'Leg',
+		roll: '7',
+		description: 'Clean Break',
+		effects: (
+			<Typography variant="body1">
+				The attack fractures a bone in your leg. Your leg is completely useless,
+				you immediately fall Prone, you have Disadvantage on Tests that rely on
+				mobility, and your Move is reduced one step. Additionally, you must make
+				a <b>Challenging (+0) Fortitude (Pain)</b> Test or be Stunned for one
+				minute.
+				<br />
+				<b>Injury:</b> Your leg is broken. You suffer the Broken Bone (Minor)
+				Injury to your leg.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Difficult (−10) Medicae</b> Test to treat shock. This Test does not
+				count as treating the broken bone.
+			</Typography>
+		),
+	},
+	{
+		location: 'leg',
+		locationName: 'Leg',
+		roll: '8',
+		description: 'Deep Cut',
+		effects: (
+			<Typography variant="body1">
+				You suffer a deep gash on your leg, reducing your effectiveness. You are
+				Bleeding (Major) and have Disadvantage on all Tests using the leg, such
+				as jumping or climbing.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Difficult (−10) Medicae</b> Test using a chirurgeon’s kit to stop
+				the Bleeding.
+			</Typography>
+		),
+	},
+	{
+		location: 'leg',
+		locationName: 'Leg',
+		roll: '9',
+		description: 'Mangled Foot',
+		effects: (
+			<Typography variant="body1">
+				The blow devastates your foot, breaking bones and potentially severing
+				toes. You are Bleeding (Major), immediately fall Prone, and your Move is
+				reduced one step.
+				<br />
+				<b>Injury:</b> Your foot is crushed. You suffer the Broken Bone (Major)
+				Injury to your foot. Additionally, you lose 1d10 − 5 toes. If your
+				result is 0, you manage to keep all of your digits. Otherwise, you
+				suffer the Amputation (Toes) Injury.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Difficult (−10) Medicae</b> Test performed by someone with the
+				Chirurgeon Talent.
+			</Typography>
+		),
+	},
+	{
+		location: 'leg',
+		locationName: 'Leg',
+		roll: '10',
+		description: 'Shattered Knee',
+		effects: (
+			<Typography variant="body1">
+				The attack shatters the bones in your knee. Your leg is completely
+				useless, you immediately fall Prone, your Move is reduced one step, you
+				have Disadvantage on Tests that rely on mobility. You must make a{' '}
+				<b>Difficult (−10) Fortitude (Pain)</b> Test or be Stunned for one
+				minute.
+				<br />
+				<b>Injury:</b> Your leg is broken. You suffer the Broken Bone (Major)
+				Injury to your leg.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Hard (−20) Medicae</b> Test to treat shock. This Test does not
+				count as treating the broken bone.
+			</Typography>
+		),
+	},
+	{
+		location: 'leg',
+		locationName: 'Leg',
+		roll: '11-12',
+		description: 'Cleft Foot',
+		effects: (
+			<Typography variant="body1">
+				Your foot is splayed apart, causing a major injury and severing toes.
+				You are Bleeding (Major) and immediately fall Prone. Additionally, you
+				must make a <b>Difficult (−10) Fortitude (Pain)</b> Test or be Stunned
+				for one minute.
+				<br />
+				<b>Injury:</b> You lose a toe. You suffer the Amputation (Toe) Injury.
+				For each minute the Critical Wound is untreated, you lose an additional
+				toe. If you lose all toes on the foot, you instead gain the Amputation
+				(Foot) Injury.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Hard (−20) Medicae</b> Test performed by someone with the
+				Chirurgeon Talent or similar expertise.
+			</Typography>
+		),
+	},
+	{
+		location: 'leg',
+		locationName: 'Leg',
+		roll: '13-14',
+		description: 'Sliced Artery',
+		effects: (
+			<Typography variant="body1">
+				You suffer a serious wound to a major artery. You are Bleeding (Major),
+				Fatigued from blood loss, have Disadvantage on Tests that rely on
+				mobility, your Move is reduced one step, and you fall Prone.
+				<br />
+				<b>Injury:</b> Due to blood loss, you are Fatigued for 1d10 days
+				regardless of how much rest you take.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Hard (−20) Medicae</b> Test using a chirurgeon’s kit to stop the
+				Bleeding.
+			</Typography>
+		),
+	},
+	{
+		location: 'leg',
+		locationName: 'Leg',
+		roll: '15-16',
+		description: 'Severed Foot',
+		effects: (
+			<Typography variant="body1">
+				Your foot is taken clean off. You are Bleeding (Major) and Prone.
+				Additionally, you are Stunned for 1 hour.
+				<b>Injury:</b> You lose a foot. You suffer the Amputation (Foot) Injury.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Very Hard (−30) Medicae</b> Test performed by someone with the
+				Chirurgeon Talent.
+			</Typography>
+		),
+	},
+	{
+		location: 'leg',
+		locationName: 'Leg',
+		roll: '17-19',
+		description: 'Ruined Leg',
+		effects: (
+			<Typography variant="body1">
+				Your leg is mangled and torn apart, with only the barest piece of flesh
+				attaching it to your body. Your leg is completely useless, you fall
+				Prone, your Move is reduced one step, and have Disadvantage on Tests
+				that rely on mobility. You are Bleeding (Major) and Stunned for 1 hour.
+				If you suffer any further Damage to the leg, you automatically suffer
+				the Brutal Dismemberment Critical Wound and die.
+				<br />
+				<b>Injury:</b> Your leg is hanging on by a thread and must be amputated.
+				You suffer the Amputation (Leg) Injury.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Very Hard (−30) Medicae</b> Test performed by someone with the
+				Chirurgeon Talent or similar expertise to fully remove the leg.
+			</Typography>
+		),
+	},
+	{
+		location: 'leg',
+		locationName: 'Leg',
+		roll: '20+',
+		description: 'Brutal Dismemberment',
+		effects: (
+			<Typography variant="body1">
+				Your leg is completely destroyed and torn from your body, causing shock
+				and catastrophic blood loss. You are dead.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				In the immutable shadow of the beyond, there is no return from death's
+				embrace.
+			</Typography>
+		),
+	},
+]
+
+export const bodyCriticalWounds: CriticalWound[] = [
+	{
+		location: 'body',
+		locationName: 'Body',
+		roll: '1',
+		description: 'Winded',
+		effects: (
+			<Typography variant="body1">
+				The blow knocks the wind out of you. You are Stunned until the end of
+				your next turn.
+			</Typography>
+		),
+		treatment: <Typography variant="body1">None required.</Typography>,
+	},
+	{
+		location: 'body',
+		locationName: 'Body',
+		roll: '2',
+		description: 'Low Blow',
+		effects: (
+			<Typography variant="body1">
+				You are struck in a sensitive area. You must make a{' '}
+				<b>Challenging (+0) Fortitude (Pain)</b> Test or fall Prone.
+			</Typography>
+		),
+		treatment: <Typography variant="body1">None required.</Typography>,
+	},
+	{
+		location: 'body',
+		locationName: 'Body',
+		roll: '3',
+		description: 'Laceration',
+		effects: (
+			<Typography variant="body1">
+				You suffer a laceration to the body. You are Bleeding.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				An <b>Routine (+20) Medicae</b> Test to stop the bleeding; application
+				of bandages; or the laceration will close naturally after 1 hour.
+			</Typography>
+		),
+	},
+	{
+		location: 'body',
+		locationName: 'Body',
+		roll: '4',
+		description: 'Gut Shot',
+		effects: (
+			<Typography variant="body1">
+				You are hit hard in the stomach. You are Bleeding and knocked Prone.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Challenging (+0) Medicae</b> Test to stop the bleeding; application
+				of bandages; or the laceration will close naturally after 1 hour.
+			</Typography>
+		),
+	},
+	{
+		location: 'body',
+		locationName: 'Body',
+		roll: '5',
+		description: 'Cracked Rib',
+		effects: (
+			<Typography variant="body1">
+				The attack cracks one of your ribs. You have Disadvantage on Strength
+				and Agility Tests, and your Move is reduced one step.
+				<br />
+				<b>Injury:</b> You have a cracked rib. You suffer the Broken Bone
+				(Minor) Injury to your torso.
+			</Typography>
+		),
+		treatment: <Typography variant="body1">None required.</Typography>,
+	},
+	{
+		location: 'body',
+		locationName: 'Body',
+		roll: '6',
+		description: 'Hammering Blow',
+		effects: (
+			<Typography variant="body1">
+				You are thrown back by the force of the blow. You are Stunned for 1
+				minute and are Bleeding.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Challenging (+0) Medicae</b> Test performed by someone with the
+				Chirurgeon Talent.
+			</Typography>
+		),
+	},
+	{
+		location: 'body',
+		locationName: 'Body',
+		roll: '7',
+		description: 'Broken Collarbone',
+		effects: (
+			<Typography variant="body1">
+				You suffer a crunching blow to your collarbone — determine randomly if
+				this is on your left or right. You drop any item held in the hand on
+				that side and have Disadvantage on all Tests using the arm.
+				Additionally, you must make a <b>Challenging (+0) Fortitude</b> (Pain)
+				Test or be Stunned for one minute.
+				<b>Injury:</b> Your collarbone is broken. You suffer the Broken Bone
+				(Minor) Injury to your collarbone, which is treated as a broken arm.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Difficult (−10) Medicae</b> Test to treat shock. This Test does not
+				count as treating the broken bone.
+			</Typography>
+		),
+	},
+	{
+		location: 'body',
+		locationName: 'Body',
+		roll: '8',
+		description: 'Deep Cut',
+		effects: (
+			<Typography variant="body1">
+				You suffer a deep cut on your lower abdomen, which makes it difficult to
+				move. You are Bleeding (Major), and your Speed is reduced one step.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Difficult (−10) Medicae</b> Test using a chirurgeon’s kit to stop
+				the bleeding.
+			</Typography>
+		),
+	},
+	{
+		location: 'body',
+		locationName: 'Body',
+		roll: '9',
+		description: 'Fractured Hip',
+		effects: (
+			<Typography variant="body1">
+				You are hit in the hip, causing the bone to fracture. You are knocked
+				Prone, have Disadvantage on Tests that rely on mobility, and your Move
+				is reduced one step. Additionally, you must make a{' '}
+				<b>Challenging (+0) Fortitude</b> (Pain) Test or be Stunned for one
+				minute.
+				<b>Injury:</b> Your hip is fractured. You suffer the Broken Bone (Minor)
+				Injury to your hip, which is treated as a broken leg.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Difficult (−10) Medicae</b> Test to treat shock. This Test does not
+				count as treating the broken bone.
+			</Typography>
+		),
+	},
+	{
+		location: 'body',
+		locationName: 'Body',
+		roll: '10',
+		description: 'Shattered Ribs',
+		effects: (
+			<Typography variant="body1">
+				The attack shatters multiple ribs, leaving shards of bone peppered
+				throughout your flesh. You have Disadvantage on any physical Test, and
+				your Move is reduced two steps to a minimum of Slow.
+				<br />
+				<b>Injury:</b> You suffer a Broken Bone (Major) Injury to your torso
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Difficult (−10) Medicae</b> Test to treat shock. This Test does not
+				count as treating the broken bone.
+			</Typography>
+		),
+	},
+	{
+		location: 'body',
+		locationName: 'Body',
+		roll: '11',
+		description: 'Punctured Lung',
+		effects: (
+			<Typography variant="body1">
+				The attack punctures your lung, perhaps embedding shrapnel, a bullet, or
+				a fragment of your own bone. You gain a Fatigued Condition and a
+				Bleeding (Minor) Condition.
+				<br />
+				<b>Injury:</b> Your lung is badly damaged and partially filled with
+				fluids. A <b>Difficult (−10) Medicae</b> Test performed by someone with
+				the Chirurgeon Talent is required to repair the damaged tissue and
+				remove the Fatigued Condition.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Difficult (−10) Medicae</b> Test to patch up the wound and remove
+				the Bleeding Condition.
+			</Typography>
+		),
+	},
+	{
+		location: 'body',
+		locationName: 'Body',
+		roll: '12-13',
+		description: 'Sliced Artery',
+		effects: (
+			<Typography variant="body1">
+				You suffer a serious wound to a major artery. You are Bleeding (Major),
+				Fatigued from blood loss, have Disadvantage on Tests that rely on
+				mobility, your Move is reduced one step, and you fall Prone.
+				<br />
+				<b>Injury:</b> Due to blood loss, you are Fatigued for 1d10 days
+				regardless of how much rest you take.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Hard (−20) Medicae</b> Test using a chirurgeon’s kit to stop the
+				bleeding.
+			</Typography>
+		),
+	},
+	{
+		location: 'body',
+		locationName: 'Body',
+		roll: '14-15',
+		description: 'Flayed Flesh',
+		effects: (
+			<Typography variant="body1">
+				A chunk of the flesh of your torso is blasted away, leaving an ugly,
+				open wound that exposes the bones and organs beneath. You are Bleeding
+				(Major) and Prone. Additionally, you are Stunned for 1 hour.
+				<br />
+				<b>Injury:</b> A <b>Difficult (−10) Medicae</b> Test performed by
+				someone with the Chirurgeon Talent is required to repair the damaged
+				tissue.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Very Hard (−30) Medicae</b> Test performed by someone with the
+				Chirurgeon Talent or similar expertise.
+			</Typography>
+		),
+	},
+	{
+		location: 'body',
+		locationName: 'Body',
+		roll: '16-17',
+		description: 'Injured Spine',
+		effects: (
+			<Typography variant="body1">
+				You suffer a substantial injury to your spine, making it difficult to
+				stand and leaves you in terrible pain. You are Bleeding (Major) and
+				Prone.
+				<b>Injury:</b> Your spine is cracked or broken. You suffer the Broken
+				Bone (Major) Injury to your torso.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				A <b>Very Hard (−30) Medicae</b> Test performed by someone with the
+				Chirurgeon Talent or similar expertise.
+			</Typography>
+		),
+	},
+	{
+		location: 'body',
+		locationName: 'Body',
+		roll: '18+',
+		description: 'Torn Apart',
+		effects: (
+			<Typography variant="body1">
+				You are split in two or otherwise torn apart. Creatures within Short
+				Range are showered in blood and gore. You are dead.
+			</Typography>
+		),
+		treatment: (
+			<Typography variant="body1">
+				In the immutable shadow of the beyond, there is no return from death's
+				embrace.
+			</Typography>
+		),
+	},
+]

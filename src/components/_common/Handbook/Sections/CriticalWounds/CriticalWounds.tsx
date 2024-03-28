@@ -1,5 +1,10 @@
 import { CriticalWoundCards } from '@common'
-import { armCriticalWounds, headCriticalWounds } from '@data'
+import {
+	armCriticalWounds,
+	bodyCriticalWounds,
+	headCriticalWounds,
+	legCriticalWounds,
+} from '@data'
 import { Section } from 'types/sections'
 
 export const criticalWoundsSection: Section = {
@@ -15,11 +20,11 @@ export const criticalWoundsSection: Section = {
 		},
 		{
 			summary: 'Leg',
-			details: <>Under construction</>,
+			details: <CriticalWoundCards criticalWounds={legCriticalWounds} />,
 		},
 		{
 			summary: 'Body',
-			details: <>Under construction</>,
+			details: <CriticalWoundCards criticalWounds={bodyCriticalWounds} />,
 		},
 	],
 }
