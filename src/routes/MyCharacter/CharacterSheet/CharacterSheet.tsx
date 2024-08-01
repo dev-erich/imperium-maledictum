@@ -1,7 +1,12 @@
 import { useCallback, useState } from 'react'
-import { Box, Tab, Tabs } from '@mui/material'
+import { Box, SxProps, Tab, Tabs } from '@mui/material'
 import { PageWrapper } from '@layout'
 import { CharacterSheetTabs } from './Tabs'
+
+const tabStyles: SxProps = {
+	background: 'rgba(0, 0, 0, 0.1)',
+	overflowY: 'auto',
+}
 
 export default function CharacterSheet() {
 	const [tab, setTab] = useState(0)
@@ -23,7 +28,7 @@ export default function CharacterSheet() {
 				<Tabs
 					value={tab}
 					onChange={handleTabChange}
-					sx={{ background: 'rgba(0, 0, 0, 0.1)' }}
+					sx={tabStyles}
 					variant="scrollable"
 					scrollButtons="auto"
 					allowScrollButtonsMobile

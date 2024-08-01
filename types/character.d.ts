@@ -1,11 +1,11 @@
 export type CharacterRole =
-	| undefined
 	| 'Interlocutor'
 	| 'Mystic'
 	| 'Penumbra'
 	| 'Savant'
 	| 'Warrior'
 	| 'Zealot'
+	| undefined
 
 export type CharacteristicKey =
 	| 'weaponSkill'
