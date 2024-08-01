@@ -1,54 +1,15 @@
 import { CurrentTotalTable, Typography } from '@common'
 import { useCharacter } from '@hooks'
 import { Box, Card, Grid, IconButton } from '@mui/material'
-import { useCallback } from 'react'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
-import { uid } from '@utils'
+// import { uid } from '@utils'
 import { CorruptionTable } from './CorruptionTable'
+import { useUpdateCharacter } from '@hooks/CharacterProvider'
 
 export default function Corruption() {
-	const { character, setCharacter } = useCharacter()
-
-	const handleAddCorruptionClick = useCallback(() => {
-		setCharacter((prev) => {
-			return {
-				...prev,
-				corruption: {
-					...prev.corruption,
-					current: prev.corruption.current + 1,
-				},
-			}
-		})
-	}, [setCharacter])
-
-	const handleSubtractCorruptionClick = useCallback(() => {
-		if (character.corruption.current > 0)
-			setCharacter((prev) => {
-				return {
-					...prev,
-					corruption: {
-						...prev.corruption,
-						current: prev.corruption.current - 1,
-					},
-				}
-			})
-	}, [character, setCharacter])
-
-	const handleAdd = () => {
-		const newCriticalWounds = character.criticalWounds
-		newCriticalWounds.push({
-			_id: uid(),
-			location: '',
-			description: '',
-		})
-
-		setCharacter((prev) => {
-			return {
-				...prev,
-				criticalWounds: newCriticalWounds,
-			}
-		})
-	}
+	const { character } = useCharacter()
+	const { addCorruptionCount, removeCorruptionCount, addCorruption } =
+		useUpdateCharacter()
 
 	return (
 		<>
@@ -67,11 +28,11 @@ export default function Corruption() {
 					</Grid>
 					<Grid item xs={7}>
 						<CurrentTotalTable
-							leftValue={character.corruption.current}
-							rightValue={character.corruption.total}
+							leftValue={character.corruptionCount.current}
+							rightValue={character.corruptionCount.total}
 							rightHeader="Threshold"
-							handleAddClick={handleAddCorruptionClick}
-							handleSubtractClick={handleSubtractCorruptionClick}
+							handleAddClick={addCorruptionCount}
+							handleSubtractClick={removeCorruptionCount}
 							cardProps={{
 								sx: { background: 'white', boxShadow: 'none' },
 							}}
@@ -83,7 +44,11 @@ export default function Corruption() {
 				</Grid>
 			</Card>
 			<Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-				<IconButton aria-label="delete" onClick={handleAdd} size="large">
+				<IconButton
+					aria-label="delete"
+					onClick={() => addCorruption()}
+					size="large"
+				>
 					<AddCircleOutlineIcon fontSize="inherit" />
 				</IconButton>
 			</Box>

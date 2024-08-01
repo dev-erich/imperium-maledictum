@@ -7,7 +7,7 @@ import {
 	SelectChangeEvent,
 } from '@mui/material'
 import { CharacterRole } from 'types/character'
-import { useCharacter } from '@hooks'
+import { useCharacter, useUpdateCharacter } from '@hooks'
 import { useCallback } from 'react'
 import _ from 'lodash'
 
@@ -22,6 +22,7 @@ export const RolesObj: CharacterRole[] = [
 
 export default function Details() {
 	const { character, setCharacter } = useCharacter()
+	const { setIsFated } = useUpdateCharacter()
 
 	const handleInputChange = useCallback(
 		(event: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,24 +51,7 @@ export default function Details() {
 		_event: React.SyntheticEvent<Element, Event>,
 		checked: boolean
 	) => {
-		if (checked)
-			setCharacter({
-				...character,
-				fate: {
-					current: character.fate.current,
-					total: 4,
-				},
-				isFated: true,
-			})
-		else
-			setCharacter({
-				...character,
-				fate: {
-					current: character.fate.current,
-					total: 3,
-				},
-				isFated: false,
-			})
+		setIsFated(checked)
 	}
 
 	return (

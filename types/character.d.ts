@@ -17,6 +17,7 @@ export type CharacteristicKey =
 	| 'perception'
 	| 'willpower'
 	| 'fellowship'
+	| undefined
 
 export type Characteristic = {
 	_key: CharacteristicKey
@@ -98,8 +99,9 @@ export type CharacterArmour = {
 export type CorruptionKey = 'mutation' | 'malignance'
 
 export type Corruption = {
+	_id: string
 	_type: CorruptionKey
-	roll: {
+	roll?: {
 		start: number
 		end: number
 	}

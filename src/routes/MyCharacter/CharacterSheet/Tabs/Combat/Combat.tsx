@@ -5,29 +5,19 @@ import { Corruption } from './Corruption'
 import { CriticalWoundsTable } from './CriticalWoundsTable'
 import { Button, ConfirmCancelModal, Typography } from '@common'
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment'
-import { useCharacter } from '@hooks'
+import { useCharacter, useUpdateCharacter } from '@hooks'
 import { useState } from 'react'
 import { Initiative } from './Initiative'
 import { ArmorTable } from './ArmorTable'
 import { getCharacterAvatar } from '@data'
 
 export default function Combat() {
-	const { character, setCharacter } = useCharacter()
+	const { character } = useCharacter()
+	const { burnFate } = useUpdateCharacter()
 	const [openFateModal, setOpenFateModal] = useState(false)
 
 	const handleBurnFate = () => {
-		setCharacter((prev) => {
-			return {
-				...prev,
-				fate: {
-					current:
-						prev.fate.current >= prev.fate.total - 1
-							? (prev.fate.current -= 1)
-							: prev.fate.current,
-					total: (prev.fate.total -= 1),
-				},
-			}
-		})
+		burnFate()
 		setOpenFateModal(false)
 	}
 
