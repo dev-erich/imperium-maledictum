@@ -71,6 +71,7 @@ export default function CharacterProvider({
 
 export const useCharacter = () => useContext(CharacterContext)
 
+//TODO - Rethink how these functions are called, or leave them the same? Who the fuck knows...
 export const useUpdateCharacter = () => {
 	const { character, setCharacter } = useCharacter()
 
@@ -195,7 +196,6 @@ export const useUpdateCharacter = () => {
 			return {
 				...prev,
 				corruptions: newCorruptions,
-				// corruptions: newCorruptions,
 			}
 		})
 	}

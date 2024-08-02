@@ -35,6 +35,12 @@ export default class Character {
 	armourSlots: CharacterArmour[]
 	isFated: boolean
 
+	//? Possible alternatives?
+	// let fieldName: keyof typeof object;
+	// for ( fieldName in data)
+	// 	{
+	// 			this[fieldName] = data[fieldName] ?? getDefaultValueForFieldThatHasThisName(fieldName)
+
 	constructor(data?: Partial<Character>) {
 		this.name = data?.name ?? ''
 		this.role = data?.role ?? undefined
