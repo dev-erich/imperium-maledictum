@@ -24,7 +24,7 @@ export default function Corruption() {
 							justifyContent: 'center',
 						}}
 					>
-						<Typography variant="h4">Corruption</Typography>
+						<Typography variant="h6">Corruption</Typography>
 					</Grid>
 					<Grid item xs={7}>
 						<CurrentTotalTable

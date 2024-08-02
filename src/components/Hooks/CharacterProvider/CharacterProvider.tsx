@@ -169,19 +169,25 @@ export const useUpdateCharacter = () => {
 		})
 	}
 
-	const updateCorruption = (
-		id: string,
-		eventName: string,
-		value: CorruptionKey
-	) => {
+	const getMutation = (id: string) => {
+		const corruption = character.corruptions.find(
+			(corruption) => corruption._id === id
+		)
+		return corruption
+	}
+
+	const updateCorruption = (id: string, fieldName: string, value: string) => {
 		setCharacter((prev) => {
 			const newCorruptions = prev.corruptions.map((corruption) => {
 				if (corruption._id === id) {
 					return {
 						...corruption,
-						_type: eventName === 'type' ? value : corruption._type,
+						_type:
+							fieldName === 'type'
+								? (value as CorruptionKey)
+								: corruption._type,
 						description:
-							eventName === 'description' ? value : corruption.description,
+							fieldName === 'description' ? value : corruption.description,
 					}
 				}
 				return corruption
@@ -216,5 +222,6 @@ export const useUpdateCharacter = () => {
 		addCorruption,
 		updateCorruption,
 		removeCorruption,
+		getMutation,
 	}
 }

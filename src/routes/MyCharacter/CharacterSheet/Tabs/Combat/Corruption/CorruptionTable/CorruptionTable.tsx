@@ -1,8 +1,8 @@
 import { InputField, Span } from '@common'
-import { useCharacter, useUpdateCharacter } from '@hooks'
+import { IconButton } from '@common/IconButton'
+import { useCharacter, usePlayerHandbook, useUpdateCharacter } from '@hooks'
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline'
 import {
-	IconButton,
 	Paper,
 	Table,
 	TableBody,
@@ -11,46 +11,33 @@ import {
 	TableHead,
 	TableRow,
 } from '@mui/material'
+import { GiBrain, GiSuckeredTentacle } from 'react-icons/gi'
+import { CorruptionKey } from 'types/character'
+import { IoMdInformationCircle } from 'react-icons/io'
 
 export default function CorruptionTable() {
 	const { character } = useCharacter()
-	const { updateCorruption, removeCorruption } = useUpdateCharacter()
-
-	// const handleDelete = (id: string) => {
-	// 	// setCharacter((prev) => {
-	// 	// 	const removedCritWound = prev.criticalWounds.filter(
-	// 	// 		(critWound) => critWound._id !== id
-	// 	// 	)
-	// 	// 	return {
-	// 	// 		...prev,
-	// 	// 		criticalWounds: removedCritWound,
-	// 	// 	}
-	// 	// })
-	// }
+	const { updateCorruption, removeCorruption, getMutation } =
+		useUpdateCharacter()
+	const { openSection } = usePlayerHandbook()
 
 	const handleInputFieldChange = (
 		event: React.ChangeEvent<HTMLInputElement>
 	) => {
 		const { id, name, value } = event.target
+		updateCorruption(id, name, value)
+	}
 
-		updateCorruption(id, name, 'malignance')
-
-		// setCharacter((prev) => {
-		// 	const newCriticalWounds = prev.criticalWounds.map((critWound) => {
-		// 		if (critWound._id === id) {
-		// 			return {
-		// 				...critWound,
-		// 				description: name === 'description' ? value : critWound.description,
-		// 				location: name === 'location' ? value : critWound.location,
-		// 			}
-		// 		}
-		// 		return critWound
-		// 	})
-		// 	return {
-		// 		...prev,
-		// 		criticalWounds: newCriticalWounds,
-		// 	}
-		// })
+	const handleToggleButtonChange = (
+		event: React.MouseEvent<HTMLButtonElement>
+	) => {
+		const { id, name } = event.currentTarget
+		const mutation = getMutation(id)
+		if (mutation?._type === 'mutation') {
+			updateCorruption(id, name, 'malignance' as CorruptionKey)
+		} else {
+			updateCorruption(id, name, 'mutation' as CorruptionKey)
+		}
 	}
 
 	const createInputField = (
@@ -71,12 +58,19 @@ export default function CorruptionTable() {
 		)
 	}
 
+	const toggleButton = (id: string, type: CorruptionKey) => {
+		return (
+			<IconButton onClick={handleToggleButtonChange} id={id} name="type">
+				{type === 'mutation' ? <GiSuckeredTentacle /> : <GiBrain />}
+			</IconButton>
+		)
+	}
+
 	const rows = character.corruptions.map((corruption) => {
 		const { _id, _type, description } = corruption
-		// TODO - Create a dropdown field or something to change the corruption type
 		return {
 			id: _id,
-			type: _type.toUpperCase().substring(0, 5),
+			type: toggleButton(_id, _type),
 			description: createInputField(_id, description, 'description'),
 		}
 	})
@@ -92,16 +86,11 @@ export default function CorruptionTable() {
 					<TableHead>
 						<TableRow>
 							<TableCell align="center" colSpan={3}>
-								Mutations & Malignancies
+								<Span>Mutations & Malignancies</Span>
+								<IconButton onClick={() => openSection('corruption')}>
+									<IoMdInformationCircle />
+								</IconButton>
 							</TableCell>
-							{/* <TableCell align="center" colSpan={1}>
-								<Button
-									variant="contained"
-									onClick={() => openSection('critical-wounds')}
-								>
-									Details
-								</Button>
-							</TableCell> */}
 						</TableRow>
 						<TableRow>
 							<TableCell align="center">Type</TableCell>
@@ -124,7 +113,7 @@ export default function CorruptionTable() {
 										{corruption.type}
 									</TableCell>
 									<TableCell align="center" component="th" scope="row">
-										<Span>{corruption.description}</Span>
+										{corruption.description}
 									</TableCell>
 									<TableCell align="center" component="th" scope="row">
 										<IconButton
