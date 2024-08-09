@@ -1,12 +1,10 @@
-import { InputField } from '@common'
+import { InputField, Span, IconButton } from '@common'
 import { useCharacter, usePlayerHandbook } from '@hooks'
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import {
 	Box,
-	Button,
 	Card,
-	IconButton,
 	Paper,
 	Table,
 	TableBody,
@@ -14,8 +12,10 @@ import {
 	TableContainer,
 	TableHead,
 	TableRow,
+	IconButton as IconButtonMUI,
 } from '@mui/material'
 import { uid } from '@utils'
+import { IoMdInformationCircle } from 'react-icons/io'
 
 export default function CriticalWoundsTable() {
 	const { character, setCharacter } = useCharacter()
@@ -102,7 +102,7 @@ export default function CriticalWoundsTable() {
 
 	return (
 		<>
-			<Card sx={{ background: 'white' }}>
+			{/* <Card sx={{ background: 'white' }}> */}
 				<TableContainer
 					variant="outlined"
 					component={Paper}
@@ -111,16 +111,11 @@ export default function CriticalWoundsTable() {
 					<Table size="small">
 						<TableHead>
 							<TableRow>
-								<TableCell align="center" colSpan={2}>
-									Critical Wounds
-								</TableCell>
-								<TableCell align="center" colSpan={1}>
-									<Button
-										variant="contained"
-										onClick={() => openSection('critical-wounds')}
-									>
-										Details
-									</Button>
+								<TableCell align="center" colSpan={3}>
+									<Span>Critical Wounds</Span>
+									<IconButton onClick={() => openSection('critical-wounds')}>
+										<IoMdInformationCircle />
+									</IconButton>
 								</TableCell>
 							</TableRow>
 							<TableRow>
@@ -160,11 +155,16 @@ export default function CriticalWoundsTable() {
 						</TableBody>
 					</Table>
 				</TableContainer>
-			</Card>
+			{/* </Card> */}
 			<Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-				<IconButton aria-label="delete" onClick={handleAdd} size="large">
+				<IconButtonMUI
+					aria-label="delete"
+					onClick={handleAdd}
+					size="large"
+					sx={{ color: 'black' }}
+				>
 					<AddCircleOutlineIcon fontSize="inherit" />
-				</IconButton>
+				</IconButtonMUI>
 			</Box>
 		</>
 	)

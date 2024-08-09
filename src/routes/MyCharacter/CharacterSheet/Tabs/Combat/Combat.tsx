@@ -1,14 +1,14 @@
 import { Avatar, Grid } from '@mui/material'
 import { FateTable } from './FateTable'
-import { WoundsTable } from './WoundsTable'
 import { Corruption } from './Corruption'
-import { CriticalWoundsTable } from './CriticalWoundsTable'
+// import { CriticalWoundsTable } from './CriticalWoundsTable'
 import { Button, ConfirmCancelModal, Typography } from '@common'
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment'
 import { useCharacter, useUpdateCharacter } from '@hooks'
 import { useState } from 'react'
 import { Initiative } from './Initiative'
 import { ArmorTable } from './ArmorTable'
+import { Wounds } from './Wounds'
 import { getCharacterAvatar } from '@data'
 
 export default function Combat() {
@@ -37,14 +37,14 @@ export default function Combat() {
 					/>
 				</Grid>
 				<Grid item container xs={6} direction="column" spacing={2}>
-					<Grid item>
+					{/* <Grid item>
 						<Typography variant="h3" sx={{ margin: 0, textAlign: 'center' }}>
 							Role
 						</Typography>
 						<Typography variant="h4" sx={{ margin: 0, textAlign: 'center' }}>
 							{character.role}
 						</Typography>
-					</Grid>
+					</Grid> */}
 					<Grid item>
 						<Initiative />
 					</Grid>
@@ -62,22 +62,22 @@ export default function Combat() {
 							Fate
 						</Button>
 					</Grid>
-				</Grid>
-				<Grid item xs={6}>
-					<WoundsTable />
-				</Grid>
-				<Grid item xs={6}>
-					<FateTable />
+					<Grid item>
+						<FateTable />
+					</Grid>
 				</Grid>
 				<Grid item xs={12}>
 					<ArmorTable />
 				</Grid>
 				<Grid item xs={12}>
-					<Corruption />
+					<Wounds />
 				</Grid>
 				<Grid item xs={12}>
-					<CriticalWoundsTable />
+					<Corruption />
 				</Grid>
+				{/* <Grid item xs={6}>
+					<WoundsTable />
+				</Grid> */}
 			</Grid>
 			<ConfirmCancelModal
 				title="Fate’s Final Forge"

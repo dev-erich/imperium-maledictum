@@ -1,5 +1,4 @@
-import { InputField, Span } from '@common'
-import { IconButton } from '@common/IconButton'
+import { InputField, Span, IconButton } from '@common'
 import { useCharacter, usePlayerHandbook, useUpdateCharacter } from '@hooks'
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline'
 import {

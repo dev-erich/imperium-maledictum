@@ -54,9 +54,9 @@ export default function NavbarProvider({ children }: NavbarProviderProps) {
 							{navbarContent.subtitle && (
 								<Typography
 									variant="body1"
-									sx={{ marginLeft: 0, color: 'white' }}
+									sx={{ margin: 0, color: 'white' }}
 								>
-									the {navbarContent.subtitle}
+									{navbarContent.subtitle}
 								</Typography>
 							)}
 						</Grid>
