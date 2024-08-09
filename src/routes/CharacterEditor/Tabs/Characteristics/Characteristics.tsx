@@ -31,7 +31,7 @@ export default function Characteristics() {
 	}
 
 	const createInputField = (
-		_key: string,
+		_key: string | undefined,
 		value: unknown,
 		type: 'starting' | 'advances'
 	) => {
