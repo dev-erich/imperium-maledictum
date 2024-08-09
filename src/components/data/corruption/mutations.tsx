@@ -2,6 +2,7 @@ import { Corruption } from 'types/character'
 
 export const mutations: Corruption[] = [
 	{
+		_id: 'witch-mark',
 		_type: 'mutation',
 		roll: {
 			start: 1,
@@ -17,6 +18,7 @@ export const mutations: Corruption[] = [
 		),
 	},
 	{
+		_id: 'wasted-frame',
 		_type: 'mutation',
 		roll: {
 			start: 6,
@@ -32,6 +34,7 @@ export const mutations: Corruption[] = [
 		),
 	},
 	{
+		_id: 'lashing-tentacle',
 		_type: 'mutation',
 		roll: {
 			start: 11,
@@ -48,6 +51,7 @@ export const mutations: Corruption[] = [
 		),
 	},
 	{
+		_id: 'inhuman-beauty',
 		_type: 'mutation',
 		roll: {
 			start: 16,
@@ -63,6 +67,7 @@ export const mutations: Corruption[] = [
 		),
 	},
 	{
+		_id: 'iron-skin',
 		_type: 'mutation',
 		roll: {
 			start: 21,
@@ -77,6 +82,7 @@ export const mutations: Corruption[] = [
 		),
 	},
 	{
+		_id: 'extra-mouth',
 		_type: 'mutation',
 		roll: {
 			start: 26,
@@ -92,6 +98,7 @@ export const mutations: Corruption[] = [
 		),
 	},
 	{
+		_id: 'searing-blood',
 		_type: 'mutation',
 		roll: {
 			start: 31,
@@ -108,6 +115,7 @@ export const mutations: Corruption[] = [
 		),
 	},
 	{
+		_id: 'living-shadow',
 		_type: 'mutation',
 		roll: {
 			start: 36,
@@ -123,6 +131,7 @@ export const mutations: Corruption[] = [
 		),
 	},
 	{
+		_id: 'swollen-brute',
 		_type: 'mutation',
 		roll: {
 			start: 41,
@@ -138,6 +147,7 @@ export const mutations: Corruption[] = [
 		),
 	},
 	{
+		_id: 'extra-eye',
 		_type: 'mutation',
 		roll: {
 			start: 46,
@@ -153,6 +163,7 @@ export const mutations: Corruption[] = [
 		),
 	},
 	{
+		_id: 'twisted-horns',
 		_type: 'mutation',
 		roll: {
 			start: 51,
@@ -167,6 +178,7 @@ export const mutations: Corruption[] = [
 		),
 	},
 	{
+		_id: 'daemonic-visage',
 		_type: 'mutation',
 		roll: {
 			start: 56,
@@ -182,6 +194,7 @@ export const mutations: Corruption[] = [
 		),
 	},
 	{
+		_id: 'digitigrade-legs',
 		_type: 'mutation',
 		roll: {
 			start: 61,
@@ -197,6 +210,7 @@ export const mutations: Corruption[] = [
 		),
 	},
 	{
+		_id: 'feathers',
 		_type: 'mutation',
 		roll: {
 			start: 66,
@@ -212,6 +226,7 @@ export const mutations: Corruption[] = [
 		),
 	},
 	{
+		_id: 'warp-claws',
 		_type: 'mutation',
 		roll: {
 			start: 71,
@@ -226,6 +241,7 @@ export const mutations: Corruption[] = [
 		),
 	},
 	{
+		_id: 'photonic-irregularity',
 		_type: 'mutation',
 		roll: {
 			start: 76,
@@ -240,6 +256,7 @@ export const mutations: Corruption[] = [
 		),
 	},
 	{
+		_id: 'festering-wound',
 		_type: 'mutation',
 		roll: {
 			start: 81,
@@ -256,6 +273,7 @@ export const mutations: Corruption[] = [
 		),
 	},
 	{
+		_id: 'lolling-tongue',
 		_type: 'mutation',
 		roll: {
 			start: 86,
@@ -270,6 +288,7 @@ export const mutations: Corruption[] = [
 		),
 	},
 	{
+		_id: 'fleshmetal',
 		_type: 'mutation',
 		roll: {
 			start: 91,
@@ -287,6 +306,7 @@ export const mutations: Corruption[] = [
 		),
 	},
 	{
+		_id: 'warp-regeneration',
 		_type: 'mutation',
 		roll: {
 			start: 96,

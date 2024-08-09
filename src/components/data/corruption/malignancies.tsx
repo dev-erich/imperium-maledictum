@@ -2,6 +2,7 @@ import { Corruption } from 'types/character'
 
 export const malignancies: Corruption[] = [
 	{
+		_id: 'dark-hearted',
 		_type: 'malignance',
 		roll: {
 			start: 1,
@@ -16,6 +17,7 @@ export const malignancies: Corruption[] = [
 		),
 	},
 	{
+		_id: 'awful-cravings',
 		_type: 'malignance',
 		roll: {
 			start: 6,
@@ -31,6 +33,7 @@ export const malignancies: Corruption[] = [
 		),
 	},
 	{
+		_id: 'overwhelming-obsession',
 		_type: 'malignance',
 		roll: {
 			start: 11,
@@ -46,6 +49,7 @@ export const malignancies: Corruption[] = [
 		),
 	},
 	{
+		_id: 'ill-fortuned',
 		_type: 'malignance',
 		roll: {
 			start: 16,
@@ -61,6 +65,7 @@ export const malignancies: Corruption[] = [
 		),
 	},
 	{
+		_id: 'irrational-nausea',
 		_type: 'malignance',
 		roll: {
 			start: 21,
@@ -77,6 +82,7 @@ export const malignancies: Corruption[] = [
 		),
 	},
 	{
+		_id: 'unshakable-paranoia',
 		_type: 'malignance',
 		roll: {
 			start: 26,
@@ -92,6 +98,7 @@ export const malignancies: Corruption[] = [
 		),
 	},
 	{
+		_id: 'dark-whispers',
 		_type: 'malignance',
 		roll: {
 			start: 31,
@@ -106,12 +113,13 @@ export const malignancies: Corruption[] = [
 		),
 	},
 	{
+		_id: 'phantom-memories',
 		_type: 'malignance',
 		roll: {
 			start: 36,
 			end: 40,
 		},
-		name: 'Phantom Memories:',
+		name: 'Phantom Memories',
 		description: (
 			<>
 				You have memories of events that — according to everyone else — never
@@ -121,6 +129,7 @@ export const malignancies: Corruption[] = [
 		),
 	},
 	{
+		_id: 'irrational-fear',
 		_type: 'malignance',
 		roll: {
 			start: 41,
@@ -138,6 +147,7 @@ export const malignancies: Corruption[] = [
 		),
 	},
 	{
+		_id: 'blackouts',
 		_type: 'malignance',
 		roll: {
 			start: 46,
@@ -153,6 +163,7 @@ export const malignancies: Corruption[] = [
 		),
 	},
 	{
+		_id: 'morbid-fascination',
 		_type: 'malignance',
 		roll: {
 			start: 51,
@@ -169,6 +180,7 @@ export const malignancies: Corruption[] = [
 		),
 	},
 	{
+		_id: 'wheels-within-wheels',
 		_type: 'malignance',
 		roll: {
 			start: 56,
@@ -183,6 +195,7 @@ export const malignancies: Corruption[] = [
 		),
 	},
 	{
+		_id: 'inescapable-itch',
 		_type: 'malignance',
 		roll: {
 			start: 61,
@@ -197,6 +210,7 @@ export const malignancies: Corruption[] = [
 		),
 	},
 	{
+		_id: 'warp-sense',
 		_type: 'malignance',
 		roll: {
 			start: 66,
@@ -212,6 +226,7 @@ export const malignancies: Corruption[] = [
 		),
 	},
 	{
+		_id: 'the-eyes',
 		_type: 'malignance',
 		roll: {
 			start: 71,
@@ -227,6 +242,7 @@ export const malignancies: Corruption[] = [
 		),
 	},
 	{
+		_id: 'void-gaze',
 		_type: 'malignance',
 		roll: {
 			start: 76,
@@ -243,6 +259,7 @@ export const malignancies: Corruption[] = [
 		),
 	},
 	{
+		_id: 'ashen-taste',
 		_type: 'malignance',
 		roll: {
 			start: 81,
@@ -252,6 +269,7 @@ export const malignancies: Corruption[] = [
 		description: <>Everything you eat tastes like ash, blood, or bones.</>,
 	},
 	{
+		_id: 'dark-prophecies',
 		_type: 'malignance',
 		roll: {
 			start: 86,
@@ -269,6 +287,7 @@ export const malignancies: Corruption[] = [
 		),
 	},
 	{
+		_id: 'warp-patron',
 		_type: 'malignance',
 		roll: {
 			start: 91,
@@ -285,6 +304,7 @@ export const malignancies: Corruption[] = [
 		),
 	},
 	{
+		_id: 'psychic-awakening',
 		_type: 'malignance',
 		roll: {
 			start: 96,
