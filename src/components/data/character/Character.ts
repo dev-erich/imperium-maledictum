@@ -30,32 +30,92 @@ export default class Character {
 	wounds: CurrentTotal
 	warpCharges: CurrentTotal
 	corruptions: Corruption[]
-	corruption: CurrentTotal
+	corruptionCount: CurrentTotal
 	criticalWounds: CharacterCriticalWound[]
 	armourSlots: CharacterArmour[]
 	isFated: boolean
 
-	constructor() {
-		this.name = ''
-		this.role = undefined
-		this.details = initDetails()
-		this.characteristics = initCharacterisitics()
-		this.skills = initCharacterSkills()
-		this.specialisations = []
-		this.initiative = 0
-		this.fate = initCurrentTotal({ total: 3 })
-		this.wounds = initCurrentTotal()
-		this.warpCharges = initCurrentTotal()
-		this.corruptions = []
-		this.corruption = initCurrentTotal()
-		this.criticalWounds = []
-		this.armourSlots = initCharacterArmour()
-		this.isFated = false
+	//? Possible alternatives?
+	// let fieldName: keyof typeof object;
+	// for ( fieldName in data)
+	// 	{
+	// 			this[fieldName] = data[fieldName] ?? getDefaultValueForFieldThatHasThisName(fieldName)
+
+	constructor(data?: Partial<Character>) {
+		this.name = data?.name ?? ''
+		this.role = data?.role ?? undefined
+		this.details = data?.details ?? initDetails()
+		this.characteristics = data?.characteristics ?? initCharacterisitics()
+		this.skills = data?.skills ?? initCharacterSkills()
+		this.specialisations = data?.specialisations ?? []
+		this.initiative = data?.initiative ?? 0
+		this.fate = data?.fate ?? initCurrentTotal({ total: 3 })
+		this.wounds = data?.wounds ?? initCurrentTotal()
+		this.warpCharges = data?.warpCharges ?? initCurrentTotal()
+		this.corruptions = data?.corruptions ?? []
+		this.corruptionCount = data?.corruptionCount ?? initCurrentTotal()
+		this.criticalWounds = data?.criticalWounds ?? []
+		this.armourSlots = data?.armourSlots ?? initCharacterArmour()
+		this.isFated = data?.isFated ?? false
 	}
 
-	getCharacteristic = (_key: string) => {
-		return this.characteristics.find(
-			(characteristic) => characteristic._key === _key
-		)
-	}
+	// getCharacteristic = (_key: string) => {
+	// 	return this.characteristics.find(
+	// 		(characteristic) => characteristic._key === _key
+	// 	)
+	// }
+
+	// getCriticalWoundsCount = () => {
+	// 	return this.criticalWounds.length
+	// }
+
+	// setCorruptionCount = (count: number) => {
+	// 	if (count < 0) this.corruptionCount.current = 0
+	// 	else this.corruptionCount.current = count
+	// }
+
+	// // addCorruptionCount = (count: number) => {
+	// // 	// validate if decrementing
+	// // 	if (this.corruptionCount.current > 0 && count < 0) {
+	// // 		if (this.corruptionCount.current + count < 0) {
+	// // 			this.corruptionCount.current = 0
+	// // 		} else {
+	// // 			this.corruptionCount.current += count
+	// // 		}
+	// // 	}
+
+	// // 	// validate if incrementing
+	// // 	if (count > 0) {
+	// // 		this.corruptionCount.current += count
+	// // 	}
+	// // }
+
+	// setFateTotal = (count: number) => {
+	// 	this.fate.total = count
+	// }
+
+	// setFateCurrent = (count: number) => {
+	// 	if (count < 0) this.fate.current = 0
+	// 	else if (count <= this.fate.total) this.fate.current = count
+	// }
+
+	// addFate = (count: number) => {
+	// 	// validate if decrementing
+	// 	if (this.fate.current > 0 && count < 0) {
+	// 		if (this.fate.current + count < 0) {
+	// 			this.fate.current = 0
+	// 		} else {
+	// 			this.fate.current += count
+	// 		}
+	// 	}
+
+	// 	// validate if incrementing
+	// 	if (this.fate.current < this.fate.total && count > 0) {
+	// 		if (this.fate.current + count > this.fate.total) {
+	// 			this.fate.current = this.fate.total
+	// 		} else {
+	// 			this.fate.current += count
+	// 		}
+	// 	}
+	// }
 }

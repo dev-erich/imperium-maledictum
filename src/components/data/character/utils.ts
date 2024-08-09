@@ -284,7 +284,7 @@ export const getCharacteristic = (
 	)
 	if (characteristic) return characteristic
 	return {
-		_key: 'agility',
+		_key: undefined,
 		code: 'notFound',
 		name: 'Not Found',
 		values: {
@@ -331,7 +331,7 @@ export const setCharacteristic = (
 	return {
 		...character,
 		wounds: { ...character.wounds, total: totalWounds },
-		corruption: { ...character.corruption, total: totalCorruption },
+		corruptionCount: { ...character.corruptionCount, total: totalCorruption },
 		characteristics: newCharacteristics,
 		initiative: totalInitiatve,
 	}

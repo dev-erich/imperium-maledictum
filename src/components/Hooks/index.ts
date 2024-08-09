@@ -1,4 +1,8 @@
-export { CharacterProvider, useCharacter } from './CharacterProvider'
+export {
+	CharacterProvider,
+	useCharacter,
+	useUpdateCharacter,
+} from './CharacterProvider'
 
 export { Navbar, useNavbar } from './Navbar'
 

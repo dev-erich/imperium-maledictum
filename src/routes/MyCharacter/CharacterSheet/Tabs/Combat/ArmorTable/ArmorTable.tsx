@@ -34,12 +34,13 @@ export default function Armor() {
 	const handleRemoveClick = (key: BodyPart) => {
 		const armorSlotKey = getArmorSlot(character, key)
 
-		setCharacter((prev) => {
-			return {
-				...prev,
-				armourSlots: setArmorSlots(prev, armorSlotKey.value - 1, key),
-			}
-		})
+		if (armorSlotKey.value > 0)
+			setCharacter((prev) => {
+				return {
+					...prev,
+					armourSlots: setArmorSlots(prev, armorSlotKey.value - 1, key),
+				}
+			})
 	}
 
 	const rows = character.armourSlots.map((slot) => {

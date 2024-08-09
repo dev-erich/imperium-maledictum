@@ -124,6 +124,13 @@ const responsiveFontSizes = (theme: Theme): Theme => {
 					lineHeight: '2rem',
 				},
 			},
+			h6: {
+				...theme.typography.h5,
+				fontSize: '1rem',
+				lineHeight: '2rem',
+				fontWeight: 500,
+				marginLeft: '0',
+			},
 			body1: {
 				...theme.typography.body1,
 				lineHeight: '1.1rem',
