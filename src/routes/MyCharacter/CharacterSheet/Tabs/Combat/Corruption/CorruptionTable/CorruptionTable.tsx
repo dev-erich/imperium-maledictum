@@ -1,7 +1,9 @@
 import { InputField, Span, IconButton } from '@common'
 import { useCharacter, usePlayerHandbook, useUpdateCharacter } from '@hooks'
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline'
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import {
+	Box,
 	Paper,
 	Table,
 	TableBody,
@@ -9,6 +11,7 @@ import {
 	TableContainer,
 	TableHead,
 	TableRow,
+	IconButton as IconButtonMUI,
 } from '@mui/material'
 import { GiBrain, GiSuckeredTentacle } from 'react-icons/gi'
 import { CorruptionKey } from 'types/character'
@@ -16,7 +19,7 @@ import { IoMdInformationCircle } from 'react-icons/io'
 
 export default function CorruptionTable() {
 	const { character } = useCharacter()
-	const { updateCorruption, removeCorruption, getMutation } =
+	const { updateCorruption, removeCorruption, getMutation, addCorruption } =
 		useUpdateCharacter()
 	const { openSection } = usePlayerHandbook()
 
@@ -128,6 +131,16 @@ export default function CorruptionTable() {
 					</TableBody>
 				</Table>
 			</TableContainer>
+			<Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+				<IconButtonMUI
+					aria-label="delete"
+					onClick={addCorruption}
+					size="large"
+					sx={{ color: 'black' }}
+				>
+					<AddCircleOutlineIcon fontSize="inherit" />
+				</IconButtonMUI>
+			</Box>
 		</>
 	)
 }

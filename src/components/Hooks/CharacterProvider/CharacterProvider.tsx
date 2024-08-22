@@ -212,6 +212,32 @@ export const useUpdateCharacter = () => {
 		})
 	}
 
+	const addWoundCurrent = () => {
+		if (character.wounds.current < character.wounds.total)
+			setCharacter((prev) => {
+				return {
+					...prev,
+					wounds: {
+						...prev.wounds,
+						current: prev.wounds.current + 1,
+					},
+				}
+			})
+	}
+
+	const removeWoundCurrent = () => {
+		if (character.wounds.current > 0)
+			setCharacter((prev) => {
+				return {
+					...prev,
+					wounds: {
+						...prev.wounds,
+						current: prev.wounds.current - 1,
+					},
+				}
+			})
+	}
+
 	return {
 		addCorruptionCount,
 		removeCorruptionCount,
@@ -223,5 +249,7 @@ export const useUpdateCharacter = () => {
 		updateCorruption,
 		removeCorruption,
 		getMutation,
+		addWoundCurrent,
+		removeWoundCurrent,
 	}
 }

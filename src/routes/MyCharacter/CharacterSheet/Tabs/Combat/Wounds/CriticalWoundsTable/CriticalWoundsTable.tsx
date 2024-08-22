@@ -4,7 +4,6 @@ import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import {
 	Box,
-	Card,
 	Paper,
 	Table,
 	TableBody,
@@ -103,58 +102,58 @@ export default function CriticalWoundsTable() {
 	return (
 		<>
 			{/* <Card sx={{ background: 'white' }}> */}
-				<TableContainer
-					variant="outlined"
-					component={Paper}
-					sx={{ background: 'white' }}
-				>
-					<Table size="small">
-						<TableHead>
-							<TableRow>
-								<TableCell align="center" colSpan={3}>
-									<Span>Critical Wounds</Span>
-									<IconButton onClick={() => openSection('critical-wounds')}>
-										<IoMdInformationCircle />
-									</IconButton>
-								</TableCell>
-							</TableRow>
-							<TableRow>
-								<TableCell align="center">Location</TableCell>
-								<TableCell align="center">Description</TableCell>
-								<TableCell align="center">Delete?</TableCell>
-							</TableRow>
-						</TableHead>
-						<TableBody>
-							{rows.map((critWound) => {
-								return (
-									<TableRow key={critWound.id}>
-										<TableCell
-											align="center"
-											component="th"
-											scope="row"
-											sx={{
-												whiteSpace: 'break-spaces',
-											}}
+			<TableContainer
+				variant="outlined"
+				component={Paper}
+				sx={{ background: 'white' }}
+			>
+				<Table size="small">
+					<TableHead>
+						<TableRow>
+							<TableCell align="center" colSpan={3}>
+								<Span>Critical Wounds</Span>
+								<IconButton onClick={() => openSection('critical-wounds')}>
+									<IoMdInformationCircle />
+								</IconButton>
+							</TableCell>
+						</TableRow>
+						<TableRow>
+							<TableCell align="center">Location</TableCell>
+							<TableCell align="center">Description</TableCell>
+							<TableCell align="center">Delete?</TableCell>
+						</TableRow>
+					</TableHead>
+					<TableBody>
+						{rows.map((critWound) => {
+							return (
+								<TableRow key={critWound.id}>
+									<TableCell
+										align="center"
+										component="th"
+										scope="row"
+										sx={{
+											whiteSpace: 'break-spaces',
+										}}
+									>
+										{critWound.location}
+									</TableCell>
+									<TableCell align="center" component="th" scope="row">
+										{critWound.description}
+									</TableCell>
+									<TableCell align="center" component="th" scope="row">
+										<IconButton
+											aria-label="delete"
+											onClick={() => handleDelete(critWound.id)}
 										>
-											{critWound.location}
-										</TableCell>
-										<TableCell align="center" component="th" scope="row">
-											{critWound.description}
-										</TableCell>
-										<TableCell align="center" component="th" scope="row">
-											<IconButton
-												aria-label="delete"
-												onClick={() => handleDelete(critWound.id)}
-											>
-												<RemoveCircleOutlineIcon />
-											</IconButton>
-										</TableCell>
-									</TableRow>
-								)
-							})}
-						</TableBody>
-					</Table>
-				</TableContainer>
+											<RemoveCircleOutlineIcon />
+										</IconButton>
+									</TableCell>
+								</TableRow>
+							)
+						})}
+					</TableBody>
+				</Table>
+			</TableContainer>
 			{/* </Card> */}
 			<Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
 				<IconButtonMUI

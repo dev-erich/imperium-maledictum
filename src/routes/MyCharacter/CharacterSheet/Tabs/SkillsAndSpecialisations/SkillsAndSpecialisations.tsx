@@ -93,49 +93,53 @@ export default function SkillsAndSpecialisations() {
 						</Table>
 					</TableContainer>
 				</Grid>
-				{specialisations.length > 0 && (
-					<Grid item xs={12}>
-						<TableContainer
-							variant="outlined"
-							component={Paper}
-							sx={{ background: 'white' }}
-						>
-							<Table size="small">
-								<TableHead>
-									<TableRow>
-										<TableCell>Specialisation</TableCell>
-										<TableCell align="center">Total</TableCell>
-									</TableRow>
-								</TableHead>
-								<TableBody>
-									{specialisations.map((skill) => {
-										const { _key, name, advances, skillkey } = skill
-										const refSkill = getSkill(character, skillkey)
-										const refCharacteristic = getCharacteristic(
-											character,
-											refSkill.characteristicKey
-										)
-
-										return (
-											<TableRow key={_key}>
-												<TableCell component="th" scope="row">
-													{name}
-												</TableCell>
-												<TableCell align="center" component="th" scope="row">
-													{advances * 5 +
-														refSkill.advances * 5 +
-														refCharacteristic.values.advances +
-														refCharacteristic.values.starting}
-												</TableCell>
-											</TableRow>
-										)
-									})}
-								</TableBody>
-							</Table>
-						</TableContainer>
-					</Grid>
-				)}
 			</Grid>
+			{specialisations.length > 0 && (
+				<Grid item xs={12}>
+					<TableContainer
+						variant="outlined"
+						component={Paper}
+						sx={{ background: 'white' }}
+					>
+						<Table size="small">
+							<TableHead>
+								<TableRow>
+									<TableCell>Specialisations</TableCell>
+									<TableCell>Skill</TableCell>
+									<TableCell align="center">Total</TableCell>
+								</TableRow>
+							</TableHead>
+							<TableBody>
+								{specialisations.map((skill) => {
+									const { _key, name, advances, skillkey } = skill
+									const refSkill = getSkill(character, skillkey)
+									const refCharacteristic = getCharacteristic(
+										character,
+										refSkill.characteristicKey
+									)
+
+									return (
+										<TableRow key={_key}>
+											<TableCell component="th" scope="row">
+												{name}
+											</TableCell>
+											<TableCell component="th" scope="row">
+												{refSkill.name}
+											</TableCell>
+											<TableCell align="center" component="th" scope="row">
+												{advances * 5 +
+													refSkill.advances * 5 +
+													refCharacteristic.values.advances +
+													refCharacteristic.values.starting}
+											</TableCell>
+										</TableRow>
+									)
+								})}
+							</TableBody>
+						</Table>
+					</TableContainer>
+				</Grid>
+			)}
 		</Grid>
 	)
 }
