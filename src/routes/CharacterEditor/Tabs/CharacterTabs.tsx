@@ -12,23 +12,18 @@ export default function CharacterTabs(props: CharacterTabsProps) {
 		<>
 			<TabPanel value={value} index={0} type="Character">
 				<Details />
-				<div style={{ height: '52px' }} />
 			</TabPanel>
 			<TabPanel value={value} index={1} type="Character">
 				<Characteristics />
-				<div style={{ height: '52px' }} />
 			</TabPanel>
 			<TabPanel value={value} index={2} type="Character">
 				<Skills />
-				<div style={{ height: '52px' }} />
 			</TabPanel>
 			<TabPanel value={value} index={3} type="Character">
 				<Specialisations />
-				<div style={{ height: '52px' }} />
 			</TabPanel>
 			<TabPanel value={value} index={4} type="Character">
 				<Talents />
-				<div style={{ height: '52px' }} />
 			</TabPanel>
 		</>
 	)

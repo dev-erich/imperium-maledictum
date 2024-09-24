@@ -1,12 +1,11 @@
 import { CurrentTotalTable, Typography } from '@common'
-import { useCharacter } from '@hooks'
+import { useCharacter, useUpdateCharacter } from '@hooks'
 import { Card, Grid } from '@mui/material'
-import { CorruptionTable } from './CorruptionTable'
-import { useUpdateCharacter } from '@hooks/CharacterProvider'
+import { CriticalWoundsTable } from './CriticalWoundsTable'
 
-export default function Corruption() {
+export default function Wounds() {
 	const { character } = useCharacter()
-	const { addCorruptionCount, removeCorruptionCount } = useUpdateCharacter()
+	const { addWoundCurrent, removeWoundCurrent } = useUpdateCharacter()
 
 	return (
 		<Card sx={{ background: 'white' }}>
@@ -20,22 +19,22 @@ export default function Corruption() {
 						justifyContent: 'center',
 					}}
 				>
-					<Typography variant="h6">Corruption</Typography>
+					<Typography variant="h6">Wounds</Typography>
 				</Grid>
 				<Grid item xs={7}>
 					<CurrentTotalTable
-						leftValue={character.corruptionCount.current}
-						rightValue={character.corruptionCount.total}
+						leftValue={character.wounds.current}
+						rightValue={character.wounds.total}
 						rightHeader="Threshold"
-						handleAddClick={addCorruptionCount}
-						handleSubtractClick={removeCorruptionCount}
+						handleAddClick={addWoundCurrent}
+						handleSubtractClick={removeWoundCurrent}
 						cardProps={{
 							sx: { background: 'white', boxShadow: 'none' },
 						}}
 					/>
 				</Grid>
 				<Grid item xs={12}>
-					<CorruptionTable />
+					<CriticalWoundsTable />
 				</Grid>
 			</Grid>
 		</Card>
